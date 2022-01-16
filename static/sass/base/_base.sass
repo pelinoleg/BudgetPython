@@ -1,0 +1,14 @@
+// custom scroll
+*
+	&::-webkit-scrollbar
+		background: mix(white, black, 90%)
+		width: 6px
+		height: 6px
+		position: relative
+		@include dark
+			background: var(--gray-90)
+	&::-webkit-scrollbar-thumb
+		background: mix(white, black, 50%)
+		border-radius: 50em
+		@include dark
+			background: mix(white, black, 90%)

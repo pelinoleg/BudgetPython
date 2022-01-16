@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% block content %}
+<h1>
+  {% block title %} Edit "{{ expense['sum'] }}", "{{ expense['category'] }}" {%
+  endblock %}
+</h1>
+
+<form method="post">
+  {% for cat, message in get_flashed_messages(True) %}
+  <div class="alert {{ cat }}">{{ message }}</div>
+  {% endfor %}
+
+  <div class="flex">
+    <input
+      type="text"
+      name="sum"
+      placeholder="Suma"
+      class="form-control"
+      value="{{ request.form['sum'] or expense['sum'] }}"
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      type="text"
+      name="date"
+      placeholder="Suma"
+      class="form-control"
+      value="{{ request.form['date'] or expense['date'] }}"
+    />
+  </div>
+
+  <div class="flex">
+    <div>
+      {% for category in categories %} <input type="radio" value="{{
+      category['name'] }}" name="category" id="{{ category['name'] }}" {% if
+      category['name'] == expense['category'] %} checked {% endif %} >
+      <label for="{{ category['name'] }}">{{ category['name'] }}</label>
+      <br />
+      {% endfor %}
+    </div>
+
+    <div class="ml-5">
+      {% for subcategory in subcategories %} <input type="radio" value="{{
+      subcategory['name'] }}" name="subcategory" id="{{ subcategory['name'] }}"
+      {% if subcategory['name'] == expense['subcategory'] %} checked {% endif %}
+      >
+      <label for="{{ subcategory['name'] }}">{{ subcategory['name'] }}</label>
+      <br />
+      {% endfor %}
+      <a href="#"> delete subcategory (TODO)</a>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <textarea name="comment" placeholder="Comment" class="form-control">
+{{ request.form['comment'] or expense['comment'] }}</textarea
+    >
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+
+  <hr />
+</form>
+
+<form action="{{ url_for('delete', id=expense['id']) }}" method="POST">
+  <input
+    type="submit"
+    value="Delete Expense"
+    class="btn btn-danger btn-sm"
+    onclick="return confirm('Are you sure you want to delete this post?')"
+  />
+</form>
+
+{% endblock %}

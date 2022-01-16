@@ -1,0 +1,58 @@
+@mixin dark()
+	@media (prefers-color-scheme: dark)
+		@at-root #{selector-nest(':root:not([data-theme=light]):not([data-theme=dark])', &)}
+			@content
+
+
+	@at-root #{selector-nest(':root[data-theme=dark]', &)}
+		@content
+
+// For Touch interfaces
+@mixin coarse()
+	@media (any-pointer: coarse)
+		@content
+
+
+
+
+// Colors
+\:root
+	--gray-h: 224
+	--gray-s: 10%
+	--gray-l: 108%
+
+
+	--red-s: 49%
+	--red-l: 58%
+
+	--form-color: #e0c257
+
+	--form-color-invalid: hsl(0, var(--red-s), var(--red-l))
+	--form-color-invalid-d: hsl(0, calc(var(--red-s) + 20%), calc(var(--red-l) + 10%))
+
+
+
+$gr: 3,5,7,10,12,15,17,20,25,30,35,40,45,50,55,60,65,70,75,80,82,85,90,95
+@each $pr in $gr
+	\:root
+		--gray-#{$pr}:  hsl(var(--gray-h), var(--gray-s), calc(var(--gray-l) - #{$pr}%))
+
+
+
+\:root[data-theme="light"]
+	--gray-h: 20
+	--gray-s: 12%
+
+
+.hide-input
+	position: absolute
+	z-index: -1
+	width: 0
+	height: 0
+	padding: 0
+	margin: 0
+	border: none
+	overflow: hidden
+	box-shadow: unset !important
+	&:focus
+		box-shadow: unset !important

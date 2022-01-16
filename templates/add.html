@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% block content %}
+<h3>{% block title %} Add Expense {% endblock %}</h3>
+
+<form method="post">
+  <div class="container flex flex-col mx-auto gap-15 mt-20">
+    <div class="flex">
+      <input
+        type="text"
+        name="sum"
+        placeholder="Suma"
+        class="summ py-5 mr-20"
+        value="{{ request.form['sum'] }}"
+      />
+
+      <button type="submit" class="py-8 send-button">Submit</button>
+    </div>
+
+    <div class="form-item">
+      <div class="radio-group category-group">
+        {% for category in categories %}
+
+        <input
+          type="radio"
+          value="{{ category['name'] }}"
+          name="category"
+          id="{{ category['name'] }}"
+        />
+        <label for="{{ category['name'] }}">{{ category['name'] }}</label>
+
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="form-item">
+      <div class="radio-group category-group w-full">
+        {% for subcategory in subcategories %}
+
+        <input
+          type="radio"
+          value="{{ subcategory['name'] }}"
+          name="subcategory"
+          id="{{ subcategory['name'] }}"
+          class="{{ subcategory['category_id'] }}"
+        />
+        <label
+          class="{{ subcategory['category_id'] }}"
+          for="{{ subcategory['name'] }}"
+          >{{ subcategory['name'] }}</label
+        >
+
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <textarea name="comment" placeholder="Comentariu" class="form-control">
+{{ request.form['comment'] }}</textarea
+      >
+    </div>
+  </div>
+</form>
+
+{% endblock %}

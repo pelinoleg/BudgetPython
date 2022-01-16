@@ -1,0 +1,107 @@
+{% extends 'base.html' %} {% block content %}
+	<div class="flex mt-5">
+	<div class="cards flex-1">
+		{% for expense in expenses %}
+			<div class="card">
+				<a href="/{{ expense['id'] }}/edit">edit</a>
+				<span style="font-weight: bold">{{ expense['sum'] }}</span>
+
+				<span class="badge badge-light data">{{ expense['date_s'] }}</span>
+				<span class="badge badge-secondary categoria"
+				>{{ expense['category'] }}</span
+				>
+				{% if (expense['subcategory'] != '') and (expense['subcategory'] != None)
+      and (expense['subcategory'] != '0') %}
+					<span class="badge badge-success subcategoria"
+					>{{ expense['subcategory'] }}</span
+					>
+				{% endif %} {% if (expense['comment'] != '') and (expense['comment'] !=
+      None) %}
+				<span class="badge badge-warning comentariu"
+				>{{ expense['comment'] }}</span
+				>
+			{% endif %}
+			</div>
+
+		{% endfor %}
+	</div>
+
+	<div class="ml-50 flex-1 ot1">
+		<div>By Category:</div>
+		<br>
+		<div>2022</div>
+		<div class="ml-10">January</div>
+		<div class="ml-20">
+			<span>Category 1:</span> <span>120$</span><br>
+			<span>Category 2:</span> <span>10$</span><br>
+			<span>Category 3:</span> <span>20$</span><br>
+			<span>Category 4:</span> <span>40$</span>
+		</div>
+		<div class="mt-5">2021</div>
+		<div class="ml-10">December</div>
+		<div class="ml-20">
+			<span>Category 1:</span> <span>130$</span><br>
+			<span>Category 2:</span> <span>20$</span><br>
+			<span>Category 3:</span> <span>560$</span><br>
+			<span>Category 4:</span> <span>30$</span>
+		</div>
+		<div class="ml-10">November</div>
+		<div class="ml-20">
+			<span>Category 1:</span> <span>10$</span><br>
+			<span>Category 2:</span> <span>10$</span><br>
+			<span>Category 3:</span> <span>50$</span><br>
+			<span>Category 4:</span> <span>90$</span><br>
+			<span>...</span>
+		</div>
+
+
+	</div>
+
+	<div class="ml-50 flex-1">
+		this month by category: <br/>
+		{% for sum, cat in category_sum_month %}
+			<span>{{ sum }}</span>: {{ cat }}
+			<hr/>
+		{% endfor %}
+
+		<br/>
+		<br/>
+		<br/>
+
+		<div>
+			this month by expense: {% for sum, cat, subcat, comment, date in
+      exepnses_this_month %}
+			<br/>
+			<span>{{ sum }}</span>: {{ cat }}, {{ subcat }}{{ month }} - {{ date }}
+			<hr/>
+		{% endfor %}
+		</div>
+	</div>
+
+	<div class="ml-50 flex-1">
+		Total: <br/>
+		{% for sum, cat in category_sum_total %} <span>{{ sum }}</span>: {{ cat }}
+			<hr/>
+		{% endfor %}
+	</div>
+
+	<div class="ml-50 flex-1">
+		<div>
+			Monthly expenses: <br/>
+			<br/>
+			{% for sum, month, year in category_sum_all_month %}
+				<span>{{ sum }}$</span>: {{ month }}
+				<hr/>
+			{% endfor %}
+		</div>
+
+
+		<br/>
+		<div>
+
+
+		</div>
+	</div>
+
+{% endblock %}
+</div>
