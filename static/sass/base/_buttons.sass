@@ -1,0 +1,140 @@
+@mixin gradientBg($startColor, $endColor)
+	background: $startColor
+	background: linear-gradient(145deg, $startColor 0%, $endColor 80%, $endColor 100%)
+
+.bg-gradient1 span,
+.bg-gradient1:before
+	@include gradientBg(#52A0FD, #00e2fa)
+
+.bg-gradient2 span,
+.bg-gradient2:before
+	@include gradientBg(#44ea76, #39fad7)
+
+.bg-gradient3 span,
+.bg-gradient3:before
+	@include gradientBg(#fa6c9f, #ffe140)
+
+.bg-gradient-red span,
+.bg-gradient-red:before
+	@include gradientBg(#9d3b6d, #f23945)
+
+.bg-gradient-green span,
+.bg-gradient-green:before
+	@include gradientBg(#0fbcba, #21bf56)
+
+.bg-gradient-yellow span,
+.bg-gradient-yellow:before
+	@include gradientBg(#ffdd04, #fbb135)
+
+.slider-cards .slider-card:nth-child(1n) .slider-card-inner
+	@include gradientBg(#ffdd04, #fbb135)
+
+.wrapper
+	margin: 5% auto
+	text-align: center
+	transform-style: perserve-3d
+	perspecive: 800px
+
+a
+	text-decoration: none
+	
+	&:hover,
+	&:focus,
+	&:active
+		text-decoration: none
+
+.fancy-button
+	display: inline-block
+	margin: 30px
+	font-size: 17px
+	letter-spacing: 0.03em
+	text-transform: uppercase
+	color: #ffffff
+	position: relative
+	background: transparent
+	border: unset
+	
+	&:before
+		content: ''
+		display: inline-block
+		height: 40px
+		position: absolute
+		bottom: -5px
+		left: 30px
+		right: 30px
+		z-index: -1
+		border-radius: 30em
+		filter: blur(20px) brightness(0.95)
+		transform-style: preserve-3d
+		transition: all 0.3s ease-out
+	
+	i
+		margin-top: -1px
+		margin-right: 20px
+		font-size: 1.265em
+		vertical-align: middle
+	
+	span
+		display: inline-block
+		padding: 18px 60px
+		border-radius: 50em
+		position: relative
+		z-index: 2
+		will-change: transform, filter
+		transform-style: preserve-3d
+		transition: all 0.3s ease-out
+		transform: scale(1.04)
+	
+	&:focus,
+	&:active
+		color: #ffffff
+	
+	&:hover
+		color: #ffffff
+		
+		span
+			filter: brightness(1.05) contrast(1.05)
+			transform: scale(0.95)
+		
+		&:before
+			bottom: -7px
+			opacity: 1
+			filter: blur(20px)
+
+.add
+	width: 59px
+	height: 59px
+	position: fixed
+	right: 30px
+	bottom: 30px
+	border-radius: 50em
+	text-decoration: none
+	//background: #8d3e3e
+	color: #fff
+	line-height: 54px
+	text-align: center
+	font-size: 30px
+	padding: 10px
+	
+	&:before
+		left: 0
+		right: -22px
+		bottom: -20px
+		filter: blur(18px) brightness(1.15)
+		@include dark
+			filter: blur(20px) brightness(0.95)
+	
+	span
+		padding: 0px
+		width: 60px
+		height: 60px
+		display: flex
+		align-items: center
+		justify-content: center
+		font-size: 20px
+		
+		i
+			margin: 0
+			line-height: unset
+//border: 1px solid rgba(#fff, 0.1)
+//box-sizing: border-box

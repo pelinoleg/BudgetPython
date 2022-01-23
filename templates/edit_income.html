@@ -6,41 +6,32 @@
 
 
 			<div class="flex" >
-				<input type="number" name="sum" placeholder="Amount" class="form-control" step="0.01"
-							 pattern="[0-9]+([\.,][0-9]+)?" value="{{ request.form['sum'] or expense['sum'] }}" />
+				<input type="number" name="amount" placeholder="Amount" class="form-control" step="0.01"
+							 pattern="[0-9]+([\.,][0-9]+)?" value="{{ request.form['amount'] or income['amount'] }}" />
 			</div >
 
 			<div class="form-group mt-5" >
 				<input data-toggle="datepicker" type="text" name="date" placeholder="Date" class="form-control"
-						{#						pattern="\d{1,2}/\d{1,2}/\d{4}"#} value="{{ request.form['date_s'] or expense['date'] }}" />
+							 value="{{ request.form['date_s'] or income['date'] }}" />
 
 			</div >
 
 			<div class="flex mt-10" >
 				<div >
-					{% for id, name, color, state in categories %}
+					{% for id, name in categories %}
 						<input type="radio" value="{{ id }}" name="category" id="{{ name }}"
-								{% if id == expense['category'] %} checked {% endif %} >
+								{% if id == income['category'] %} checked {% endif %} >
 						<label for="{{ name }}" >{{ name }}</label >
 						<br />
 					{% endfor %}
 				</div >
 
-				<div class="ml-5" >
-					{% for id, name in subcategories %}
-						<input type="radio" value="{{ id }}" name="subcategory" id="{{ name }}"
-								{% if id == expense['subcategory'] %} checked {% endif %}
-						>
-						<label for="{{ name }}" >{{ name }}</label >
-						<br />
-					{% endfor %}
 
-				</div >
 			</div >
 
 			<div class="form-group mt-10" >
     <textarea name="comment" placeholder="Comment" class="form-control" >
-{{ request.form['comment'] or expense['comment'] }}</textarea >
+{{ request.form['comment'] or income['comment'] }}</textarea >
 			</div >
 			<div class="form-group mt-10" >
 				<button type="submit" class="send-button" >Submit</button >
@@ -48,8 +39,8 @@
 
 			<hr />
 		</form >
-		<form action="{{ url_for('delete', id=expense['id']) }}" method="POST" class="mt-10" >
-			<input type="submit" value="Delete Expense" class="add-button"
+		<form action="{{ url_for('delete_income', id=income['id']) }}" method="POST" class="mt-10" >
+			<input type="submit" value="Delete Income" class="add-button"
 						 onclick="return confirm('Are you sure you want to delete this post?')" />
 		</form >
 	</div >

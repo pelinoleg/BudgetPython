@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+	<div class="page_title {{ gradient }}" ><span >{% block title %} {{ title }} {% endblock %}</span ></div >
+
+	<div class="content" >
+		{% if incomes|length == 0 %}
+			<div class="no-results" >You have not added any income yet. Click on (+) to add</div >
+		{% endif %}
+		{% for id, month, year, amount, category, comment in incomes %}
+			<div >
+				<div class="inline-block" >id:{{ id }} / {{ month }}.{{ year }} - {{ amount|int }} - {{ category }}
+																	 - {{ comment }}</div >
+				<div class="inline-block" >
+					<a href="/income-edit/{{ id }}" >edit</a >
+				</div >
+				<div class="inline-block" >
+					<form class="form-delete" action="{{ url_for('delete_income', id=id) }}" method="POST" >
+						<button type="submit" class="btn btn-delete" >X</button >
+					</form >
+				</div >
+			</div >
+
+
+		{% endfor %}
+	</div >
+
+
+{% endblock %}

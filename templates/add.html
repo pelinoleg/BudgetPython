@@ -1,63 +1,45 @@
 {% extends 'base.html' %} {% block content %}
-<h3>{% block title %} Add Expense {% endblock %}</h3>
+	<div class="page_title {{ gradient }}" ><span >{% block title %} {{ title }} {% endblock %}</span ></div >
 
-<form method="post">
-  <div class="container flex flex-col mx-auto gap-15 mt-20">
-    <div class="flex">
-      <input
-        type="text"
-        name="sum"
-        placeholder="Suma"
-        class="summ py-5 mr-20"
-        value="{{ request.form['sum'] }}"
-      />
+	<div class="content" >
+		<form method="post" >
+			<div class=" flex flex-col mx-auto gap-15 mt-20" >
+				<div class="flex" >
+					<input type="number" name="sum" step="0.01" pattern="[0-9]+([\.,][0-9]+)?" placeholder="0,0"
+								 class="summ  py-5 mr-20" value="{{ request.form['sum'] }}" />
 
-      <button type="submit" class="py-8 send-button">Submit</button>
-    </div>
+					<button type="submit" class="py-8 send-button" >Add</button >
+				</div >
 
-    <div class="form-item">
-      <div class="radio-group category-group">
-        {% for category in categories %}
+				<div class="form-item" >
+					<div class="radio-group category-group" >
+						{% for id, name, color, state in categories %}
 
-        <input
-          type="radio"
-          value="{{ category['name'] }}"
-          name="category"
-          id="{{ category['name'] }}"
-        />
-        <label for="{{ category['name'] }}">{{ category['name'] }}</label>
+							<input type="radio" value="{{ id }}" name="category" id="{{ name }}" />
+							<label for="{{ name }}" ><span class="{{ color }}" >{{ name }}</span ></label >
 
-        {% endfor %}
-      </div>
-    </div>
+						{% endfor %}
+					</div >
+				</div >
 
-    <div class="form-item">
-      <div class="radio-group category-group w-full">
-        {% for subcategory in subcategories %}
+				<div class="form-item" >
+					<div class="radio-group category-group w-full" >
+						{% for id, name, category in subcategories %}
 
-        <input
-          type="radio"
-          value="{{ subcategory['name'] }}"
-          name="subcategory"
-          id="{{ subcategory['name'] }}"
-          class="{{ subcategory['category_id'] }}"
-        />
-        <label
-          class="{{ subcategory['category_id'] }}"
-          for="{{ subcategory['name'] }}"
-          >{{ subcategory['name'] }}</label
-        >
+							<input type="radio" value="{{ id }}" name="subcategory" id="{{ name }}"
+										 class="{{ name }} {{ category }}" />
+							<label class="{{ name }} {{ category }}" for="{{ name }}" >{{ name }} </label >
 
-        {% endfor %}
-      </div>
-    </div>
+						{% endfor %}
+					</div >
+				</div >
 
-    <div class="form-group">
-      <textarea name="comment" placeholder="Comentariu" class="form-control">
-{{ request.form['comment'] }}</textarea
-      >
-    </div>
-  </div>
-</form>
+				<div class="form-group" >
+					<textarea name="comment" placeholder="Comment" class="form-control" >{{ request.form['comment'] }}</textarea >
+				</div >
+			</div >
+		</form >
+	</div >
+
 
 {% endblock %}

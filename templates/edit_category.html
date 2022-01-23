@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% block content %}
+	<div class="page_title {{ gradient }}" ><span >{% block title %} {{ title }} {% endblock %}</span ></div >
+	{{ request.path }}
+	<div class="content" >
+		<form method="post" >
+			<input type="text" name="category" placeholder="Category Name" class="form-control"
+						 value="{{ request.form['name'] or category['name'] }}" />
+
+			{#			<input type="text" name="color" placeholder="Category Name" class="form-control"#}
+			{#						 value="{{ request.form['color'] or category['color'] }}" />#}
+
+			{{ category['color'] }}
+			<br >
+			{{ request.form['color'] }}
+			<br >
+
+
+			{#			{% for i in range(37) %}#}
+			{#				<div class="gradient_{{ i }}"#}
+			{#						 style="width: 120px; height: 40px; display: inline-flex; color: #fff; margin:3px ;{% if  category['color'] == 'gradient_'+ i|string %} transform: scale(1.4) {% endif %}" >#}
+			{#					<input type="checkbox" name="color" value="{{ request.form['name'] or 'gradient_'+i|string }}" >#}
+			{#				</div >#}
+			{#			{% endfor %}#}
+
+
+			<div class="radio-group category-group" >
+				{% for i in range(37) %}
+					<input type="radio" value="{{ request.form['color'] or 'gradient_'+i|string }}" name="color"
+								 id="gradient_{{ i }}" {% if  category['color'] == 'gradient_'+ i|string %} checked {% endif %}>
+					<label for="gradient_{{ i }}"
+								 style="{% if  category['color'] == 'gradient_'+ i|string %} transform: scale(1.4); box-shadow: 0 0 12px rgba(0,0,0,0.5) {% endif %}" ><span
+							class="gradient_{{ i }}" >#</span ></label >
+				{% endfor %}
+			</div >
+
+			<div class="mt-20 flex gap-20 items-center" >
+				<div class="switch switch-big" >
+					<input type="checkbox" id="hide_category" name="state" value="true" {% if category.state == 'true' %}
+								 checked{% endif %}>
+					<label for="hide_category" ></label >
+				</div >
+				Hide
+			</div >
+
+
+			<button type="submit" class="send-button mt-20" name="cat" >Submit</button >
+
+
+			<hr />
+		</form >
+		<a href="/category-delete/{{ category['id'] }}" >delete2</a >
+
+
+	</div >
+
+
+
+
+{% endblock %}

@@ -1,44 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8"/>
-	<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, shrink-to-fit=no"
-	/>
-	<link
-			rel="stylesheet"
-			href="{{ url_for('static', filename= 'css/styles.css') }}"
-	/>
-	<title>{% block title %} Buget {% endblock %}</title>
-</head>
-<body>
-<nav class="navbar">
+<html lang="en" >
+<head >
+	<meta charset="utf-8" />
 
-	<ul class="navbar-nav flex gap-42">
-		<li class="nav-item">
-			<a class="navbar-brand" href="{{ url_for('index') }}">Home</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="/add">Add Expense</a>
-		</li>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
-		<li class="nav-item">
-			<a class="nav-link" href="/categorii">Categories</a>
-		</li>
-	</ul>
-</nav>
-<div class="container mt-42">{% block content %} {% endblock %}</div>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/splide.min.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/menu.css') }}" />
+	{#	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/jquery.timepicker.css') }}"/>#}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/table.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/styles.css') }}" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" >
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet" >
+
+	<title >{% block title %} {{ title }} {% endblock %}</title >
+</head >
+<body class="w-full" >
+
 {% for cat, message in get_flashed_messages(True) %}
-	<div class="alert {{ cat }}">{{ message }}</div>
+	<div class="alert bg-gradient-green {{ cat }}" ><span >{{ message }}</span >
+		<button class="alert-delete" >X</button >
+	</div >
 {% endfor %}
+
+
+<div class="flex container w-full" >
+	<section class="sidebar-menu-wrap" >
+		<ul class="sidebar-menu" >
+
+			<li class="treeview home-link mb-10" >
+				<a class="{% if request.path == '/' %} active {% endif %}" href="{{ url_for('index') }}" ><i
+						class="fa fa-home" ></i >Home
+
+				</a >
+			</li >
+
+
+			<li class="header header-expenses bg-gradient-red" ><span >EXPENSES</span ></li >
+
+			<li class="treeview" >
+				<a class="{% if request.path == '/add' %} active {% endif %}" href="/add" ><i
+						class="fa fa-regular fa-square-minus" ></i >Add Expense</a >
+			</li >
+			<li class="treeview" >
+				<a class=" flex {% if request.path == '/categories' or title == 'Edit Category' %} active {% endif %}"
+					 href="/categories" ><i class="fa fa-grip-vertical" ></i >Categories & Subcategories</a >
+			</li >
+			<li class="treeview" >
+				<a class="{% if request.path == '/years' %} active {% endif %}" href="/years" ><i
+						class="fa fa-calendar-days" ></i >Years</a >
+			</li >
+
+			<li class="treeview" >
+				<a class="{% if request.path == '/all-expenses' %} active {% endif %}" href="/all-expenses" ><i
+						class="fa fa-solid fa-table-list" ></i >All Expenses</a >
+			</li >
+
+
+			<li class="header header-incomes bg-gradient-green mt-20" ><span >INCOMES</span ></li >
+			<li class="treeview" >
+				<a class="{% if request.path == '/add_income' %} active {% endif %}" href="/add_income" ><i
+						class="fa fa-regular fa-square-plus text-gradient-green" ></i >Add Income</a >
+			</li >
+			<li class="treeview" >
+				<a class="{% if request.path == '/categories_income' or title == 'Edit Category Income' %} active {% endif %}"
+					 href="/categories_income" ><i class="fa fa-solid fa-euro-sign" ></i >Categories</a >
+			</li >
+
+			<li class="treeview" >
+				<a class="{% if request.path == '/incomes' %} active {% endif %}" href="/incomes" ><i
+						class="fa fa-solid fa-money-bill-1-wave" ></i >Incomes</a >
+			</li >
+			<li ><input type="checkbox" id="theme_toggle" ></li >
+		</ul >
+
+	</section >
+
+	<div class="right-container flex-1 mt-20" >
+
+		{% block content %} {% endblock %}
+
+	</div >
+
+
+</div >
+
+{% if request.path == '/' or request.path == '/all-expenses' %}
+	<a href="/add" class="fancy-button  bg-gradient-red add" ><span ><i class="fa-solid fa-plus" ></i ></span ></a >
+{% elif request.path == '/incomes' %}
+	<a href="/add_income" class="fancy-button  bg-gradient-green add" ><span ><i
+			class="fa-solid fa-plus" ></i ></span ></a >
+{% endif %}
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script
-		src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"
-></script>
-</body>
-</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script >
+<script src="{{ url_for('static', filename= 'javascript/splide.min.js') }}" ></script >
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" >
+<script src="https://cdn.jsdelivr.net/npm/flatpickr" ></script >
+
+<script src="{{ url_for('static', filename= 'javascript/scripts.js') }}" ></script >
+</body >
+</html >

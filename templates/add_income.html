@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% block content %}
+	<div class="page_title {{ gradient }}"><span>{% block title %} {{ title }} {% endblock %}</span></div>
+
+	<div class="content">
+		{% if categories_income|length == 0 %}
+			<div class="no-results">You must add income categories first</div>
+		{% else %}
+			<form method="post">
+				<div class="container flex flex-col mx-auto gap-15 mt-20">
+					<div class="flex">
+						<input
+								type="text"
+								name="amount"
+								placeholder="100"
+								class="summ py-5 mr-20"
+								value="{{ request.form['amount'] }}"
+						/>
+
+						<button type="submit" class="py-8 send-button">Add</button>
+					</div>
+
+
+					<div class="form-item">
+						<div class="radio-group category-group">
+							{% for id, name in categories_income %}
+
+								<input
+										type="radio"
+										value="{{ id }}"
+										name="category_income"
+										id="{{ name }}"
+								/>
+								<label for="{{ name }}">{{ name }}</label>
+
+							{% endfor %}
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<textarea name="comment" placeholder="Comment" class="form-control">{{ request.form['comment'] }}</textarea>
+					</div>
+				</div>
+			</form>
+		{% endif %}
+	</div>
+
+
+{% endblock %}

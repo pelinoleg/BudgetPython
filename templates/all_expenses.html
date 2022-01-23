@@ -1,0 +1,58 @@
+{% extends 'base.html' %} {% block content %}
+	<div class="page_title {{ gradient }}" ><span >{% block title %} {{ title }} {% endblock %}</span ></div >
+	<div class="content" >
+
+		<div class=" mt-5" >
+			<table >
+				<thead >
+				<tr >
+					<th >Date</th >
+					<th >Amount</th >
+					<th >Category</th >
+					<th >Subcategory</th >
+					<th >Comment</th >
+					<th >Edit</th >
+					<th >Delete</th >
+				</tr >
+				</thead >
+				<tbody >
+				{% for id, date, sum, category, color, subcategory, comment in all_expenses %}
+					<tr >
+						<td >{{ date }}</td >
+						<td >{{ sum }}</td >
+						<td >
+							{% if category == '' or category == None %}
+								category deleted
+							{% else %}
+								<div style="padding: 3px 5px; border-radius: 6px; color: #fff"
+										 class=" {{ color }}" >{{ category }}</div >
+							{% endif %}
+						</td >
+						<td >{% if (subcategory != '') and (subcategory !=None) %}
+							/ {{ subcategory }} /
+						{% endif %}</td >
+						<td >{% if (comment != '') and (comment !=None) %}
+							<span > / {{ comment }} / </span >
+						{% endif %}</td >
+						<td >
+							<a href="/{{ id }}/edit" >edit</a >
+						</td >
+						<td >
+							<form action="{{ url_for('delete', id=id) }}" method="POST" class="mt-10 inline-block" >
+
+								<input type="submit" value="Delete Expense" name="to-all" class="add-button"
+											 onclick="return confirm('Are you sure you want to delete this post?')" />
+							</form >
+						</td >
+					</tr >
+				{% endfor %}
+				</tbody >
+
+			</table >
+
+
+		</div >
+	</div >
+
+{% endblock %}
+

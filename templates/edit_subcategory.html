@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+	<div class="page_title {{ gradient }}" ><span >{% block title %} {{ title }} {% endblock %}</span ></div >
+
+	<div class="content" >
+		<form method="post" >
+			<input type="text" name="subcategory" placeholder="Subcategory Name" class="form-control"
+						 value="{{ request.form['name'] or subcategory['name'] }}" />
+
+
+			<div class="mt-20 flex gap-20 items-center" >
+				<div class="switch switch-big" >
+					<input type="checkbox" id="hide_subcategory" name="state" value="true" {% if subcategory.state == 'true' %}
+								 checked{% endif %}>
+					<label for="hide_subcategory" ></label >
+				</div >
+				Hide
+			</div >
+
+
+			<button type="submit" class="send-button" name="subcat" >Submit</button >
+
+			<a href="/subcategory-delete/{{ subcategory['id'] }}" >delete2</a >
+			<hr />
+		</form >
+
+	</div >
+
+
+
+
+{% endblock %}
