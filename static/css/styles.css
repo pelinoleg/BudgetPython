@@ -2883,11 +2883,6 @@ textarea {
   color: var(--gray-30);
 }
 
-@media (any-pointer: coarse) {
-  .radio-group label {
-    padding: 7px 22px;
-  }
-}
 .radio-group.radio-group-small {
   padding: 2px;
   border-radius: 5px;
@@ -2896,11 +2891,6 @@ textarea {
   padding: 4px 12px;
   font-size: 13px;
   border-radius: 5px -2px;
-}
-@media (any-pointer: coarse) {
-  .radio-group.radio-group-small label {
-    padding: 7px 16px;
-  }
 }
 .radio-group.radio-group-rouned {
   border-radius: 50em !important;
