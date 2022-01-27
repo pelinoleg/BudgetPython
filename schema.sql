@@ -1,9 +1,9 @@
-DROP TABLE IF EXISTS expense;
 DROP TABLE IF EXISTS expenses;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS subcategories;
 DROP TABLE IF EXISTS categories_income;
 DROP TABLE IF EXISTS incomes;
+DROP TABLE IF EXISTS budget;
 
 CREATE TABLE expenses
 (
@@ -47,6 +47,14 @@ CREATE TABLE incomes
     amount   REAL      NOT NULL,
     category INTEGER   NOT NULL,
     comment  TEXT
+
+);
+
+CREATE TABLE budget
+(
+    id       INTEGER PRIMARY KEY AUTOINCREMENT,
+    amount   REAL    NOT NULL,
+    category INTEGER NOT NULL
 
 );
 

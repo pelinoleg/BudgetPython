@@ -1,33 +1,33 @@
-@mixin gradientBg($startColor, $endColor)
+@mixin gradientBg2($startColor, $endColor)
 	background: $startColor
 	background: linear-gradient(145deg, $startColor 0%, $endColor 80%, $endColor 100%)
 
 .bg-gradient1 span,
 .bg-gradient1:before
-	@include gradientBg(#52A0FD, #00e2fa)
+	@include gradientBg2(#52A0FD, #00e2fa)
 
 .bg-gradient2 span,
 .bg-gradient2:before
-	@include gradientBg(#44ea76, #39fad7)
+	@include gradientBg2(#44ea76, #39fad7)
 
 .bg-gradient3 span,
 .bg-gradient3:before
-	@include gradientBg(#fa6c9f, #ffe140)
+	@include gradientBg2(#fa6c9f, #ffe140)
 
 .bg-gradient-red span,
 .bg-gradient-red:before
-	@include gradientBg(#9d3b6d, #f23945)
+	@include gradientBg2(#9d3b6d, #f23945)
 
 .bg-gradient-green span,
 .bg-gradient-green:before
-	@include gradientBg(#0fbcba, #21bf56)
+	@include gradientBg2(#0fbcba, #21bf56)
 
 .bg-gradient-yellow span,
 .bg-gradient-yellow:before
-	@include gradientBg(#ffdd04, #fbb135)
+	@include gradientBg2(#ffdd04, #fbb135)
 
 .slider-cards .slider-card:nth-child(1n) .slider-card-inner
-	@include gradientBg(#ffdd04, #fbb135)
+	@include gradientBg2(#ffdd04, #fbb135)
 
 .wrapper
 	margin: 5% auto
@@ -138,3 +138,30 @@ a
 			line-height: unset
 //border: 1px solid rgba(#fff, 0.1)
 //box-sizing: border-box
+
+
+.btn-ac
+	border: unset
+	background: unset
+	padding: 0
+	width: 35px
+	height: 31px
+	text-align: center
+	line-height: 21px
+	//outline: 1px solid red
+	display: inline-flex
+	margin: 0
+	align-items: center
+	justify-content: center
+	color: rgba(#fff, 0.3)
+	opacity: 1
+	//border: 1px solid rgba(#fff, 0.1)
+	//border-radius: 3px
+	//background: rgba(#fff, 0.02)
+	
+	*
+		opacity: 1
+	
+	//&.ac-delete
+	//	color: #e86f6f
+	

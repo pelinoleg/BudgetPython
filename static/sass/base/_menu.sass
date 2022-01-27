@@ -1,0 +1,55 @@
+.sidebar-menu-wrap
+	flex-shrink: 0
+	width: 300px
+
+.sidebar-menu
+	list-style: none
+	margin: 0
+	padding: 20px 15px 15px 15px
+	display: flex
+	flex-direction: column
+	//height: 100%
+	
+	.header
+		padding: 0 !important
+		overflow: visible !important
+		
+		&:before
+			content: ''
+			display: inline-block
+			height: 13px
+			position: absolute
+			bottom: -5px
+			left: 20px
+			right: 20px
+			z-index: -1
+			border-radius: 50em
+			filter: blur(13px) brightness(1.15)
+			transform-style: preserve-3d
+			transition: all 0.3s ease-out
+			@include dark
+				height: 33px
+				filter: blur(25px) brightness(0.95)
+				bottom: -10px
+		
+		span
+			padding: 5px 15px
+			display: block
+			border-radius: 10px
+			//font-weight: bold
+			letter-spacing: 2px
+			font-size: 15px
+	
+	> li
+		position: relative
+		margin: 0
+		padding: 0
+		border-radius: 10px
+		
+		/*overflow: hidden;
+		margin-bottom: 2px
+	
+	a
+		color: #b8c7ce
+		text-decoration: none
+	

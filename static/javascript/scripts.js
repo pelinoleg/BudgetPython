@@ -1,7 +1,86 @@
+// dark theme
+$(document).ready(function () {
+    //check for localStorage, add as browser preference if missing
+    if (!localStorage.getItem("mode")) {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            localStorage.setItem("mode", "dark-theme");
+        } else {
+            localStorage.setItem("mode", "light-theme");
+        }
+    }
+
+    //set interface to match localStorage
+    if (localStorage.getItem("mode") == "dark-theme") {
+        $("html").addClass("dark-theme");
+        $("html").removeClass("light-theme");
+        document.getElementById("theme_toggle").checked = true;
+    } else {
+        $("html").removeClass("dark-theme");
+        $("html").addClass("light-theme");
+        document.getElementById("theme_toggle").checked = false;
+    }
+
+    //add toggle
+    $("#theme_toggle").on("click", function () {
+        if ($("html").hasClass("dark-theme")) {
+            $("html").removeClass("dark-theme");
+            $("html").addClass("light-theme");
+            localStorage.setItem("mode", "light-theme");
+        } else {
+            $("html").addClass("dark-theme");
+            $("html").removeClass("light-theme");
+            localStorage.setItem("mode", "dark-theme");
+        }
+    });
+});
 document.addEventListener('DOMContentLoaded', function () {
 
+    new Splide('.splide-months-index', {
+        // type: 'loop',
+        padding: '30px',
+        pagination: false,
+        autoHeight: true,
+        // isNavigation: true,
+        perPage: 3,
+        perMove: 2,
+        // perMove: 4,
+        arrows: false,
+        // classes: {
+        //     arrows: "slide-months"
+        // }
+    }).mount();
+    new Splide('.splide-months-income-index', {
+        // type: 'loop',
+        padding: '30px',
+        pagination: false,
+        autoHeight: true,
+        // isNavigation: true,
 
-    var splide = new Splide('.splide', {
+        perPage: 3,
+        arrows: false,
+        // perMove: 4,
+        // classes: {
+        //     arrows: "slide-months2"
+        // }
+    }).mount();
+
+    new Splide('.splide-by-months', {
+        // type: 'loop',
+        padding: '30px',
+        pagination: false,
+        autoHeight: true,
+        // isNavigation: true,
+
+        perPage: 2,
+        arrows: false,
+        // perMove: 4,
+        // classes: {
+        //     arrows: "slide-months2"
+        // }
+    }).mount();
+
+
+    new Splide('.splide-years', {
         // type: 'loop',
         // padding: '30px',
         pagination: false,
@@ -9,11 +88,9 @@ document.addEventListener('DOMContentLoaded', function () {
         drag: false,
         classes: {
             arrows: "slide-years"
-
         }
 
-    });
-    splide.mount();
+    }).mount();
 
 
     var elms = document.getElementsByClassName('splide-months');
@@ -32,8 +109,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }).mount();
 
     }
-
-    console.log(elms.length)
 
 
 });
@@ -91,50 +166,14 @@ $("[data-toggle=\"datepicker\"]").flatpickr({
 
 
 //uncheck radio
-$(document).ready(function () {
-    $('input[type=radio]').click(function () {
-        if (this.previous) {
-            this.checked = false;
-        }
-        this.previous = this.checked;
-    });
-});
-
-// dark theme
-$(document).ready(function () {
-    //check for localStorage, add as browser preference if missing
-    if (!localStorage.getItem("mode")) {
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            localStorage.setItem("mode", "dark-theme");
-        } else {
-            localStorage.setItem("mode", "light-theme");
-        }
-    }
-
-    //set interface to match localStorage
-    if (localStorage.getItem("mode") == "dark-theme") {
-        $("html").addClass("dark-theme");
-        $("html").removeClass("light-theme");
-        document.getElementById("theme_toggle").checked = true;
-    } else {
-        $("html").removeClass("dark-theme");
-        $("html").addClass("light-theme");
-        document.getElementById("theme_toggle").checked = false;
-    }
-
-    //add toggle
-    $("#theme_toggle").on("click", function () {
-        if ($("html").hasClass("dark-theme")) {
-            $("html").removeClass("dark-theme");
-            $("html").addClass("light-theme");
-            localStorage.setItem("mode", "light-theme");
-        } else {
-            $("html").addClass("dark-theme");
-            $("html").removeClass("light-theme");
-            localStorage.setItem("mode", "dark-theme");
-        }
-    });
-});
+// $(document).ready(function () {
+//     $('input[type=radio]').click(function () {
+//         if (this.previous) {
+//             this.checked = false;
+//         }
+//         this.previous = this.checked;
+//     });
+// });
 
 
 // delete alert
@@ -144,5 +183,19 @@ $(document).ready(function () {
         e.preventDefault();
         $(this).parent().remove();
     });
+
+    setTimeout(function () {
+        $('.alert').fadeOut('fast');
+    }, 5000); // <-- time in milliseconds
+
+
+});
+
+
+// sidebar toggle
+document.querySelector(".side-panel-toggle").addEventListener("click", () => {
+    document.querySelector(".container").classList.toggle("side-panel-close");
+    document.querySelector("body").classList.toggle("overflow-hidden");
+    document.querySelector(".side-panel-toggle").classList.toggle("active");
 });
 

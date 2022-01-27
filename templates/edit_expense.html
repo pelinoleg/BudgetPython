@@ -1,5 +1,8 @@
 {% extends 'base.html' %} {% block content %}
-	<div class="page_title {{ gradient }}" ><span >{% block title %} {{ title }} {% endblock %}</span ></div >
+	<div class="page_title {{ gradient }}" >
+		<button class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></button >
+		<span >{% block title %} {{ title }} {% endblock %}</span >
+	</div >
 
 	<div class="content" >
 		<form method="post" >
@@ -16,27 +19,26 @@
 
 			</div >
 
-			<div class="flex mt-10" >
-				<div >
-					{% for id, name, color, state in categories %}
-						<input type="radio" value="{{ id }}" name="category" id="{{ name }}"
-								{% if id == expense['category'] %} checked {% endif %} >
-						<label for="{{ name }}" >{{ name }}</label >
-						<br />
-					{% endfor %}
-				</div >
 
-				<div class="ml-5" >
-					{% for id, name in subcategories %}
-						<input type="radio" value="{{ id }}" name="subcategory" id="{{ name }}"
-								{% if id == expense['subcategory'] %} checked {% endif %}
-						>
-						<label for="{{ name }}" >{{ name }}</label >
-						<br />
-					{% endfor %}
-
-				</div >
+			<div class="radio-group category-group" >
+				{% for id, name, color, state in categories %}
+					<input type="radio" value="{{ id }}" name="category" id="{{ name }}"
+							{% if id == expense['category'] %} checked {% endif %} >
+					<label for="{{ name }}" ><span class="{{ color }}" >{{ name }}</span ></label >
+				{% endfor %}
 			</div >
+
+			<div class="radio-group category-group" >
+				{% for id, name in subcategories %}
+					<input type="radio" value="{{ id }}" name="subcategory" id="{{ name }}"
+							{% if id == expense['subcategory'] %} checked {% endif %}
+					>
+					<label for="{{ name }}" >{{ name }}</label >
+
+				{% endfor %}
+
+			</div >
+
 
 			<div class="form-group mt-10" >
     <textarea name="comment" placeholder="Comment" class="form-control" >

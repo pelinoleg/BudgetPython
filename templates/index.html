@@ -1,54 +1,191 @@
 {% extends 'base.html' %} {% block content %}
-	<div class="page_title {{ gradient }}" ><span >{% block title %} {{ title }} {% endblock %}</span ></div >
-	<div class="content" >
+	<div class="page_title {{ gradient }}" >
+		<button class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></button >
+		<span >{% block title %} {{ title }} {% endblock %}</span >
+	</div >
+	<div class="content w-full" >
 
-		<div class="flex flex-col" >
+		<div class="flex flex-col w-full" >
 
+			<div class="mt-10 w-full" >
+				<div class="index-months-title subtitle" >Expenses by months:</div >
+				<div class="splide-months-index splide" >
+					<div class="splide__track index-months-slide w-full" >
+						<ul class="splide__list index-months-slide w-full" >
 
-			<div class="mt-10" >
-				Sum expenses this month:
+							{% for key, list in sum_months|groupby('year')|sort(attribute='0', reverse=True) %}
+								{% for key2, list2 in list|groupby('month')|sort(attribute='0', reverse=True) %}
+									<li class="splide__slide" >
+										<div class="index-month" >{{ key2|int|month_name }} - {{ key }}</div >
+										{% for key3, list3 in list2|groupby('month') %}
 
-				{% for amount in sum_this_month %}
-					{{ amount.amount }} $
-				{% endfor %}
-			</div >
+											{% set total = {'value': 0} %}
+											{% for sum, month, year in list3 %}
+												{% if total.update({"value": sum|int + total.value|int }) %}{% endif %}
 
-			<div class="mt-10" >
-				Sum Incomes this month:
+											{% endfor %}
+											<div class="index-total" >{{ total.value }} &euro;</div >
+											<div class="index-count" >{{ list3|count }} expenses</div >
+										{% endfor %}
+									</li >
+								{% endfor %}
+							{% endfor %}
 
-				{% for amount in sum_incomes_this_month %}
-					{{ amount.amount }} $
-				{% endfor %}
-			</div >
-
-			<div class="mt-10" >
-				By category this month:
-				<br >
-				{% for amount, category in category_sum_total %}
-					{{ amount }} $ = {{ category }}<br >
-				{% endfor %}
-
-			</div >
-
-			<div class="mt-20" >
-				{{ this_month|int|month_name }} {{ this_year }}
-			</div >
-
-			<div class="cards mt-10" >
-				{% for id, year, month, day,  category, color, subcategory, sum, comment in this_month_expenses %}
-					<div class="card flex relative overflow-hidden" >
-						<a href="/{{ id }}/edit" >edit</a >
-						<span > / $ {{ sum }} / </span >
-						<span > / {{ month }}.{{ year }} </span >
-						<span class="{{ color }}" > / {{ category }} / </span >
-						{% if (subcategory != '') and (subcategory !=None) %}
-							<span > / {{ subcategory }} / </span >
-						{% endif %}
-						{% if (comment != '') and (comment !=None) %}
-							<span > / {{ comment }} / </span >
-						{% endif %}
+						</ul >
 					</div >
+
+
+				</div >
+
+
+			</div >
+
+
+			<div class="mt-10" >
+				<div class="subtitle" >Expenses by category:</div >
+
+				<div class="splide-by-months splide w-full" >
+					<div class="splide__track index-by-months-slide  w-full" >
+						<ul class="splide__list  index-by-months-slide w-full" >
+
+							{% for key, list in category_sum_total|groupby('year')|sort(attribute='0', reverse=True) %}
+								{% for key2, list2 in list|groupby('month')|sort(attribute='0', reverse=True) %}
+									<li class="splide__slide" >
+										<div class="index-month" >{{ key2|int|month_name }} - {{ key }}</div >
+										<br >
+										{% for key3, list3 in list2|groupby('month') %}
+
+
+											{% for key4, list4 in list3|groupby('category') %}
+												{% set total = {'value': 0} %}
+												{% for sum, category, month, year in list4 %}
+													{% if total.update({"value": sum|int + total.value|int }) %}{% endif %}
+												{% endfor %}
+												<div class="index-total flex items-center" >{{ key4 }} <span
+														class="ml-auto" >{{ total.value }} </span >&euro;
+												</div >
+											{% endfor %}
+
+
+
+
+										{% endfor %}
+									</li >
+								{% endfor %}
+							{% endfor %}
+
+
+						</ul >
+					</div >
+
+
+				</div >
+			</div >
+
+
+			<div class="mt-10 w-full" >
+				<div class="index-months-title subtitle" >Incomes by months:</div >
+				<div class="splide-months-income-index splide w-full" >
+					<div class="splide__track index-months-slide index-months-income-slide w-full" >
+						<ul class="splide__list index-months-slide w-full" >
+
+							{% for key, list in sum_months_income|groupby('year')|sort(attribute='0', reverse=True) %}
+								{% for key2, list2 in list|groupby('month')|sort(attribute='0', reverse=True) %}
+									<li class="splide__slide" >
+										<div class="index-month" >{{ key2|int|month_name }} - {{ key }}</div >
+										{% for key3, list3 in list2|groupby('month') %}
+
+											{% set total = {'value': 0} %}
+											{% for amount, month, year in list3 %}
+												{% if total.update({"value": amount|int + total.value|int }) %}{% endif %}
+
+											{% endfor %}
+											<div class="index-total" >{{ total.value }} &euro;</div >
+											<div class="index-count" >{{ list3|count }} incomes</div >
+										{% endfor %}
+									</li >
+
+								{% endfor %}
+
+
+
+							{% endfor %}
+
+						</ul >
+					</div >
+
+
+				</div >
+
+			</div >
+
+
+			<div class="cards mt-20 relative" >
+				{% for key, list in this_month_transactions|groupby('day')|sort(attribute='0', reverse=True) %}
+					<div class="ml-10 cards-day" >{{ key }} {{ this_month|int|month_name }}</div >
+					{% for id, year, month, day,  category, color, subcategory, sum, comment in list %}
+
+						<div
+								class="card flex items-center relative overflow-hidden flex-wrap {% if not color %} card-income {% endif %}" >
+							<div class="flex items-center w-full" >
+								<div class="card-info flex flex-1" >
+									<div class="flex flex-1" >
+										<span class="card-amount flex items-center" >  {{ sum }} <span >&euro;</span > </span >
+										<div class="flex flex-col justify-center ml-15" >
+
+											<div class="flex items-center" >
+												<span class="{{ color }} card-category" >  {{ category }}  </span >
+												{% if (subcategory != '') and (subcategory !=None) %}
+													<span class="card-subcategory ml-10" >  {{ subcategory }}  </span >
+												{% endif %}
+											</div >
+
+
+
+											{% if (comment != '') and (comment !=None) %}
+												<span class="block mt-5 card-comment" >  {{ comment }} </span >
+											{% endif %}
+										</div >
+
+									</div >
+									{% if not color %}
+										<div class="card-btns hidden flex items-center flex-shrink-0 ml-auto" >
+											<a href="/income-edit/{{ id }}" class="btn-ac" >
+												<i class="fa-solid fa-pen-to-square" ></i >
+											</a >
+
+											<a href="/income-edit/{{ id }}" class="btn-ac" >
+												<i class="fa-solid fa-pen-to-square" ></i >
+											</a >
+
+										</div >
+
+									{% else %}
+										<div class="card-btns hidden flex items-center flex-shrink-0 ml-auto" >
+											<a href="/{{ id }}/edit" class="btn-ac" >
+												<i class="fa-solid fa-pen-to-square" ></i >
+											</a >
+											<form action="{{ url_for('delete', id=id) }}" method="POST" class=" inline-block" >
+
+												<button type="submit" name="to-index" class="btn-ac ac-delete"
+																onclick="return confirm('Are you sure you want to delete this post?')" />
+												<i class="fa-regular fa-trash-can" ></i >
+												</button>
+											</form >
+										</div >
+
+									{% endif %}
+
+								</div >
+
+
+							</div >
+
+
+						</div >
+					{% endfor %}
 				{% endfor %}
+
 			</div >
 
 

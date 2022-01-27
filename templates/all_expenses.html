@@ -1,57 +1,82 @@
 {% extends 'base.html' %} {% block content %}
-	<div class="page_title {{ gradient }}" ><span >{% block title %} {{ title }} {% endblock %}</span ></div >
+	<div class="page_title {{ gradient }}" >
+		<button class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></button >
+		<span >{% block title %} {{ title }} {% endblock %}</span >
+	</div >
 	<div class="content" >
+		{% if all_expenses|length == 0 %}
+			<div class="no-results mt-50" >You have not added any expense yet. Click on (+) to add</div >
+		{% else %}
 
-		<div class=" mt-5" >
-			<table >
-				<thead >
-				<tr >
-					<th >Date</th >
-					<th >Amount</th >
-					<th >Category</th >
-					<th >Subcategory</th >
-					<th >Comment</th >
-					<th >Edit</th >
-					<th >Delete</th >
-				</tr >
-				</thead >
-				<tbody >
-				{% for id, date, sum, category, color, subcategory, comment in all_expenses %}
-					<tr >
-						<td >{{ date }}</td >
-						<td >{{ sum }}</td >
-						<td >
-							{% if category == '' or category == None %}
-								category deleted
-							{% else %}
-								<div style="padding: 3px 5px; border-radius: 6px; color: #fff"
-										 class=" {{ color }}" >{{ category }}</div >
-							{% endif %}
-						</td >
-						<td >{% if (subcategory != '') and (subcategory !=None) %}
-							/ {{ subcategory }} /
-						{% endif %}</td >
-						<td >{% if (comment != '') and (comment !=None) %}
-							<span > / {{ comment }} / </span >
-						{% endif %}</td >
-						<td >
-							<a href="/{{ id }}/edit" >edit</a >
-						</td >
-						<td >
-							<form action="{{ url_for('delete', id=id) }}" method="POST" class="mt-10 inline-block" >
+			<div class="cards  relative" >
+				{% for key, list in all_expenses|groupby('year')|sort(attribute='0', reverse=True) %}
+					<div class="ml-10 cards-day" >{{ key }} </div >
+					{% for key2, list2 in list|groupby('month')|sort(attribute='0', reverse=True) %}
+						<div class=" subtitle2 mt-20" >{{ key2|int|month_name }} </div >
 
-								<input type="submit" value="Delete Expense" name="to-all" class="add-button"
-											 onclick="return confirm('Are you sure you want to delete this post?')" />
-							</form >
-						</td >
-					</tr >
+						{% for key3, list3 in list2|groupby('day')|sort(attribute='0', reverse=True) %}
+							<div class=" subtitle2 mt-20" >{{ key3 }} - {{ key2|int|month_name }} </div >
+							{% for sum, id, day, month, year, category, color, subcategory, comment in list3 %}
+
+								<div class="card flex items-center relative overflow-hidden flex-wrap " >
+									<div class="flex items-center w-full" >
+										<div class="card-info flex flex-1" >
+											<div class="flex flex-1" >
+												<span class="card-amount flex items-center" >  {{ sum }} <span >&euro;</span > </span >
+												<div class="flex flex-col justify-center ml-15" >
+
+													<div class="flex items-center" >
+														<span class="{{ color }} card-category" >  {{ category }}  </span >
+														{% if (subcategory != '') and (subcategory !=None) %}
+															<span class="card-subcategory ml-10" >  {{ subcategory }}  </span >
+														{% endif %}
+													</div >
+
+
+
+													{% if (comment != '') and (comment !=None) %}
+														<span class="block mt-5 card-comment" >  {{ comment }} </span >
+													{% endif %}
+												</div >
+
+											</div >
+
+											<div class="card-btns  flex items-center flex-shrink-0 ml-auto" >
+												<a href="{{ id }}/edit" class="btn-ac" >
+													<i class="fa-solid fa-pen-to-square" ></i >
+												</a >
+
+
+												<form action="{{ url_for('delete_income', id=id) }}" method="POST" >
+													<button type="submit" class="btn-ac"
+																	onclick="return confirm('Are you sure you want to delete this post?')" >
+														<i class="fa-solid fa-trash-can" ></i >
+													</button >
+												</form >
+
+											</div >
+
+
+										</div >
+
+
+									</div >
+
+
+								</div >
+							{% endfor %}
+						{% endfor %}
+
+
+					{% endfor %}
+
 				{% endfor %}
-				</tbody >
 
-			</table >
+			</div >
+
+		{% endif %}
 
 
-		</div >
 	</div >
 
 {% endblock %}

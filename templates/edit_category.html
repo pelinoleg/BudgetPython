@@ -1,26 +1,13 @@
 {% extends 'base.html' %} {% block content %}
-	<div class="page_title {{ gradient }}" ><span >{% block title %} {{ title }} {% endblock %}</span ></div >
-	{{ request.path }}
+	<div class="page_title {{ gradient }}" >
+		<button class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></button >
+		<span >{% block title %}{{ title }}:
+			<strong >{{ category['name'] }}</strong > {% endblock %}</span ></div >
+
 	<div class="content" >
 		<form method="post" >
 			<input type="text" name="category" placeholder="Category Name" class="form-control"
 						 value="{{ request.form['name'] or category['name'] }}" />
-
-			{#			<input type="text" name="color" placeholder="Category Name" class="form-control"#}
-			{#						 value="{{ request.form['color'] or category['color'] }}" />#}
-
-			{{ category['color'] }}
-			<br >
-			{{ request.form['color'] }}
-			<br >
-
-
-			{#			{% for i in range(37) %}#}
-			{#				<div class="gradient_{{ i }}"#}
-			{#						 style="width: 120px; height: 40px; display: inline-flex; color: #fff; margin:3px ;{% if  category['color'] == 'gradient_'+ i|string %} transform: scale(1.4) {% endif %}" >#}
-			{#					<input type="checkbox" name="color" value="{{ request.form['name'] or 'gradient_'+i|string }}" >#}
-			{#				</div >#}
-			{#			{% endfor %}#}
 
 
 			<div class="radio-group category-group" >
@@ -43,12 +30,56 @@
 			</div >
 
 
-			<button type="submit" class="send-button mt-20" name="cat" >Submit</button >
+			<button type="submit" class="send-button mt-20" name="cat" >Save</button >
+			<a href="/category-delete/{{ category['id'] }}" >Delete</a >
 
-
-			<hr />
 		</form >
-		<a href="/category-delete/{{ category['id'] }}" >delete2</a >
+
+		<div class="divider" ></div >
+
+		<form method="post" class="mt-50" >
+			<input type="hidden" name="category_id" value="{{ category['id'] }}" >
+
+			<div class="form-group mt-5" >
+				<input type="text" name="subcategory" placeholder="Subcategory Name" class="form-control"
+							 value="{{ request.form['subcategory'] }}" />
+			</div >
+
+			<div class="form-group mt-5" >
+				<button type="submit" class="add-button" name="subcat" >
+					Add subcategory
+				</button >
+			</div >
+		</form >
+
+
+		<div class="mt-50" >Subcategories:</div >
+		<div class="flex flex-wrap radio-group category-group" >
+
+			{% for subcategory in subcategories if (category['id'] ==  subcategory['sub_cat_id']) %}
+
+
+
+
+				<label class="badge badge-subcategory {% if subcategory['sub_state'] == 'true' %} hide-category {% endif %}" >
+					{{ subcategory['sub_name'] }}
+					<a href="/edit-subcategory/{{ subcategory['sub_id'] }}" class="ml-10" ><i
+							class="fa-solid fa-pen-to-square" ></i ></a >
+					{#<a href="/subcategory-delete/{{ subcategory['id'] }}" >delete</a >#}
+
+				</label >
+
+			{% else %}
+				<div class="no-results m-0 my-10 opacity-50" >You have no subcategories in this category</div >
+
+
+
+
+
+			{% endfor %}
+
+
+		</div >
 
 
 	</div >

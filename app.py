@@ -1,9 +1,10 @@
 import sqlite3
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
-from datetime import datetime
+from datetime import datetime, timedelta
 import calendar
 import requests
+import xmltodict
 
 
 def get_db_connection():
@@ -51,6 +52,15 @@ def get_incomes(income_id):
     return income
 
 
+def get_budgets(budget_id):
+    conn = get_db_connection()
+    budget = conn.execute('SELECT * FROM budget WHERE id = ?', (budget_id,)).fetchone()
+    conn.close()
+    if budget is None:
+        abort(404)
+    return budget
+
+
 def get_category(category_id):
     conn = get_db_connection()
     category = conn.execute('SELECT * FROM categories WHERE id = ?', (category_id,)).fetchone()
@@ -78,10 +88,58 @@ def get_subcategory(subcategory_id):
     return subcategory
 
 
+# ///Exchange
+# today = datetime.today().strftime("%d.%m.%Y")
+today = datetime.now()
+today = today.strftime('%d.%m.%Y')
+url = 'https://www.bnm.md/en/official_exchange_rates?get_xml=1&date='
+response = requests.get(url + today)
+
+data = xmltodict.parse(response.content)
+
+usd_id = '44'
+eur_id = '47'
+ron_id = '35'
+
+for item in data['ValCurs']['Valute']:
+    if item['@ID'] == usd_id:
+        valute_rate_usd = float(item['Value'])
+    if item['@ID'] == eur_id:
+        valute_rate_eur = float(item['Value'])
+    if item['@ID'] == ron_id:
+        valute_rate_ron = float(item['Value'])
+
+
+def get_usdmdl(amount):
+    currency = valute_rate_usd * amount
+    return round(currency, 2)
+
+
+def get_mdleur(amount):
+    currency = amount / valute_rate_eur
+    return round(currency, 2)
+
+
+def get_usdeur(amount):
+    currency = (valute_rate_usd * amount) / valute_rate_eur
+    return round(currency, 2)
+
+
+def get_roneur(amount):
+    currency = (valute_rate_ron * amount) / valute_rate_eur
+    return round(currency, 2)
+
+
+# print(get_usdmdl(1850))
+# print(get_mdleur(33375))
+# print(get_usdeur(1850))
+# print(get_roneur(8093))
+
+
 @app.route('/')
 def index():
     conn = get_db_connection()
-    this_month_expenses = conn.execute(
+    this_month_transactions = conn.execute(
         "SELECT expenses.id, "
         "strftime('%Y', date) as year, "
         "strftime('%m', date) as month, "
@@ -95,19 +153,46 @@ def index():
         "LEFT JOIN categories on categories.id = expenses.category "
         "LEFT JOIN subcategories on subcategories.id = expenses.subcategory "
         "WHERE strftime('%Y', date) = strftime('%Y', date('now')) AND strftime('%m', date) = strftime('%m', date('now')) "
+
+        "UNION ALL "
+        "SELECT incomes.id, "
+        "strftime('%Y', date) as year, "
+        "strftime('%m', date) as month, "
+        "strftime('%d', date) as day, "
+        "categories_income.name as category, "
+        "NULL as color, "
+        "NULL as subcategory, "
+        "amount, "
+        "comment "
+        "FROM incomes "
+        "LEFT JOIN categories_income on categories_income.id = incomes.category "
+        # "LEFT JOIN subcategories on subcategories.id = incomes.subcategory "
+        "WHERE strftime('%Y', date) = strftime('%Y', date('now')) AND strftime('%m', date) = strftime('%m', date('now')) "
+        "ORDER BY day DESC "
     ).fetchall()
 
-    sum_this_month = conn.execute(
+    sum_months = conn.execute(
         "SELECT "
-        "SUM(sum) as amount "
+        "sum, strftime('%m', date) as month, strftime('%Y', date) as year "
         "FROM expenses "
-        "WHERE strftime('%Y', date) = strftime('%Y', date('now')) AND strftime('%m', date) = strftime('%m', date('now')) "
     ).fetchall()
-    sum_incomes_this_month = conn.execute(
+
+    sum_months_income = conn.execute(
         "SELECT "
-        "SUM(amount) as amount "
+        "amount, strftime('%m', date) as month, strftime('%Y', date) as year "
         "FROM incomes "
-        "WHERE strftime('%Y', date) = strftime('%Y', date('now')) AND strftime('%m', date) = strftime('%m', date('now')) "
+    ).fetchall()
+
+    budgets = conn.execute(
+        "SELECT SUM(sum) as su, "
+        "categories.name as categor, "
+        "budget.amount as amount "
+        "FROM  expenses "
+        "LEFT JOIN categories on categories.id = expenses.category "
+        "LEFT JOIN budget on categories.id = budget.category "
+        "WHERE strftime('%m.%Y', date) = strftime('%m.%Y','now') "
+        "GROUP BY expenses.category "
+        "LIMIT 5"
     ).fetchall()
 
     # this month
@@ -132,111 +217,75 @@ def index():
     #     "ORDER BY SUM(sum) DESC  ").fetchall()
 
     category_sum_total = conn.execute(
-        "SELECT  SUM(sum), categories.name "
+        "SELECT  sum, categories.name as category, strftime('%m', date) as month, strftime('%Y', date) as year "
         "FROM expenses  "
         "LEFT JOIN categories on categories.id = expenses.category "
-        "WHERE strftime('%Y', date) = strftime('%Y', date('now')) AND strftime('%m', date) = strftime('%m', date('now')) "
-        "GROUP BY category "
-        "ORDER BY SUM(sum) DESC  ").fetchall()
-    #
-    # category_sum_all_month = conn.execute(
-    #     "SELECT  SUM(sum),  strftime('%m/%Y', date) as month, strftime('%Y', date) as year "
-    #     "FROM expenses  "
-    #     "INNER JOIN categories ON categories.name = expenses.category "
-    #     "GROUP BY month "
-    #     "ORDER BY year DESC  ").fetchall()
-    #
-    # category_sum_all_years = conn.execute(
-    #     "SELECT  SUM(sum),  strftime('%Y', date) as year "
-    #     "FROM expenses  "
-    #     "INNER JOIN categories ON categories.name = expenses.category "
-    #     "GROUP BY year "
-    #     "ORDER BY year DESC  ").fetchall()
-    #
-    # category_sum_all_years_cat = conn.execute(
-    #     "SELECT  SUM(sum), category,  strftime('%m', date) as month, strftime('%Y', date) as year FROM expenses INNER JOIN categories ON categories.name = expenses.category GROUP BY category, month ORDER BY year DESC").fetchall()
-    #
-    # exepnses_this_month = conn.execute(
-    #     "SELECT  sum, category, subcategory, comment, strftime('%d/%m/%Y', date) as date "
-    #     "FROM expenses  "
-    #     "WHERE strftime('%m.%Y', date) = strftime('%m.%Y','now') "
-    #     "ORDER BY date DESC  ").fetchall()
 
-    # years = conn.execute("SELECT strftime('%Y', date) as year FROM expenses GROUP BY year").fetchall()
-    # months = conn.execute("SELECT strftime('%m', date) as month FROM expenses GROUP BY month").fetchall()
-
-    # all = conn.execute(
-    #     "SELECT strftime('%Y', date) as year, "
-    #     "strftime('%m', date) as month, "
-    #     "strftime('%d', date) as day, "
-    #     "categories.name as category, "
-    #     "subcategories.name as subcategory, "
-    #     "sum, "
-    #     "comment "
-    #     "FROM expenses "
-    #     "LEFT JOIN categories on categories.id = expenses.category "
-    #     "LEFT JOIN subcategories on subcategories.id = expenses.subcategory"
-    #     "").fetchall()
+    ).fetchall()
 
     conn.close()
 
     return render_template('index.html', title='My Finance Tracker', gradient='text-gradient-blue',
-                           this_month_expenses=this_month_expenses, sum_this_month=sum_this_month,
-                           sum_incomes_this_month=sum_incomes_this_month, category_sum_total=category_sum_total,
-                           this_year=this_year, this_month=this_month)
+                           this_month_transactions=this_month_transactions, sum_months=sum_months,
+                           sum_months_income=sum_months_income, category_sum_total=category_sum_total,
+                           this_year=this_year, this_month=this_month, budgets=budgets)
 
 
 @app.route('/all-expenses')
 def all_expenses():
     conn = get_db_connection()
     all_expenses = conn.execute(
-        'SELECT expenses.id,  strftime("%d.%m.%Y", date) as date_s, sum, categories.name as category, categories.color as color, subcategories.name as subcategory, comment FROM expenses LEFT JOIN categories on categories.id = expenses.category LEFT JOIN subcategories on subcategories.id = expenses.subcategory  ORDER BY date DESC').fetchall()
+        'SELECT sum, expenses.id as id, '
+        'strftime("%d", date) as day, strftime("%m", date) as month, strftime("%Y", date) as year, '
+        'categories.name as category, '
+        'categories.color as color, '
+        'subcategories.name as subcategory, '
+        'comment '
+        'FROM expenses '
+        'LEFT JOIN categories on categories.id = expenses.category '
+        'LEFT JOIN subcategories on subcategories.id = expenses.subcategory  '
+        'ORDER BY date DESC').fetchall()
     conn.close()
 
     return render_template('all_expenses.html', title='All Expenses', gradient='text-gradient-red',
                            all_expenses=all_expenses)
 
 
-@app.route('/years')
-def years():
-    conn = get_db_connection()
-    all = conn.execute(
-        "SELECT strftime('%Y', date) as year, "
-        "strftime('%m', date) as month, "
-        "strftime('%d', date) as day, "
-        "categories.name as category, "
-        "subcategories.name as subcategory, "
-        "sum, "
-        "comment "
-        "FROM expenses "
-        "LEFT JOIN categories on categories.id = expenses.category "
-        "LEFT JOIN subcategories on subcategories.id = expenses.subcategory"
-        "").fetchall()
-
-    conn.close()
-
-    return render_template('years.html', title='Expenses by Year', gradient='text-gradient-red', all=all)
-
-
 @app.route('/add', methods=('GET', 'POST'))
 def add():
     conn = get_db_connection()
     categories = conn.execute(
-        "SELECT id, name, color as color, categories.state FROM categories WHERE categories.state is not 'true'").fetchall()
+        "SELECT categories.id as cid, categories.name as name, color as color, categories.state, count(expenses.sum) as count "
+        "FROM categories "
+        "LEFT JOIN expenses on categories.id = expenses.category "
+        "WHERE categories.state is not 'true' "
+        "GROUP BY name "
+        "ORDER BY count DESC"
+    ).fetchall()
+
     subcategories = conn.execute(
         "SELECT subcategories.id as id, subcategories.name as name, categories.name as category FROM subcategories LEFT JOIN categories on categories.id = subcategories.category_id WHERE subcategories.state is not 'true'").fetchall()
     conn.close()
+
     if request.method == 'POST':
         sum = request.form['sum']
         category = request.form.get("category", False)
         subcategory = request.form.get("subcategory", False)
+        currency = request.form.get("currency", False)
         comment = request.form['comment']
 
         if (not sum) or (not category):
-            flash('Sum or category is required!', category='alert-warning')
+            flash('Amount and category is required!', category='alert-error')
 
         else:
             conn = get_db_connection()
+            if currency == 'usd':
+                sum = get_usdeur(float(sum))
+            elif currency == 'mdl':
+                sum = get_mdleur(float(sum))
+            elif currency == 'ron':
+                sum = get_roneur(float(sum))
+
             conn.execute('INSERT INTO expenses (sum, category, subcategory, comment) VALUES (?, ?, ?, ?)',
                          (sum, category, subcategory, comment))
             conn.commit()
@@ -264,7 +313,7 @@ def edit(id):
         comment = request.form['comment']
 
         if (not sum) or (not category) or (not date):
-            flash('Sum, date and category is required!', category='alert-warning')
+            flash('Sum, date and category is required!', category='alert-error')
         else:
             conn = get_db_connection()
             conn.execute('UPDATE expenses SET sum = ?, date = ?, category = ?, subcategory = ?, comment= ?'
@@ -282,6 +331,7 @@ def edit(id):
 @app.route('/edit-category/<int:id>', methods=('GET', 'POST'))
 def edit_category(id):
     category = get_category(id)
+    subcategory = get_subcategory(id)
     conn = get_db_connection()
     if request.method == 'POST':
         if 'cat' in request.form:
@@ -295,8 +345,33 @@ def edit_category(id):
             conn.close()
             flash('"{}" was successfully changed!'.format(category['name']), category='alert-success')
             return redirect(url_for('categories'))
+        if 'subcat' in request.form:
+            category_id = request.form['category_id']
+            subcategory = request.form['subcategory']
+            if not subcategory or category_id is None:
+                flash('Subcategory and Category ID is required!', category='alert-warning')
+            else:
+                conn.execute("INSERT INTO subcategories (name, category_id) VALUES (?,?)", (subcategory, category_id))
+                conn.commit()
+                flash('Subategoria was succesful created', category='alert-success')
+                return redirect(request.referrer)
 
-    return render_template('edit_category.html', title='Edit Category', gradient='text-gradient-red', category=category)
+    subcategories = \
+        conn.execute(''
+                     'SELECT subcategories.id as sub_id, '
+                     'subcategories.name sub_name, '
+                     'subcategories.state as sub_state, '
+                     'subcategories.category_id as sub_cat_id, '
+                     'categories.id as cat_id '
+                     'FROM subcategories '
+                     'LEFT JOIN categories ON cat_id = sub_cat_id '
+                     'WHERE cat_id = sub_cat_id '
+                     # 'ORDER BY sub_state '
+
+                     ).fetchall()
+
+    return render_template('edit_category.html', title='Edit Category', gradient='text-gradient-red', category=category,
+                           subcategories=subcategories, subcategory=subcategory)
 
 
 @app.route('/edit-subcategory/<int:id>', methods=('GET', 'POST'))
@@ -314,7 +389,7 @@ def edit_subcategory(id):
             flash('"{}" was successfully changed!'.format(subcategory['name']), category='alert-success')
             return redirect(url_for('categories'))
 
-    return render_template('edit_subcategory.html', title='Edit Category', gradient='text-gradient-red',
+    return render_template('edit_subcategory.html', title='Edit Subcategory', gradient='text-gradient-red',
                            subcategory=subcategory)
 
 
@@ -323,7 +398,7 @@ def cat_delete(id):
     category = get_category(id)
     conn = get_db_connection()
     conn.execute('DELETE FROM categories WHERE id = ?', (id,))
-    conn.execute('DELETE FROM subcategories WHERE category_id = ?', (id,))
+    # conn.execute('DELETE FROM subcategories WHERE category_id = ?', (id,))
     conn.commit()
     conn.close()
     flash('"{}" was successfully deleted!'.format(category['name']), category='alert-success')
@@ -360,41 +435,45 @@ def delete(id):
 def categories():
     conn = get_db_connection()
     if request.method == 'POST':
+        category = request.form['category']
+        color = request.form.get('color')
 
-        if 'cat' in request.form:
-            category = request.form['category']
-            color = request.form['color']
+        if (not category) or (not color):
+            flash('Category name and color is required', category='alert-error')
 
-            if not category:
-                flash('Category name is required', category='alert-warning')
+        else:
+            conn.execute("INSERT INTO categories (name, color) VALUES (?, ?)", (category, color))
+            conn.commit()
+            flash('Category was created', category='alert-success')
+            return redirect(request.referrer)
 
-            else:
-                conn.execute("INSERT INTO categories (name, color) VALUES (?, ?)", (category, color))
-                conn.commit()
-                flash('Category was created', category='alert-success')
-                return redirect(request.referrer)
-
-        if 'subcat' in request.form:
-            category_id = request.form['category_id']
-            subcategory = request.form['subcategory']
-            if not subcategory or category_id is None:
-                flash('Subcategory and Category ID is required!', category='alert-warning')
-            else:
-                conn.execute("INSERT INTO subcategories (name, category_id) VALUES (?,?)", (subcategory, category_id))
-                conn.commit()
-                flash('Subategoria a fost creata', category='alert-success')
-                return redirect(request.referrer)
+        # if 'subcat' in request.form:
+        #     category_id = request.form['category_id']
+        #     subcategory = request.form['subcategory']
+        #     if not subcategory or category_id is None:
+        #         flash('Subcategory and Category ID is required!', category='alert-warning')
+        #     else:
+        #         conn.execute("INSERT INTO subcategories (name, category_id) VALUES (?,?)", (subcategory, category_id))
+        #         conn.commit()
+        #         flash('Subategoria a fost creata', category='alert-success')
+        #         return redirect(request.referrer)
 
     # conn = get_db_connection()
-    categories = conn.execute('SELECT id, name, color as color, state FROM categories ORDER BY state').fetchall()
-    categories_active = conn.execute(
-        "SELECT id, name, color as color, state FROM categories WHERE state is not 'true'").fetchall()
-    subcategories = conn.execute('SELECT id, name, state FROM subcategories ORDER BY state').fetchall()
+    categories = conn.execute(
+        "SELECT categories.id as cid, categories.name as name, color as color, categories.state, count(expenses.sum) as count "
+        "FROM categories "
+        "LEFT JOIN expenses on categories.id = expenses.category "
+        "WHERE categories.state is not 'true' "
+        "GROUP BY name "
+        "ORDER BY count DESC"
+    ).fetchall()
+    # categories_active = conn.execute(
+    #     "SELECT id, name, color as color, state FROM categories WHERE state is not 'true'").fetchall()
+    # subcategories = conn.execute('SELECT id, name, state FROM subcategories ORDER BY state').fetchall()
 
     conn.close()
-    return render_template('categories.html', title='Categories and Subcategories', gradient='text-gradient-red',
-                           categories=categories,
-                           subcategories=subcategories, categories_active=categories_active)
+    return render_template('categories.html', title='Categories', gradient='text-gradient-red',
+                           categories=categories)
 
 
 @app.route('/categories_income', methods=('GET', 'POST'))
@@ -405,7 +484,7 @@ def categories_income():
         primordial = request.form.get('primordial')
 
         if not category_income:
-            flash('need a income category', category='alert-warning')
+            flash('Category Name is required!', category='alert-error')
 
         else:
             conn.execute("INSERT INTO categories_income (name, primordial) VALUES (?, ?)",
@@ -467,12 +546,19 @@ def add_income():
         amount = request.form['amount']
         category_income = request.form.get("category_income", False)
         comment = request.form['comment']
+        currency = request.form.get("currency", False)
 
         if (not amount) or (not category_income):
-            flash('Amount or Category is required!', category='alert-warning')
+            flash('Amount or Category is required!', category='alert-error')
 
         else:
             conn = get_db_connection()
+            if currency == 'usd':
+                amount = get_usdeur(float(amount))
+            elif currency == 'mdl':
+                amount = get_mdleur(float(amount))
+            elif currency == 'ron':
+                amount = get_roneur(float(amount))
             conn.execute('INSERT INTO incomes (amount, category, comment) VALUES (?, ?, ?)',
                          (amount, category_income, comment))
             conn.commit()
@@ -497,7 +583,7 @@ def edit_income(id):
         comment = request.form['comment']
 
         if (not amount) or (not category) or (not date):
-            flash('Amount, Date and Category is required!', category='alert-warning')
+            flash('Amount, Date and Category is required!', category='alert-error')
         else:
             conn = get_db_connection()
             conn.execute('UPDATE incomes SET amount = ?, date = ?, category = ?,  comment= ?'
@@ -518,7 +604,7 @@ def incomes():
         'SELECT incomes.id, strftime("%m", date) as month, strftime("%Y", date) as year, amount, categories_income.name as category, comment  FROM incomes LEFT JOIN categories_income on categories_income.id = incomes.category').fetchall()
 
     conn.close()
-    return render_template('incomes.html', title='Incomes', gradient='text-gradient-green', incomes=incomes)
+    return render_template('incomes.html', title='All incomes', gradient='text-gradient-green', incomes=incomes)
 
 
 @app.route('/<int:id>/delete_income', methods=('POST',))
@@ -530,3 +616,111 @@ def delete_income(id):
     conn.close()
     flash('Income was successfully deleted!', category='alert-success')
     return redirect(url_for('incomes'))
+
+
+# Budget
+@app.route('/budgets')
+def budgets():
+    conn = get_db_connection()
+    budgets2 = conn.execute(
+        "SELECT SUM(sum) as su, "
+        "budget.id as bid, "
+        "categories.name as categor, "
+        "categories.color as color, "
+        "budget.amount as amount "
+        "FROM  expenses "
+        "LEFT JOIN categories on categories.id = expenses.category "
+        "LEFT JOIN budget on categories.id = budget.category "
+        "WHERE strftime('%m.%Y', date) = strftime('%m.%Y','now') and amount != '' "
+        "GROUP BY bid"
+    ).fetchall()
+
+    conn.close()
+    return render_template('budgets.html', title='Budgets', budgets2=budgets2,
+                           gradient='text-gradient-blue')
+
+
+@app.route('/delete-budget/<int:id>', methods=('POST',))
+def delete_budget(id):
+    budgets = get_budgets(id)
+    conn = get_db_connection()
+    conn.execute('DELETE FROM budget WHERE id = ?', (id,))
+    conn.commit()
+    conn.close()
+    flash('Budget was successfully deleted!', category='alert-success')
+    return redirect(url_for('budgets'))
+
+
+@app.route('/add_budget', methods=('GET', 'POST'))
+def add_budget():
+    conn = get_db_connection()
+    categories = conn.execute(
+        "SELECT categories.id as cid, categories.name as name, color as color, categories.state, count(expenses.sum) as count, budget.category as budget_category "
+        "FROM categories "
+        "LEFT JOIN expenses on categories.id = expenses.category "
+        "LEFT JOIN budget on categories.id = budget.category "
+        # "WHERE budget_category != expenses.category "
+        "WHERE categories.state is not 'true' "
+        "GROUP BY name "
+        "ORDER BY count DESC"
+    ).fetchall()
+
+    conn.close()
+    if request.method == 'POST':
+        amount = request.form['amount']
+        category = request.form.get("category", False)
+        if (not amount) or (not category):
+            flash('Amount or Category is required!', category='alert-warning')
+
+        else:
+            conn = get_db_connection()
+            conn.execute('INSERT INTO budget (amount, category) VALUES (?, ?)',
+                         (amount, category))
+            conn.commit()
+            conn.close()
+            flash('Budget was succesful added', category='alert-success')
+            return redirect(request.referrer)
+
+    return render_template('add_budget.html', title='Add Budget', gradient='text-gradient-blue',
+                           categories=categories)
+
+
+@app.route('/edit_budget/<int:id>', methods=('GET', 'POST'))
+def edit_budget(id):
+    budget = get_budgets(id)
+    conn = get_db_connection()
+    categories = conn.execute(
+        "SELECT categories.id as cid, categories.name as name, color as color, categories.state, count(expenses.sum) as count, budget.category as budget_category "
+        "FROM categories "
+        "LEFT JOIN expenses on categories.id = expenses.category "
+        "LEFT JOIN budget on categories.id = budget.category "
+        # "WHERE budget_category != expenses.category "
+        "WHERE categories.state is not 'true' "
+        "GROUP BY name "
+        "ORDER BY count DESC"
+    ).fetchall()
+
+    conn.close()
+    if request.method == 'POST':
+        amount = request.form.get('amount')
+        category = request.form.get("category", False)
+        # category = request.form.get("bid")
+        if (not amount) or (not category):
+            flash('Amount or Category is required!', category='alert-warning')
+
+        else:
+            conn = get_db_connection()
+            conn.execute('UPDATE budget SET amount = ?, category = ?  WHERE id = ?',
+                         (amount, category, id))
+
+            # conn.execute('UPDATE incomes SET amount = ?, date = ?, category = ?,  comment= ?'
+            #              ' WHERE id = ?',
+            #              (amount, date, category, comment, id))
+
+            conn.commit()
+            conn.close()
+            flash('Budget was succesful changed', category='alert-success')
+            return redirect(url_for('budgets'))
+
+    return render_template('edit_budget.html', title='Edit Budget', gradient='text-gradient-blue',
+                           categories=categories, budget=budget)

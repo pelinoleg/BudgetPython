@@ -8,7 +8,7 @@ $shadow-l: 0 1px 3px rgba(#000, 0.1)
 $shadow-d: 0 1px 3px rgba(#000, 0.25)
 $shadow-l-in: inset 0 1px 2px rgba(#000, 0.15)
 //$shadow-l-in: inset 0 1px 2px rgba(#000, 0)
-$shadow-d-in: inset 0 1px 2px rgba(#000, 0.25)
+$shadow-d-in: inset 0 1px 3px rgba(#000, 0.3)
 
 //hide input for customize
 .hide-input
@@ -33,14 +33,14 @@ $shadow-d-in: inset 0 1px 2px rgba(#000, 0.25)
 [type='date'],
 	//[type='datetime-local'],
 	//[type='month'],
-[type='search'],
+//[type='search'],
 	//[type='tel'],
 	//[type='time'],
 		//[type='week'],
-[type="file"],
+//[type="file"],
 	//select[multiple],
 textarea,
-.select,
+//.select,
 select,
 .input
 	//for custom inputs (ass tags, users..)
@@ -124,8 +124,7 @@ select,
 		font-size: 16px
 		min-height: 50px
 
-textarea,
-select[multiple]
+textarea
 	line-height: 18px
 	
 	&::-webkit-scrollbar
@@ -151,72 +150,7 @@ select[multiple]
 		@include dark
 			background-image: url("data:image/svg+xml,%3Csvg  viewBox='0 0 26 26'  xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ccc' fill-rule='evenodd' %3E%3Cpath d='m19.279476.72052402c.3979344.39793442.3979344 1.04311361 0 1.44104803l-17.11790395 17.11790395c-.39793442.3979344-1.04311361.3979344-1.44104803 0-.39793443-.3979344-.39793443-1.0431136 0-1.4410481l17.11790388-17.11790388c.3979345-.39793443 1.0431137-.39793443 1.4410481 0z'/%3E%3Cpath d='m19.2873904 8.33948184c.3979345.39793442.3979345 1.04311361 0 1.44104803l-9.47598251 9.47598253c-.39793443.3979344-1.04311361.3979344-1.44104803 0-.39793443-.3979344-.39793443-1.0431136 0-1.441048l9.47598254-9.47598256c.3979344-.39793443 1.0431136-.39793443 1.441048 0z'/%3E%3C/g%3E%3C/svg%3E")
 
-[type="file"]
-	background: none
-	border: none
-	font-size: 13px
-	cursor: pointer
-	transition: filter 0.2s linear
-	line-height: 0
-	padding: 0 0 3px 0
-	box-shadow: unset
-	@include dark
-		background-color: transparent
-		box-shadow: unset
-	
-	&::file-selector-button,
-	&::-webkit-file-upload-button
-		margin-right: 15px
-		background-color: #fff
-		border: 1px solid #fff
-		border-radius: $form-round
-		padding: 4px 10px
-		line-height: 20px
-		cursor: pointer
-		box-shadow: $shadow-l
-		color: var(--gray-60)
-		@include dark
-			background-color: var(--gray-80)
-			border-color: var(--gray-75)
-			color: var(--gray-40)
-			box-shadow: $shadow-d
-	
-	@include coarse
-		padding-left: 0
-		line-height: 18px
 
-input[type="color"]
-	background-color: #fff
-	border: 1px solid #fff
-	box-shadow: $shadow-l
-	border-radius: $form-round
-	box-sizing: border-box
-	padding: 2px 7px
-	height: 35px
-	
-	&::-webkit-color-swatch
-		border-color: var(--gray-50)
-		border-radius: $form-round - 2px
-		cursor: pointer
-	
-	&:focus
-		outline: none
-	//border-color: var(--form-color)
-	@include dark
-		background-color: var(--gray-80)
-		border-color: var(--gray-75)
-		&::-webkit-color-swatch
-			border-color: var(--gray-75)
-	//&:focus
-			//border-color: var(--form-color)
-	@include coarse
-		height: 45px
-		width: 75px
-
-input[type="range"]
-	&::-webkit-slider-runnable-track
-		div
-			cursor: pointer
 
 input::placeholder,
 textarea::placeholder
@@ -274,7 +208,7 @@ input[type="text"].transparent
 ::-webkit-date-and-time-value
 	min-height: 1.5em
 
-.select,
+
 select:not([multiple])
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23454545'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E")
 	background-size: 20px 20px
@@ -298,12 +232,7 @@ select:not([multiple])
 	@include dark
 		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%238A8A94'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E")
 
-select[multiple]
-	line-height: 20px
-	
-	option
-		padding: 2px 5px
-		margin: 1px 0
+
 
 textarea
 	resize: vertical
@@ -311,11 +240,11 @@ textarea
 	@include coarse
 		line-height: 22px
 
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration
-	display: none
+//input[type="search"]::-webkit-search-decoration,
+//input[type="search"]::-webkit-search-cancel-button,
+//input[type="search"]::-webkit-search-results-button,
+//input[type="search"]::-webkit-search-results-decoration
+//	display: none
 
 [type="checkbox"],
 [type="radio"]
@@ -429,7 +358,8 @@ input[type="search"]::-webkit-search-results-decoration
 			box-shadow: $shadow-l-in
 			border: 1px solid var(--gray-15)
 			@include dark
-				background-color: var(--gray-90)
+				background-color: var(--gray-92)
+				background-image: url("../images/bg_page.png")
 				box-shadow: $shadow-d-in
 				border-color: var(--gray-82)
 			
@@ -457,6 +387,7 @@ input[type="search"]::-webkit-search-results-decoration
 			@include dark
 				background-color: var(--form-color)
 				box-shadow: $shadow-d-in
+				background-image: url("../images/bg_body.png")
 			
 			&:after
 				left: calc(100% - calc(var(--switch-width) + 2px))
@@ -565,8 +496,8 @@ input[type="search"]::-webkit-search-results-decoration
 	flex-direction: row
 
 .radio-group
-	border-radius: $form-round
-	overflow: hidden
+	border-radius: calc($form-round + 13px)
+	//overflow: hidden
 	background: var(--gray-25)
 	padding: 3px
 	box-shadow: $shadow-l-in
@@ -599,7 +530,7 @@ input[type="search"]::-webkit-search-results-decoration
 		cursor: pointer
 		padding: 4px 13px
 		transition: background 0.1s ease-in-out, color 0.2s linear
-		border-radius: calc(#{$form-round} - 2px)
+		border-radius: calc($form-round + 10px)
 		border: 1px solid transparent
 		white-space: nowrap
 		font-size: 14px
@@ -609,6 +540,7 @@ input[type="search"]::-webkit-search-results-decoration
 		
 		@include dark
 			color: var(--gray-50)
+			box-shadow: $shadow-d
 			&:hover
 				color: var(--gray-30)
 		@include coarse

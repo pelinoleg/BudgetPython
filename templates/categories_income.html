@@ -1,5 +1,8 @@
 {% extends 'base.html' %} {% block content %}
-	<div class="page_title {{ gradient }}" ><span >{% block title %} {{ title }} {% endblock %}</span ></div >
+	<div class="page_title {{ gradient }}" >
+		<button class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></button >
+		<span >{% block title %} {{ title }} {% endblock %}</span >
+	</div >
 	<div class="content" >
 		{% if categories_income|length == 0 %}
 			<div class="no-results" >You don't have any income categories added yet.</div >
@@ -9,7 +12,14 @@
 			<div class="form-group" >
 				<input type="text" name="category_income" placeholder="Income Category Name" class="form-control"
 						{#					value="{{ request.form['category_income'] }}"#} />
-				<input type="checkbox" name="primordial" value="true" > Primary or not?
+				{#				<input type="checkbox" name="primordial" value="true" > Primary or not?#}
+
+				<div class="switch switch-big" >
+					<input type="checkbox" id="primordial" name="primordial" value="true" >
+					<label for="primordial" ></label >Primary
+				</div >
+
+
 			</div >
 
 			<div class="form-group mt-5" >

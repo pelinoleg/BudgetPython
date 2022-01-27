@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block content %}
+	<div class="page_title {{ gradient }}" >
+		<button class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></button >
+		<span >{% block title %} {{ title }} {% endblock %}</span >
+	</div >
+
+	<div class="content" >
+		{% if categories|length == 0 %}
+			<div class="no-results" >You must add categories first (in expenses categories)</div >
+		{% else %}
+			<form method="post" >
+				<div class="flex flex-col mx-auto gap-15" >
+					<div class="flex flex-col" >
+						<input type="text" name="amount" placeholder="100" min="0" class="summ py-5 mr-20"
+									 value="{{ request.form['amount'] }}" />
+
+
+						<div class="radio-group category-group" >
+							{% for cid, name, color, state, count, budget_category in categories %}
+
+								<input type="radio" value="{{ cid }}" name="category" id="{{ name }}" />
+								<label for="{{ name }}" ><span class="{{ color }}" >{{ name }}</span ></label >
+
+							{% endfor %}
+						</div >
+
+
+						<button type="submit" class="py-8 send-button" >Add</button >
+					</div >
+
+
+				</div >
+			</form >
+		{% endif %}
+	</div >
+
+
+{% endblock %}

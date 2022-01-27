@@ -1,13 +1,20 @@
 {% extends 'base.html' %} {% block content %}
-	<div class="page_title {{ gradient }}" ><span >{% block title %} {{ title }} {% endblock %}</span ></div >
+	<div class="page_title {{ gradient }}" >
+		<button class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></button >
+		<span >{% block title %} {{ title }} {% endblock %}</span >
+	</div >
 
 	<div class="content" >
 		<form method="post" >
 			<input type="text" name="category" placeholder="Category Name" class="form-control"
 						 value="{{ request.form['name'] or category['name'] }}" />
-			<input type="checkbox" name="primordial" value="true"
-					{% if category.primordial == 'true' %} checked{% endif %}
-			> Primary or not?
+			<div class="switch switch-big" >
+				<input type="checkbox" id="primordial" name="primordial" value="true"
+						{% if category.primordial == 'true' %} checked{% endif %}
+				>
+				<label for="primordial" ></label >
+			</div >
+			Primary or not?
 
 
 			<div class="mt-20 flex gap-20 items-center" >

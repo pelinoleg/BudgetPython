@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" class="dark-theme" >
 <head >
 	<meta charset="utf-8" />
 
@@ -7,10 +7,7 @@
 
 
 	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/splide.min.css') }}" />
-	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/menu.css') }}" />
-	{#	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/jquery.timepicker.css') }}"/>#}
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/table.css') }}" />
 	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/styles.css') }}" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" >
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
@@ -18,68 +15,105 @@
 
 	<title >{% block title %} {{ title }} {% endblock %}</title >
 </head >
-<body class="w-full" >
+<body class="w-full flex flex-col" >
 
-{% for cat, message in get_flashed_messages(True) %}
-	<div class="alert bg-gradient-green {{ cat }}" ><span >{{ message }}</span >
-		<button class="alert-delete" >X</button >
-	</div >
-{% endfor %}
+<div class="alert-wrap" >
+	{% for cat, message in get_flashed_messages(True) %}
+		<div class="alert bg-gradient-green {{ cat }}" >
+			<span >{{ message }}
+			<button class="alert-delete" ><i class="fa-solid fa-xmark" ></i ></button >
+			</span >
+
+		</div >
+	{% endfor %}
+</div >
 
 
-<div class="flex container w-full" >
+<div class="flex container w-full h-full flex-1" >
 	<section class="sidebar-menu-wrap" >
-		<ul class="sidebar-menu" >
+		<ul class="sidebar-menu sticky top-0" >
 
-			<li class="treeview home-link mb-10" >
-				<a class="{% if request.path == '/' %} active {% endif %}" href="{{ url_for('index') }}" ><i
-						class="fa fa-home" ></i >Home
 
-				</a >
+			<li class="treeview home-link mb-10 {% if request.path == '/' %} active {% endif %}" >
+
+				<a class="flex p-10" href="{{ url_for('index') }}" ><i class="fa-solid fa-bank mr-10" ></i >Home</a >
 			</li >
 
 
 			<li class="header header-expenses bg-gradient-red" ><span >EXPENSES</span ></li >
 
-			<li class="treeview" >
-				<a class="{% if request.path == '/add' %} active {% endif %}" href="/add" ><i
-						class="fa fa-regular fa-square-minus" ></i >Add Expense</a >
-			</li >
-			<li class="treeview" >
-				<a class=" flex {% if request.path == '/categories' or title == 'Edit Category' %} active {% endif %}"
-					 href="/categories" ><i class="fa fa-grip-vertical" ></i >Categories & Subcategories</a >
-			</li >
-			<li class="treeview" >
-				<a class="{% if request.path == '/years' %} active {% endif %}" href="/years" ><i
-						class="fa fa-calendar-days" ></i >Years</a >
-			</li >
+			<li >
+				<ul class="test" >
+					<li class="bg-gradient-red {% if request.path == '/add' %} active {% endif %}" >
+						<i class="fa fa-regular fa-square-minus" ></i >
+						<a href="/add" >Add Expense</a >
+					</li >
+					<li class="bg-gradient-red {% if request.path == '/categories' or title == 'Edit Category' %} active {% endif %}" >
+						<i class="fa fa-grip-vertical" ></i >
+						<a href="/categories" >Categories</a >
+					</li >
 
-			<li class="treeview" >
-				<a class="{% if request.path == '/all-expenses' %} active {% endif %}" href="/all-expenses" ><i
-						class="fa fa-solid fa-table-list" ></i >All Expenses</a >
+					<li class="bg-gradient-red {% if request.path == '/all-expenses' %} active {% endif %}" >
+						<i class="fa fa-solid fa-table-list" ></i >
+						<a href="/all-expenses" >All Expenses</a >
+					</li >
+				</ul >
 			</li >
 
 
 			<li class="header header-incomes bg-gradient-green mt-20" ><span >INCOMES</span ></li >
-			<li class="treeview" >
-				<a class="{% if request.path == '/add_income' %} active {% endif %}" href="/add_income" ><i
-						class="fa fa-regular fa-square-plus text-gradient-green" ></i >Add Income</a >
-			</li >
-			<li class="treeview" >
-				<a class="{% if request.path == '/categories_income' or title == 'Edit Category Income' %} active {% endif %}"
-					 href="/categories_income" ><i class="fa fa-solid fa-euro-sign" ></i >Categories</a >
+			<li >
+				<ul class="test test-incomes" >
+					<li class="{% if request.path == '/add_income' %} active {% endif %}" >
+						<i class="fa fa-regular fa-square-plus text-gradient-green" ></i >
+						<a href="/add_income" >Add Income</a >
+					</li >
+					<li class="{% if request.path == '/categories_income' or title == 'Edit Category Income' %} active {% endif %}" >
+						<i class="fa fa-solid fa-euro-sign" ></i >
+						<a href="/categories_income" >Categories</a >
+					</li >
+
+					<li class="{% if request.path == '/incomes' %} active {% endif %}" >
+						<i class="fa fa-solid fa-money-bill-1-wave" ></i >
+						<a href="/incomes" >All Incomes</a >
+					</li >
+				</ul >
 			</li >
 
-			<li class="treeview" >
-				<a class="{% if request.path == '/incomes' %} active {% endif %}" href="/incomes" ><i
-						class="fa fa-solid fa-money-bill-1-wave" ></i >Incomes</a >
+
+			<li class="header bg-gradient1 mt-20" ><span >Budget</span ></li >
+			<li >
+				<ul class="test" >
+					<li class="{% if request.path == '/budgets' %} active {% endif %}" >
+						<i class="fa-solid fa-coins" ></i >
+						<a href="/budgets" >Budgets</a >
+					</li >
+					<li class="{% if request.path == '/add_budget' %} active {% endif %}" >
+						<i class="fa fa-regular fa-square-plus" ></i >
+						<a href="/add_budget" >Add Budget</a >
+					</li >
+
+				</ul >
 			</li >
-			<li ><input type="checkbox" id="theme_toggle" ></li >
+			<li class="mt-20" style="margin-top: auto" >
+				{#				<input type="checkbox" id="theme_toggle" >#}
+				<div class="checkbox" >
+					<div >
+						<label >
+							<input class="custom-form" type="checkbox" id="theme_toggle" >
+							<span >Dark Theme</span >
+						</label >
+					</div >
+
+				</div >
+			</li >
+
+
 		</ul >
 
 	</section >
 
-	<div class="right-container flex-1 mt-20" >
+	<div class="right-container overflow--hidden flex-1 " >
 
 		{% block content %} {% endblock %}
 
