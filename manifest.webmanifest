@@ -1,11 +1,11 @@
 {
-    "theme_color": "#f9e53f",
-    "background_color": "#f6da35",
+    "theme_color": "#f69435",
+    "background_color": "#f69435",
     "display": "fullscreen",
     "scope": "/",
     "start_url": "/",
-    "name": "Buget",
-    "short_name": "Buget",
+    "name": "Budget",
+    "short_name": "Budget",
     "icons": [
         {
             "src": "/icon-192x192.png",

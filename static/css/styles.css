@@ -3897,13 +3897,6 @@ a {
   border: unset !important;
 }
 
-* {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
 .header-expenses {
   color: #fff !important;
 }
