@@ -8,13 +8,13 @@ import xmltodict
 
 
 def get_db_connection():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('static/database.db')
     conn.row_factory = sqlite3.Row
     return conn
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'asdfasdfasdf'
+app.config['SECRET_KEY'] = 'asdfaawefawfewfawegfargeravetyko5sdfasdf'
 
 now = datetime.now()
 
