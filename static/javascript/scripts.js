@@ -212,10 +212,10 @@ document.addEventListener(
             ],
             "sidebar": {
                 collapsed: {
-                    use: "(min-width: 550px)"
+                    use: "(min-width: 720px)"
                 },
                 expanded: {
-                    use: "(min-width: 700px)"
+                    use: "(min-width: 1000px)"
                 }
             },
 
