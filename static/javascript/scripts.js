@@ -206,7 +206,7 @@ $(document).ready(function () {
 document.addEventListener(
     "DOMContentLoaded", () => {
         new Mmenu("#menu", {
-
+            "slidingSubmenus": false,
             "extensions": [
                 "theme-dark"
             ],
