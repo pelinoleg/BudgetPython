@@ -210,6 +210,14 @@ document.addEventListener(
             "extensions": [
                 "theme-dark"
             ],
+            "sidebar": {
+                collapsed: {
+                    use: "(min-width: 550px)"
+                },
+                expanded: {
+                    use: "(min-width: 700px)"
+                }
+            },
 
             "navbars": [
                 {
