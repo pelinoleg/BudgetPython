@@ -3358,7 +3358,7 @@ a:hover, a:focus, a:active {
   background: var(--gray-95);
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
           box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  background-image: url(../images/bg_body.png);
+  background-image: url(../images/bg_page.png);
   background-attachment: fixed;
 }
 .mm-menu .mm-panel {
@@ -3529,6 +3529,10 @@ body .source a {
 
 a {
   color: #8ed4a3;
+}
+
+.mm-menu:not(.mm-menu_opened) {
+  display: none;
 }
 
 .category-group {
