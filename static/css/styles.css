@@ -3779,13 +3779,14 @@ a {
 
 .card-income .card-amount {
   color: #21bf56;
+  min-width: 135px;
 }
 .card-income .card-amount:before {
   content: "+";
 }
 
 .card-amount {
-  min-width: 135px;
+  min-width: 95px;
   font-size: 24px;
   font-weight: 300;
   position: relative;
@@ -4819,12 +4820,13 @@ a {
   -o-transition: all 0.5s cubic-bezier(0.31, 1.29, 0.82, 1.33);
   transition: all 0.5s cubic-bezier(0.31, 1.29, 0.82, 1.33);
 }
-.side-panel-toggle.active .line1 {
+
+.mm-wrapper_opened .side-panel-toggle .line1 {
   -webkit-transform: rotate(45deg) translateX(10px);
       -ms-transform: rotate(45deg) translateX(10px);
           transform: rotate(45deg) translateX(10px);
 }
-.side-panel-toggle.active .line2 {
+.mm-wrapper_opened .side-panel-toggle .line2 {
   -webkit-transform: rotate(-45deg) translateX(10px);
       -ms-transform: rotate(-45deg) translateX(10px);
           transform: rotate(-45deg) translateX(10px);

@@ -326,12 +326,13 @@ a
 .card-income
 	.card-amount
 		color: #21bf56
+		min-width: 135px
 		
 		&:before
 			content: '+'
 
 .card-amount
-	min-width: 135px
+	min-width: 95px
 	font-size: 24px
 	font-weight: 300
 	position: relative
@@ -1300,8 +1301,9 @@ a
 		background: #fff !important
 		transform-origin: center
 		transition: all 0.5s cubic-bezier(.31, 1.29, .82, 1.33)
-	
-	&.active
+
+.mm-wrapper_opened
+	.side-panel-toggle
 		.line1
 			transform: rotate(45deg) translateX(10px)
 		
