@@ -210,14 +210,12 @@ document.addEventListener(
             "extensions": [
                 "theme-dark"
             ],
-           
+
             "navbars": [
                 {
                     "position": "bottom",
                     "content": [
-                        "<a class='fa fa-envelope' href='#/'></a>",
-                        "<a class='fa fa-twitter' href='#/'></a>",
-                        "<a class='fa fa-facebook' href='#/'></a>"
+                        "<div class='checkbox' ><div ><label ><input class='custom-form' type='checkbox' id='theme_toggle' ><span >Dark Theme</span > </label > </div >"
                     ]
                 }
             ]

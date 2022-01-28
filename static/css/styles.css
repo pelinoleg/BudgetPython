@@ -3063,6 +3063,7 @@ a:hover, a:focus, a:active {
   text-align: center;
   font-size: 30px;
   padding: 10px;
+  z-index: 10;
 }
 .add:before {
   left: 0;
@@ -3349,71 +3350,17 @@ a:hover, a:focus, a:active {
   -webkit-text-fill-color: transparent;
 }
 
-.sidebar-menu-wrap {
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  width: 300px;
+.mm-menu {
+  background: var(--gray-92);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+  background-image: url(../images/bg_body.png);
 }
-
-.sidebar-menu {
-  list-style: none;
-  margin: 0;
-  padding: 20px 15px 15px 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+.mm-menu .mm-panel {
+  padding: 10px;
 }
-.sidebar-menu .header {
-  padding: 0 !important;
-  overflow: visible !important;
-}
-.sidebar-menu .header:before {
-  content: "";
-  display: inline-block;
-  height: 13px;
-  position: absolute;
-  bottom: -5px;
-  left: 20px;
-  right: 20px;
-  z-index: -1;
-  border-radius: 50em;
-  -webkit-filter: blur(13px) brightness(1.15);
-          filter: blur(13px) brightness(1.15);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-}
-:root.dark-theme .sidebar-menu .header:before {
-  height: 33px;
-  -webkit-filter: blur(25px) brightness(0.95);
-          filter: blur(25px) brightness(0.95);
-  bottom: -10px;
-}
-
-.sidebar-menu .header span {
-  padding: 5px 15px;
-  display: block;
-  border-radius: 10px;
-  letter-spacing: 2px;
-  font-size: 15px;
-}
-.sidebar-menu > li {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  border-radius: 10px;
-  /*overflow: hidden; */
-  margin-bottom: 2px;
-}
-.sidebar-menu a {
-  color: #b8c7ce;
-  text-decoration: none;
+.mm-menu .mm-navbar_sticky {
+  background: transparent;
 }
 
 table {
