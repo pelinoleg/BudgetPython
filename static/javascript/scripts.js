@@ -193,9 +193,36 @@ $(document).ready(function () {
 
 
 // sidebar toggle
-document.querySelector(".side-panel-toggle").addEventListener("click", () => {
-    document.querySelector(".container").classList.toggle("side-panel-close");
-    document.querySelector("body").classList.toggle("overflow-hidden");
-    document.querySelector(".side-panel-toggle").classList.toggle("active");
-});
+// document.querySelector(".side-panel-toggle").addEventListener("click", () => {
+//     document.querySelector(".container").classList.toggle("side-panel-close");
+//     document.querySelector("body").classList.toggle("overflow-hidden");
+//     document.querySelector(".side-panel-toggle").classList.toggle("active");
+// });
+
+
+// mmenu
+
+
+document.addEventListener(
+    "DOMContentLoaded", () => {
+        new Mmenu("#menu", {
+
+            "extensions": [
+                "theme-dark"
+            ],
+           
+            "navbars": [
+                {
+                    "position": "bottom",
+                    "content": [
+                        "<a class='fa fa-envelope' href='#/'></a>",
+                        "<a class='fa fa-twitter' href='#/'></a>",
+                        "<a class='fa fa-facebook' href='#/'></a>"
+                    ]
+                }
+            ]
+        });
+    }
+);
+
 
