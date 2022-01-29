@@ -3,7 +3,7 @@
     "background_color": "#f69435",
     "display": "fullscreen",
     "scope": "/",
-    "start_url": "/",
+    "start_url": "/add",
     "name": "Budget",
     "short_name": "Budget",
     "icons": [
