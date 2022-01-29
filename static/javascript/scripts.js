@@ -210,6 +210,10 @@ document.addEventListener(
             "extensions": [
                 "theme-dark"
             ],
+            "navbar": {
+                "add": false
+            },
+
             "sidebar": {
                 collapsed: {
                     use: "(min-width: 820px)"
@@ -217,6 +221,10 @@ document.addEventListener(
                 expanded: {
                     use: "(min-width: 1440px)"
                 }
+            },
+            "iconPanels": {
+                "add": true,
+                "visible": 1
             },
 
             "navbars": [
