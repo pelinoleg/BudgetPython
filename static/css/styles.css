@@ -3777,6 +3777,46 @@ a {
   margin-top: 0;
 }
 
+.cards-year {
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 35px;
+  margin-bottom: 5px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+  background: var(--gray-17) url("../images/bg_page.png");
+  z-index: 3;
+  line-height: 30px;
+}
+:root.dark-theme .cards-year {
+  background: var(--gray-87) url("../images/bg_page.png");
+}
+
+.cards-year:first-child {
+  margin-top: 0;
+}
+
+.cards-month {
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 35px;
+  margin-bottom: 5px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 75px;
+  z-index: 2;
+  line-height: 32px;
+  background: var(--gray-17) url("../images/bg_page.png");
+}
+:root.dark-theme .cards-month {
+  background: var(--gray-87) url("../images/bg_page.png");
+}
+
+.cards-month:first-child {
+  margin-top: 0;
+}
+
 .card-income .card-amount {
   color: #21bf56;
   min-width: 135px;
@@ -3893,7 +3933,7 @@ a {
   position: sticky;
   top: 0;
   background: var(--gray-87) url("../images/bg_page.png");
-  z-index: 2;
+  z-index: 4;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

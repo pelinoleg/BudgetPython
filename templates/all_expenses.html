@@ -10,66 +10,68 @@
 
 			<div class="cards  relative" >
 				{% for key, list in all_expenses|groupby('year')|sort(attribute='0', reverse=True) %}
-					<div class="ml-10 cards-day" >{{ key }} </div >
-					{% for key2, list2 in list|groupby('month')|sort(attribute='0', reverse=True) %}
-						<div class=" subtitle2 mt-20" >{{ key2|int|month_name }} </div >
+					<div class="" >
+						<div class="cards-year" >{{ key }} </div >
+						{% for key2, list2 in list|groupby('month')|sort(attribute='0', reverse=True) %}
+							<div class="" >
+								<div class="cards-month" >{{ key2|int|month_name }}</div >
 
-						{% for key3, list3 in list2|groupby('day')|sort(attribute='0', reverse=True) %}
-							<div class=" subtitle2 mt-20" >{{ key3 }} - {{ key2|int|month_name }} </div >
-							{% for sum, id, day, month, year, category, color, subcategory, comment in list3 %}
+								{% for key3, list3 in list2|groupby('day')|sort(attribute='0', reverse=True) %}
+									<div class=" subtitle2 mt-20 " >{{ key3 }} - {{ key2|int|month_name }} </div >
+									{% for sum, id, day, month, year, category, color, subcategory, comment in list3 %}
 
-								<div class="card flex items-center relative overflow-hidden flex-wrap " >
-									<div class="flex items-center w-full" >
-										<div class="card-info flex flex-1" >
-											<div class="flex flex-1" >
-												<span class="card-amount flex items-center" >  {{ sum }} <span >&euro;</span > </span >
-												<div class="flex flex-col justify-center ml-15" >
+										<div class="card flex items-center relative overflow-hidden flex-wrap " >
+											<div class="flex items-center w-full" >
+												<div class="card-info flex flex-1" >
+													<div class="flex flex-1" >
+														<span class="card-amount flex items-center" >  {{ sum }} <span >&euro;</span > </span >
+														<div class="flex flex-col justify-center ml-15" >
 
-													<div class="flex items-center" >
-														<span class="{{ color }} card-category" >  {{ category }}  </span >
-														{% if (subcategory != '') and (subcategory !=None) %}
-															<span class="card-subcategory ml-10" >  {{ subcategory }}  </span >
-														{% endif %}
+															<div class="flex items-center" >
+																<span class="{{ color }} card-category" >  {{ category }}  </span >
+																{% if (subcategory != '') and (subcategory !=None) %}
+																	<span class="card-subcategory ml-10" >  {{ subcategory }}  </span >
+																{% endif %}
+															</div >
+
+
+
+															{% if (comment != '') and (comment !=None) %}
+																<span class="block mt-5 card-comment" >  {{ comment }} </span >
+															{% endif %}
+														</div >
+
+													</div >
+
+													<div class="card-btns  flex items-center flex-shrink-0 ml-auto" >
+														<a href="{{ id }}/edit" class="btn-ac" >
+															<i class="fa-solid fa-pen-to-square" ></i >
+														</a >
+
+
+														<form action="{{ url_for('delete_income', id=id) }}" method="POST" >
+															<button type="submit" class="btn-ac"
+																			onclick="return confirm('Are you sure you want to delete this post?')" >
+																<i class="fa-solid fa-trash-can" ></i >
+															</button >
+														</form >
+
 													</div >
 
 
-
-													{% if (comment != '') and (comment !=None) %}
-														<span class="block mt-5 card-comment" >  {{ comment }} </span >
-													{% endif %}
 												</div >
 
-											</div >
-
-											<div class="card-btns  flex items-center flex-shrink-0 ml-auto" >
-												<a href="{{ id }}/edit" class="btn-ac" >
-													<i class="fa-solid fa-pen-to-square" ></i >
-												</a >
-
-
-												<form action="{{ url_for('delete_income', id=id) }}" method="POST" >
-													<button type="submit" class="btn-ac"
-																	onclick="return confirm('Are you sure you want to delete this post?')" >
-														<i class="fa-solid fa-trash-can" ></i >
-													</button >
-												</form >
 
 											</div >
 
 
 										</div >
+									{% endfor %}
+								{% endfor %}
 
-
-									</div >
-
-
-								</div >
-							{% endfor %}
+							</div >
 						{% endfor %}
-
-
-					{% endfor %}
-
+					</div >
 				{% endfor %}
 
 			</div >
