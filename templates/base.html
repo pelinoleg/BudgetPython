@@ -119,9 +119,9 @@
 
 	<nav id="menu" >
 		<ul >
-			<li ><a href="{{ url_for('index') }}" >Home</a ></li >
-			<li ><a href="/work" >Our work</a ></li >
-			<li ><span >Expenses</span >
+			<li ><a href="{{ url_for('index') }}" ><i class="fa-solid fa-bank" ></i >Home</a ></li >
+			<li {% if request.path == '/add' or request.path == '/categories' or  request.path == '/all-expenses' %}
+				class="active" {% endif %}><span >Expenses</span >
 				<ul >
 					<li ><a href="{{ url_for('add') }}" >Add Expense</a ></li >
 					<li ><a href="{{ url_for('categories') }}" >Expenses Categories</a ></li >
@@ -144,7 +144,7 @@
 				</ul >
 
 			</li >
-			<li ><a href="" >Stats</a ></li >
+			<li ><a href="{{ url_for('stats') }}" >Stats</a ></li >
 		</ul >
 	</nav >
 

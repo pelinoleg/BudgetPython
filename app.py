@@ -92,6 +92,7 @@ def get_subcategory(subcategory_id):
 # today = datetime.today().strftime("%d.%m.%Y")
 today = datetime.now()
 today = today.strftime('%d.%m.%Y')
+# print(today)
 url = 'https://www.bnm.md/en/official_exchange_rates?get_xml=1&date='
 response = requests.get(url + today)
 
@@ -229,6 +230,65 @@ def index():
                            this_month_transactions=this_month_transactions, sum_months=sum_months,
                            sum_months_income=sum_months_income, category_sum_total=category_sum_total,
                            this_year=this_year, this_month=this_month, budgets=budgets)
+
+
+@app.route('/stats')
+def stats():
+    conn = get_db_connection()
+    this_month_transactions = conn.execute(
+        "SELECT expenses.id, "
+        "strftime('%Y', date) as year, "
+        "strftime('%m', date) as month, "
+        "strftime('%d', date) as day, "
+        "categories.name as category, "
+        "categories.color as color, "
+        "subcategories.name as subcategory, "
+        "sum, "
+        "comment "
+        "FROM expenses "
+        "LEFT JOIN categories on categories.id = expenses.category "
+        "LEFT JOIN subcategories on subcategories.id = expenses.subcategory "
+        "WHERE strftime('%Y', date) = strftime('%Y', date('now')) AND strftime('%m', date) = strftime('%m', date('now')) "
+
+        "UNION ALL "
+        "SELECT incomes.id, "
+        "strftime('%Y', date) as year, "
+        "strftime('%m', date) as month, "
+        "strftime('%d', date) as day, "
+        "categories_income.name as category, "
+        "NULL as color, "
+        "NULL as subcategory, "
+        "amount, "
+        "comment "
+        "FROM incomes "
+        "LEFT JOIN categories_income on categories_income.id = incomes.category "
+        # "LEFT JOIN subcategories on subcategories.id = incomes.subcategory "
+        "WHERE strftime('%Y', date) = strftime('%Y', date('now')) AND strftime('%m', date) = strftime('%m', date('now')) "
+        "ORDER BY day DESC "
+    ).fetchall()
+
+    sum_months = conn.execute(
+        "SELECT "
+        "sum, strftime('%m', date) as month, strftime('%Y', date) as year "
+        "FROM expenses "
+    ).fetchall()
+
+    sum_months_income = conn.execute(
+        "SELECT "
+        "amount, strftime('%m', date) as month, strftime('%Y', date) as year "
+        "FROM incomes "
+    ).fetchall()
+
+    category_sum_total = conn.execute(
+        "SELECT  sum, categories.name as category, strftime('%m', date) as month, strftime('%Y', date) as year "
+        "FROM expenses  "
+        "LEFT JOIN categories on categories.id = expenses.category "
+
+    ).fetchall()
+
+    return render_template('stats.html', title='Stats', gradient='text-gradient-blue',
+                           this_month_transactions=this_month_transactions, sum_months=sum_months,
+                           sum_months_income=sum_months_income, category_sum_total=category_sum_total)
 
 
 @app.route('/all-expenses')
