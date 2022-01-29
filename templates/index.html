@@ -10,7 +10,7 @@
 		<div class="flex flex-col w-full" >
 
 
-			<div class="cards mt-20 relative" >
+			<div class="cards relative" >
 				{% for key, list in this_month_transactions|groupby('day')|sort(attribute='0', reverse=True) %}
 					<div class="ml-10 cards-day" >{{ key }} {{ this_month|int|month_name }}</div >
 					{% for id, year, month, day,  category, color, subcategory, sum, comment in list %}

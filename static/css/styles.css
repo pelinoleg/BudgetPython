@@ -3773,6 +3773,9 @@ a {
   margin-top: 35px;
   margin-bottom: 5px;
 }
+.cards-day:first-child {
+  margin-top: 0;
+}
 
 .card-income .card-amount {
   color: #21bf56;
@@ -4805,7 +4808,9 @@ a {
   width: 100%;
   height: 4px;
   border-radius: 3px;
-  background: #fff !important;
+  background: #ffdd04;
+  background: -o-linear-gradient(305deg, #ffdd04 0%, #fbb135 80%, #fbb135 100%);
+  background: linear-gradient(145deg, #ffdd04 0%, #fbb135 80%, #fbb135 100%);
   -webkit-transform-origin: center;
       -ms-transform-origin: center;
           transform-origin: center;
