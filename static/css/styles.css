@@ -3898,10 +3898,6 @@ a {
       -ms-flex-align: center;
           align-items: center;
 }
-:root.dark-theme .page_title {
-  font-weight: 200;
-}
-
 .page_title span {
   margin-left: auto;
 }
