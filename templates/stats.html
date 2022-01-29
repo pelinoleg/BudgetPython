@@ -42,6 +42,42 @@
 
 			</div >
 
+			<div class="mt-10 w-full" >
+				<div class="index-months-title subtitle" >Incomes by months:</div >
+				<div class="splide-months-income-index splide w-full" >
+					<div class="splide__track index-months-slide index-months-income-slide w-full" >
+						<ul class="splide__list index-months-slide w-full" >
+
+							{% for key, list in sum_months_income|groupby('year')|sort(attribute='0', reverse=True) %}
+								{% for key2, list2 in list|groupby('month')|sort(attribute='0', reverse=True) %}
+									<li class="splide__slide" >
+										<div class="index-month" >{{ key2|int|month_name }} - {{ key }}</div >
+										{% for key3, list3 in list2|groupby('month') %}
+
+											{% set total = {'value': 0} %}
+											{% for amount, month, year in list3 %}
+												{% if total.update({"value": amount|int + total.value|int }) %}{% endif %}
+
+											{% endfor %}
+											<div class="index-total" >{{ total.value }} &euro;</div >
+											<div class="index-count" >{{ list3|count }} incomes</div >
+										{% endfor %}
+									</li >
+
+								{% endfor %}
+
+
+
+							{% endfor %}
+
+						</ul >
+					</div >
+
+
+				</div >
+
+			</div >
+
 
 			<div class="mt-10" >
 				<div class="subtitle" >Expenses by category:</div >
@@ -82,43 +118,6 @@
 
 
 				</div >
-			</div >
-
-
-			<div class="mt-10 w-full" >
-				<div class="index-months-title subtitle" >Incomes by months:</div >
-				<div class="splide-months-income-index splide w-full" >
-					<div class="splide__track index-months-slide index-months-income-slide w-full" >
-						<ul class="splide__list index-months-slide w-full" >
-
-							{% for key, list in sum_months_income|groupby('year')|sort(attribute='0', reverse=True) %}
-								{% for key2, list2 in list|groupby('month')|sort(attribute='0', reverse=True) %}
-									<li class="splide__slide" >
-										<div class="index-month" >{{ key2|int|month_name }} - {{ key }}</div >
-										{% for key3, list3 in list2|groupby('month') %}
-
-											{% set total = {'value': 0} %}
-											{% for amount, month, year in list3 %}
-												{% if total.update({"value": amount|int + total.value|int }) %}{% endif %}
-
-											{% endfor %}
-											<div class="index-total" >{{ total.value }} &euro;</div >
-											<div class="index-count" >{{ list3|count }} incomes</div >
-										{% endfor %}
-									</li >
-
-								{% endfor %}
-
-
-
-							{% endfor %}
-
-						</ul >
-					</div >
-
-
-				</div >
-
 			</div >
 
 
