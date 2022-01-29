@@ -6,7 +6,7 @@
 
 	<div class="content" >
 		<form method="post" >
-			<input type="text" name="category" placeholder="Category Name" class="form-control"
+			<input type="text" autofocus name="category" placeholder="Category Name" class="form-control"
 						 value="{{ request.form['name'] or category['name'] }}" />
 			<div class="switch switch-big" >
 				<input type="checkbox" id="primordial" name="primordial" value="true"
