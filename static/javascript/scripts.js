@@ -240,3 +240,7 @@ document.addEventListener(
 );
 
 
+document.getElementById('go-back').addEventListener('click', () => {
+    history.back();
+});
+

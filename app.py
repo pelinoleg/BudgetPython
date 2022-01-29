@@ -286,7 +286,7 @@ def stats():
 
     ).fetchall()
 
-    return render_template('stats.html', title='Stats', gradient='text-gradient-blue',
+    return render_template('stats.html', title='Statistics', gradient='text-gradient-blue',
                            this_month_transactions=this_month_transactions, sum_months=sum_months,
                            sum_months_income=sum_months_income, category_sum_total=category_sum_total)
 
