@@ -118,9 +118,9 @@
 	</section >
 
 	<nav id="menu" >
-		<ul >
+		<ul class="list-menu" >
 			<li ><a href="{{ url_for('index') }}" ><i class="fa-solid fa-bank" ></i >Home</a ></li >
-			<li } ><span >Expenses</span >
+			<li class="list-title" ><span >Expenses</span >
 
 			<li ><a href="{{ url_for('add') }}" >Add Expense</a ></li >
 			<li ><a href="{{ url_for('categories') }}" >Expenses Categories</a ></li >
@@ -128,7 +128,7 @@
 
 
 			</li >
-			<li ><span >Incomes</span >
+			<li class="list-title" ><span >Incomes</span >
 
 			<li ><a href="{{ url_for('add_income') }}" >Add Income</a ></li >
 			<li ><a href="{{ url_for('categories_income') }}" >Categories</a ></li >
@@ -136,7 +136,7 @@
 
 
 			</li >
-			<li ><span >Budgets</span >
+			<li class="list-title" ><span >Budgets</span >
 
 			<li ><a href="{{ url_for('add_budget') }}" >Add Budget</a ></li >
 			<li ><a href="{{ url_for('budgets') }}" >budgets</a ></li >
