@@ -2392,7 +2392,7 @@ textarea[disabled]::placeholder {
   color: var(--gray-50);
 }
 
-input[type=text].transparent {
+input.transparent {
   padding: 0 5px;
   background: transparent !important;
   border: none;
@@ -2402,12 +2402,12 @@ input[type=text].transparent {
   -webkit-box-shadow: unset !important;
           box-shadow: unset !important;
 }
-input[type=text].transparent:focus {
+input.transparent:focus {
   -webkit-box-shadow: unset !important;
           box-shadow: unset !important;
 }
 @media (any-pointer: coarse) {
-  input[type=text].transparent {
+  input.transparent {
     line-hight: inherit;
   }
 }
@@ -4874,4 +4874,12 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.radio-currency {
+  background: transparent !important;
+  border: unset !important;
+  -webkit-box-shadow: unset !important;
+          box-shadow: unset !important;
+  gap: 5px;
 }
