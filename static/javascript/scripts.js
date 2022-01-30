@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
         gap: '25px',
         perPage: 4,
         arrows: false,
+        waitForTransition: false,
         breakpoints: {
             720: {
                 perPage: 2,
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
         pagination: false,
         autoHeight: true,
         // isNavigation: true,
-
+        waitForTransition: false,
         gap: '25px',
         perPage: 4,
         arrows: false,
