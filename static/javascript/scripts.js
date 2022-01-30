@@ -240,7 +240,7 @@ document.addEventListener(
                 //     use: "(min-width: 820px)"
                 // },
                 expanded: {
-                    use: "(min-width: 720px)"
+                    use: "(min-width: 1080px)"
                 }
             },
             "iconPanels": {
