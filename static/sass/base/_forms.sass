@@ -178,8 +178,8 @@ input.transparent
 	&:focus
 		box-shadow: unset !important
 	
-	@include coarse
-		line-hight: inherit
+	//@include coarse
+	//	line-hight: inherit
 
 [type=date]::-webkit-datetime-edit,
 [type=datetime-local]::-webkit-datetime-edit,
@@ -237,8 +237,8 @@ select:not([multiple])
 textarea
 	resize: vertical
 	min-height: 3rem
-	@include coarse
-		line-height: 22px
+	//@include coarse
+	//	line-height: 22px
 
 //input[type="search"]::-webkit-search-decoration,
 //input[type="search"]::-webkit-search-cancel-button,
@@ -289,9 +289,9 @@ textarea
 			cursor: default
 			opacity: 0.5
 			box-shadow: unset
-	@include coarse
-		width: calc(var(--check-width) + 4px)
-		height: calc(var(--check-width) + 4px)
+	//@include coarse
+	//	width: calc(var(--check-width) + 4px)
+	//	height: calc(var(--check-width) + 4px)
 
 [type="checkbox"]:checked
 	background-color: var(--form-color)
@@ -336,8 +336,8 @@ textarea
 	--switch-width: 20px
 	overflow: hidden
 	padding: 1px
-	@include coarse
-		--switch-width: 24px
+	//@include coarse
+	//	--switch-width: 24px
 	
 	input[type="checkbox"]
 		@extend .hide-input
@@ -403,13 +403,13 @@ textarea
 
 .switch-small
 	--switch-width: 16px
-	@include coarse
-		--switch-width: 20px
+	//@include coarse
+	//	--switch-width: 20px
 
 .switch-big
 	--switch-width: 26px
-	@include coarse
-		--switch-width: 30px
+	//@include coarse
+	//	--switch-width: 30px
 
 // custom radio and checkbox
 .radio,
@@ -439,8 +439,8 @@ textarea
 		input
 			position: absolute !important
 			left: 2px
-			@include coarse
-				left: 4px
+			//@include coarse
+			//	left: 4px
 		
 		input:checked + span
 			background-color: #fff
@@ -476,9 +476,9 @@ textarea
 		@include dark
 			color: var(--gray-45)
 		
-		@include coarse
-			height: calc(var(--check-width) + 12px)
-			padding-left: calc(var(--check-width) + 16px)
+		//@include coarse
+		//	height: calc(var(--check-width) + 12px)
+		//	padding-left: calc(var(--check-width) + 16px)
 
 .checkbox
 	span

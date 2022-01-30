@@ -2406,11 +2406,6 @@ input.transparent:focus {
   -webkit-box-shadow: unset !important;
           box-shadow: unset !important;
 }
-@media (any-pointer: coarse) {
-  input.transparent {
-    line-hight: inherit;
-  }
-}
 
 [type=date]::-webkit-datetime-edit,
 [type=datetime-local]::-webkit-datetime-edit,
@@ -2475,11 +2470,6 @@ textarea {
   resize: vertical;
   min-height: 3rem;
 }
-@media (any-pointer: coarse) {
-  textarea {
-    line-height: 22px;
-  }
-}
 
 [type=checkbox],
 [type=radio] {
@@ -2541,14 +2531,6 @@ textarea {
           box-shadow: unset;
 }
 
-@media (any-pointer: coarse) {
-  [type=checkbox],
-[type=radio] {
-    width: calc(var(--check-width) + 4px);
-    height: calc(var(--check-width) + 4px);
-  }
-}
-
 [type=checkbox]:checked {
   background-color: var(--form-color);
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg'  fill='%23fff'  viewBox='0 0 405.272 405.272' %3e%3cpath d='m393.401 124.425-213.798 213.783c-15.832 15.835-41.514 15.835-57.361 0l-110.364-110.372c-15.838-15.835-15.838-41.52 0-57.358 15.841-15.841 41.521-15.841 57.355-.006l81.698 81.699 185.106-185.107c15.841-15.841 41.523-15.829 57.358 0 15.835 15.838 15.835 41.514.006 57.361z'/%3e%3c/svg%3e");
@@ -2591,11 +2573,6 @@ textarea {
   --switch-width: 20px;
   overflow: hidden;
   padding: 1px;
-}
-@media (any-pointer: coarse) {
-  .switch {
-    --switch-width: 24px;
-  }
 }
 .switch input[type=checkbox] + label {
   cursor: pointer;
@@ -2672,19 +2649,9 @@ textarea {
 .switch-small {
   --switch-width: 16px;
 }
-@media (any-pointer: coarse) {
-  .switch-small {
-    --switch-width: 20px;
-  }
-}
 
 .switch-big {
   --switch-width: 26px;
-}
-@media (any-pointer: coarse) {
-  .switch-big {
-    --switch-width: 30px;
-  }
 }
 
 .radio,
@@ -2729,12 +2696,6 @@ textarea {
 .checkbox label input {
   position: absolute !important;
   left: 2px;
-}
-@media (any-pointer: coarse) {
-  .radio label input,
-.checkbox label input {
-    left: 4px;
-  }
 }
 .radio label input:checked + span,
 .checkbox label input:checked + span {
@@ -2788,14 +2749,6 @@ textarea {
 }
 :root.dark-theme .radio span, :root.dark-theme .checkbox span {
   color: var(--gray-45);
-}
-
-@media (any-pointer: coarse) {
-  .radio span,
-.checkbox span {
-    height: calc(var(--check-width) + 12px);
-    padding-left: calc(var(--check-width) + 16px);
-  }
 }
 
 .checkbox span {
