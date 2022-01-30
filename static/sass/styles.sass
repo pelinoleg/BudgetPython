@@ -1095,19 +1095,6 @@ a
 //.container.side-panel-close
 	//transform: translateX(250px)
 @media only screen and (max-width: 720px)
-	//.container
-	//	width: 100%
-	//	padding: 0
-	//.sidebar-menu-wrap
-	//	margin-left: -300px
-	//.right-container
-	//	width: 100%
-	//	min-width: 300px
-	//	margin: 0
-	//	border: unset
-	//	border-radius: unset
-	//.container.side-panel-close
-	//	transform: translateX(300px)
 	
 	.index-months-slide
 		.index-total
@@ -1115,114 +1102,14 @@ a
 	.index-by-months-slide ul li
 		padding: 7px 10px !important
 
-.test
-	padding: 0
-	list-style: none
-	display: grid
-	flex-wrap: wrap
-	//gap: 15px
-	display: grid
-	grid-template-columns: 1fr 1fr
-	gap: 10px 10px
-	margin-top: 10px
-	
-	&.test-incomes
-		li
-			a.active
-				&:before
-					background: linear-gradient(145deg, #28a462, #b4d039)
-	
-	li
-		//width: 102px
-		height: 50px
-		display: flex
-		align-items: center
-		justify-content: center
-		
-		background: var(--gray-17) url("../images/bg_page.png")
-		position: relative
-		border-radius: 10px
-		overflow: hidden
-		//border: 1px solid rgba(#fff, 0.7)
-		box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072)
-		//border-radius: 10px
-		
-		@include dark
-			background: var(--gray-87)
-			box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072)
-		
-		&.active
-			a
-				@include gradientBg(#f17f5c, #ff4b4b)
-				
-				i
-					@include gradientBg(#f17f5c, #ff4b4b)
-				
-				&:before
-					background: linear-gradient(45deg, #d03939, #8d28a4)
-		
-		i
-			position: absolute
-			top: -5px
-			left: -10px
-			font-size: 45px
-			opacity: 0.1
-			transform: rotate(20deg)
-			//z-index: -1
-			color: #fff
-		
-		a
-			//@include gradientBg(#f17f5c, #ff4b4b)
-			color: rgba(#fff, 0.7)
-			font-size: 14px
-			width: 100%
-			height: 100%
-			display: flex
-			align-items: center
-			justify-content: center
-			text-transform: uppercase
-			//border: 1px solid
-			//border-image-slice: 1
-			//border-width: 1px
-			border-radius: 10px
-			overflow: hidden
-			//border-image-source: linear-gradient(to left, #743ad5, #d53a9d)
-			position: relative
-			
-			&:before
-				content: ""
-				position: absolute
-				top: 0
-				left: 0
-				right: 0
-				bottom: 0
-				border-radius: 10px
-				padding: 1px
-				
-				-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
-				-webkit-mask-composite: xor
-				mask-composite: exclude
-				opacity: 0.99
-
 //index sliders
 .index-months-slide
-	//padding-right: 50px !important
-	//width: calc(100% + 40px) !important
-	//outline: 1px solid red
-	//margin-left: -20px
-	//margin-right: -30px
-
-	
 	&.index-months-income-slide
 		ul
 			li
 				@include gradientBg2(#0fbcba, #21bf56)
 	
 	ul
-		//gap: 20px
-		
-		//padding-right: 50px
-		
 		li
 			margin-top: 20px
 			margin-bottom: 25px
@@ -1241,32 +1128,15 @@ a
 		white-space: nowrap
 	
 	.index-count
-		//position: absolute
-		//bottom: 7px
-		//right: 7px
 		opacity: 0.7
 		font-weight: 300
-//color: #000
-//width: 50% !important
-
 
 .index-by-months-slide
-	//width: calc(100% + 40px) !important
-	//outline: 1px solid red
-	//margin-left: -20px
-	
 	ul
-		//gap: 20px
-		box-sizing: border-box
-		
 		li
-			box-sizing: border-box
-			//margin-left: 20px
-			//margin-right: 20px
 			margin-top: 20px
 			margin-bottom: 25px
 			@include gradientBg2(#F09819, #FF512F)
-			//background: rgba(#fff, 0.03)
 			padding: 10px 15px
 			color: #fff
 			border-radius: 10px
@@ -1306,8 +1176,6 @@ a
 
 .divider
 	margin: 30px 0 40px
-	//height: 1px
-	//border-bottom: 5px dashed rgba(#000, 0.3)
 	white-space: nowrap
 	font-size: 30px
 	letter-spacing: 10px
