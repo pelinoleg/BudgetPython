@@ -4789,6 +4789,8 @@ a {
   padding: 0;
   right: -7px;
   position: relative;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 .radio-currency label {
   border-radius: 50em;
