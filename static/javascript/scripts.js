@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
         gap: '25px',
         perPage: 4,
         arrows: false,
+        waitForTransition: false,
         breakpoints: {
             720: {
                 perPage: 2,
@@ -98,18 +99,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }).mount();
 
 
-    new Splide('.splide-years', {
-        // type: 'loop',
-        // padding: '30px',
-        pagination: false,
-        autoHeight: true,
-        drag: false,
-        classes: {
-            arrows: "slide-years"
-        },
-        waitForTransition: false
-
-    }).mount();
+    // new Splide('.splide-years', {
+    //     // type: 'loop',
+    //     // padding: '30px',
+    //     pagination: false,
+    //     autoHeight: true,
+    //     drag: false,
+    //     classes: {
+    //         arrows: "slide-years"
+    //     },
+    //     waitForTransition: false
+    //
+    // }).mount();
 
 
     // var elms = document.getElementsByClassName('splide-months');
