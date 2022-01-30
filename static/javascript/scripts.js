@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
         autoHeight: true,
         // isNavigation: true,
         gap: '25px',
-        perPage: 4,
+        perPage: 3,
         arrows: false,
         waitForTransition: false,
         breakpoints: {
