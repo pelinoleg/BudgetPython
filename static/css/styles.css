@@ -4781,4 +4781,10 @@ a {
   -webkit-box-shadow: unset !important;
           box-shadow: unset !important;
   gap: 5px;
+  padding: 0;
+  right: -7px;
+  position: relative;
+}
+.radio-currency label {
+  border-radius: 50em;
 }
