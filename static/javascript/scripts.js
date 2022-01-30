@@ -106,27 +106,28 @@ document.addEventListener('DOMContentLoaded', function () {
         drag: false,
         classes: {
             arrows: "slide-years"
-        }
+        },
+        waitForTransition: false
 
     }).mount();
 
 
-    var elms = document.getElementsByClassName('splide-months');
-    for (var i = 0; i < elms.length; i++) {
-        new Splide(elms[i], {
-            // type: 'loop',
-            padding: '50px',
-            pagination: true,
-            autoHeight: true,
-            isNavigation: true,
-            classes: {
-                arrows: "slide-months"
-
-            }
-
-        }).mount();
-
-    }
+    // var elms = document.getElementsByClassName('splide-months');
+    // for (var i = 0; i < elms.length; i++) {
+    //     new Splide(elms[i], {
+    //         // type: 'loop',
+    //         padding: '50px',
+    //         pagination: true,
+    //         autoHeight: true,
+    //         isNavigation: true,
+    //         classes: {
+    //             arrows: "slide-months"
+    //
+    //         }
+    //
+    //     }).mount();
+    //
+    // }
 
 
 });
