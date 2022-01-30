@@ -37,27 +37,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
     new Splide('.splide-months-index', {
         // type: 'loop',
-        padding: '30px',
+        padding: '3em',
         pagination: false,
         autoHeight: true,
         // isNavigation: true,
-        perPage: 3,
-        perMove: 2,
-        // perMove: 4,
+        gap: '25px',
+        perPage: 4,
         arrows: false,
+        breakpoints: {
+            720: {
+                perPage: 2,
+            },
+        },
         // classes: {
         //     arrows: "slide-months"
         // }
     }).mount();
     new Splide('.splide-months-income-index', {
         // type: 'loop',
-        padding: '30px',
+        padding: '3em',
         pagination: false,
         autoHeight: true,
         // isNavigation: true,
 
-        perPage: 3,
+        gap: '25px',
+        perPage: 4,
         arrows: false,
+        breakpoints: {
+            720: {
+                perPage: 2,
+            },
+        },
         // perMove: 4,
         // classes: {
         //     arrows: "slide-months2"
@@ -66,13 +76,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     new Splide('.splide-by-months', {
         // type: 'loop',
-        padding: '30px',
+        padding: '3em',
         pagination: false,
         autoHeight: true,
         // isNavigation: true,
-
-        perPage: 2,
+        gap: '25px',
+        perPage: 4,
         arrows: false,
+        breakpoints: {
+            720: {
+                perPage: 2,
+            },
+        }
         // perMove: 4,
         // classes: {
         //     arrows: "slide-months2"
