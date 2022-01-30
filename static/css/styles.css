@@ -3365,6 +3365,12 @@ a:hover, a:focus, a:active {
   background: transparent;
 }
 
+.mm-menu_offcanvas {
+  width: 70%;
+  min-width: 240px;
+  max-width: 300px;
+}
+
 table {
   width: 100%;
   margin: 0 auto;
