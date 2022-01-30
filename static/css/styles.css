@@ -4865,8 +4865,24 @@ a {
           transform: rotate(-45deg) translateX(10px);
 }
 
+.list-menu li {
+  overflow: hidden;
+}
 .list-menu li a {
-  padding-left: 40px;
+  padding-left: 75px;
+  overflow: hidden;
+}
+.list-menu li a i {
+  position: absolute;
+  -webkit-transform: rotate(5deg);
+      -ms-transform: rotate(5deg);
+          transform: rotate(5deg);
+  font-size: 40px;
+  left: 20px;
+  top: 0;
+  opacity: 0.1;
+  text-align: center;
+  width: 40px;
 }
 
 .list-title {
