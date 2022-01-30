@@ -197,23 +197,16 @@ a
 
 .right-container
 	//box-shadow: $shadow-l
-	width: 600px
-	min-width: 600px
-	flex-shrink: 0
-	border-radius: 15px
-	margin: 10px
-	padding: 0 10px
+	width: 100%
+	//flex-shrink: 0
 	background: var(--gray-17) url("../images/bg_page.png")
 	position: relative
 	//overflow: hidden
-	border: 1px solid rgba(#fff, 0.7)
 	box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072)
 	
 	@include dark
 		background: var(--gray-87) url("../images/bg_page.png")
 		box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072)
-		
-		border: 1px solid rgba(#fff, 0.06)
 
 .sidebar-menu li
 	position: relative
@@ -455,9 +448,9 @@ a
 //	color: #e0c257 !important
 
 .page_title
-	margin-left: -10px
+	//margin-left: -10px
 	//margin-top: 13px
-	width: calc(100% + 20px)
+	//width: calc(100% + 20px)
 	padding: 5px 20px
 	//outline: 1px solid red
 	font-size: 23px
@@ -1091,27 +1084,27 @@ a
 //margin-left: -250px
 .container
 	transition: all 0.6s cubic-bezier(0, 1.17, .06, 1.16)
-	max-width: 900px
+	//max-width: 900px
 	margin: 0 auto
-	//overflow: hidden
-	padding: 20px
+//overflow: hidden
+//padding: 20px
 //outline: 1px solid red
 //.container.side-panel-close
 	//transform: translateX(250px)
 @media only screen and (max-width: 720px)
-	.container
-		width: 100%
-		padding: 0
+	//.container
+	//	width: 100%
+	//	padding: 0
 	//.sidebar-menu-wrap
 	//	margin-left: -300px
-	.right-container
-		width: 100%
-		min-width: 300px
-		margin: 0
-		border: unset
-		border-radius: unset
-	.container.side-panel-close
-		transform: translateX(300px)
+	//.right-container
+	//	width: 100%
+	//	min-width: 300px
+	//	margin: 0
+	//	border: unset
+	//	border-radius: unset
+	//.container.side-panel-close
+	//	transform: translateX(300px)
 	
 	.index-months-slide
 		.index-total
@@ -1377,4 +1370,7 @@ a
 
 .list-title:after
 	border: unset
-	
+
+.mm-page
+	display: flex
+	flex-direction: column

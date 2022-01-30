@@ -3633,16 +3633,9 @@ a {
 }
 
 .right-container {
-  width: 600px;
-  min-width: 600px;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  border-radius: 15px;
-  margin: 10px;
-  padding: 0 10px;
+  width: 100%;
   background: var(--gray-17) url("../images/bg_page.png");
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.7);
   -webkit-box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072);
           box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072);
 }
@@ -3650,7 +3643,6 @@ a {
   background: var(--gray-87) url("../images/bg_page.png");
   -webkit-box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072);
           box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072);
-  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .sidebar-menu li {
@@ -3918,8 +3910,6 @@ a {
 }
 
 .page_title {
-  margin-left: -10px;
-  width: calc(100% + 20px);
   padding: 5px 20px;
   font-size: 23px;
   color: var(--gray-85);
@@ -4582,31 +4572,10 @@ a {
   -webkit-transition: all 0.6s cubic-bezier(0, 1.17, 0.06, 1.16);
   -o-transition: all 0.6s cubic-bezier(0, 1.17, 0.06, 1.16);
   transition: all 0.6s cubic-bezier(0, 1.17, 0.06, 1.16);
-  max-width: 900px;
   margin: 0 auto;
-  padding: 20px;
 }
 
 @media only screen and (max-width: 720px) {
-  .container {
-    width: 100%;
-    padding: 0;
-  }
-
-  .right-container {
-    width: 100%;
-    min-width: 300px;
-    margin: 0;
-    border: unset;
-    border-radius: unset;
-  }
-
-  .container.side-panel-close {
-    -webkit-transform: translateX(300px);
-        -ms-transform: translateX(300px);
-            transform: translateX(300px);
-  }
-
   .index-months-slide .index-total {
     font-size: 22px !important;
   }
@@ -4895,4 +4864,14 @@ a {
 
 .list-title:after {
   border: unset;
+}
+
+.mm-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
