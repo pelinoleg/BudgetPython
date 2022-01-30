@@ -236,11 +236,11 @@ document.addEventListener(
             },
 
             "sidebar": {
-                collapsed: {
-                    use: "(min-width: 820px)"
-                },
+                // collapsed: {
+                //     use: "(min-width: 820px)"
+                // },
                 expanded: {
-                    use: "(min-width: 1440px)"
+                    use: "(min-width: 720px)"
                 }
             },
             "iconPanels": {
