@@ -2249,21 +2249,6 @@ select:invalid::placeholder,
   color: var(--form-color-invalid-d);
 }
 
-@media (any-pointer: coarse) {
-  [type=text],
-[type=number],
-[type=date],
-textarea,
-select,
-.input {
-    line-height: 36px;
-    padding-left: 15px;
-    padding-right: 15px;
-    font-size: 16px;
-    min-height: 50px;
-  }
-}
-
 textarea {
   line-height: 18px;
 }
