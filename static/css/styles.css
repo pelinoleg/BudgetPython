@@ -3631,6 +3631,9 @@ a {
 .content {
   padding: 20px 10px 80px 10px;
 }
+.content.content-stats {
+  padding: 0;
+}
 
 .right-container {
   width: 100%;
