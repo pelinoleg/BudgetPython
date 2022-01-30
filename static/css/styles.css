@@ -4683,10 +4683,6 @@ a {
   opacity: 0.99;
 }
 
-.index-months-slide {
-  width: calc(100% + 40px) !important;
-  margin-left: -20px;
-}
 .index-months-slide.index-months-income-slide ul li {
   background: #0fbcba;
   background: -o-linear-gradient(305deg, #0fbcba 0%, #21bf56 80%, #21bf56 100%);
@@ -4720,10 +4716,6 @@ a {
   font-weight: 300;
 }
 
-.index-by-months-slide {
-  width: calc(100% + 40px) !important;
-  margin-left: -20px;
-}
 .index-by-months-slide ul {
   gap: 20px;
 }
