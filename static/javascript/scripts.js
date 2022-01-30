@@ -87,6 +87,9 @@ document.addEventListener('DOMContentLoaded', function () {
             720: {
                 perPage: 2,
             },
+            480: {
+                perPage: 1,
+            },
         }
         // perMove: 4,
         // classes: {
