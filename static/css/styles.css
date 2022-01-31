@@ -3684,9 +3684,6 @@ a {
   gap: 3px;
 }
 :root.dark-theme .radio-group input[type=radio]:checked + label {
-  background: -o-linear-gradient(105deg, #52A0FD 0%, #00e2fa 80%, #00e2fa 100%) !important;
-  background: linear-gradient(-15deg, #52A0FD 0%, #00e2fa 80%, #00e2fa 100%) !important;
-  color: #fff;
   color: #fff;
   -webkit-transform: scale(1.2);
       -ms-transform: scale(1.2);
