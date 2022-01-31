@@ -3357,6 +3357,10 @@ a:hover, a:focus, a:active {
   color: #f78d2a;
 }
 
+.mm-listitem:after {
+  display: none;
+}
+
 @media only screen and (min-width: 1080px) {
   .side-panel-toggle {
     opacity: 0;
