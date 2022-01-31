@@ -76,4 +76,48 @@
 
 .mm-wrapper_opening .mm-menu_offcanvas.mm-menu_opened ~ .mm-slideout
 	transform: translate3d(300px, 0, 0)
+
+//menu
+.list-menu
+	li
+		overflow: hidden
+	
+	li a
+		//padding-left: 75px
+		overflow: hidden
+		font-size: 19px
+		
+		i
+			//position: absolute
+			//transform: rotate(5deg)
+			font-size: 20px
+			//left: 20px
+			//top: 0
+			opacity: 0.4
+			text-align: center
+			width: 40px
+
+.list-title
+	font-size: 20px
+	text-transform: uppercase
+	margin-top: 15px
+	opacity: 0.5
+	font-weight: 200
+	color: #fff
+
+.list-title:after
+	border: unset
+
+.list-expense
+	color: #dc3a4f
+
+.list-income
+	color: #21bf56
+
+.list-budget
+	color: #27c4fc
+
+@media only screen and (min-width: 1080px)
+	.side-panel-toggle
+		opacity: 0
 	

@@ -120,30 +120,51 @@
 	<nav id="menu" >
 		<ul class="list-menu" >
 			<li ><a href="{{ url_for('index') }}" ><i class="fa-solid fa-bank" ></i >Home</a ></li >
-			<li class="list-title" ><span >Expenses</span >
+			<li ><a href="{{ url_for('stats') }}" ><i class="fa-regular fa-chart-bar" ></i >Stats</a ></li >
 
-			<li ><a href="{{ url_for('add') }}" ><i class="fa fa-regular fa-square-minus" ></i >Add Expense</a ></li >
-			<li ><a href="{{ url_for('categories') }}" ><i class="fa fa-grip-vertical" ></i >Expenses Categories</a ></li >
-			<li ><a href="{{ url_for('all_expenses') }}" ><i class="fa fa-solid fa-table-list" ></i >All Expenses</a ></li >
+			<li class="list-title mt-20" ><span >Expenses</span >
+
+			<li class="list-expense" ><a href="{{ url_for('add') }}" >
+				<i class="fa fa-regular fa-square-minus" ></i >
+				Add Expense</a >
+			</li >
+
+			<li class="list-expense" >
+				<a href="{{ url_for('categories') }}" >
+					<i class="fa fa-grip-vertical" ></i >
+					Expenses Categories</a >
+			</li >
+			<li class="list-expense" >
+				<a href="{{ url_for('all_expenses') }}" >
+					<i class="fa fa-solid fa-table-list" ></i >
+					All Expenses</a >
+			</li >
 
 
 			</li >
 			<li class="list-title" ><span >Incomes</span >
 
-			<li ><a href="{{ url_for('add_income') }}" ><i class="fa fa-regular fa-square-plus" ></i >Add Income</a ></li >
-			<li ><a href="{{ url_for('categories_income') }}" ><i class="fa fa-solid fa-euro-sign" ></i >Categories</a ></li >
-			<li ><a href="{{ url_for('incomes') }}" ><i class="fa fa-solid fa-money-bill-1-wave" ></i >All Incomes</a ></li >
+			<li class="list-income" ><a href="{{ url_for('add_income') }}" ><i class="fa fa-regular fa-square-plus" ></i >Add
+																																																										Income</a >
+			</li >
+			<li class="list-income" ><a href="{{ url_for('categories_income') }}" ><i class="fa fa-solid fa-euro-sign" ></i >Categories</a >
+			</li >
+			<li class="list-income" ><a href="{{ url_for('incomes') }}" ><i class="fa fa-solid fa-money-bill-1-wave" ></i >All
+																																																										 Incomes</a >
+			</li >
 
 
 			</li >
 			<li class="list-title" ><span >Budgets</span >
 
-			<li ><a href="{{ url_for('add_budget') }}" ><i class="fa fa-regular fa-square-plus" ></i >Add Budget</a ></li >
-			<li ><a href="{{ url_for('budgets') }}" ><i class="fa-solid fa-coins" ></i >Budgets</a ></li >
+			<li class="list-budget" ><a href="{{ url_for('add_budget') }}" ><i class="fa fa-regular fa-square-plus" ></i >Add
+																																																										Budget</a >
+			</li >
+			<li class="list-budget" ><a href="{{ url_for('budgets') }}" ><i class="fa-solid fa-coins" ></i >Budgets</a ></li >
 
 
 			</li >
-			<li ><a href="{{ url_for('stats') }}" ><i class="fa-regular fa-chart-bar" ></i >Stats</a ></li >
+
 		</ul >
 	</nav >
 

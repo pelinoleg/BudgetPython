@@ -3314,6 +3314,50 @@ a:hover, a:focus, a:active {
           transform: translate3d(300px, 0, 0);
 }
 
+.list-menu li {
+  overflow: hidden;
+}
+.list-menu li a {
+  overflow: hidden;
+  font-size: 19px;
+}
+.list-menu li a i {
+  font-size: 20px;
+  opacity: 0.4;
+  text-align: center;
+  width: 40px;
+}
+
+.list-title {
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-top: 15px;
+  opacity: 0.5;
+  font-weight: 200;
+  color: #fff;
+}
+
+.list-title:after {
+  border: unset;
+}
+
+.list-expense {
+  color: #dc3a4f;
+}
+
+.list-income {
+  color: #21bf56;
+}
+
+.list-budget {
+  color: #27c4fc;
+}
+
+@media only screen and (min-width: 1080px) {
+  .side-panel-toggle {
+    opacity: 0;
+  }
+}
 table {
   width: 100%;
   margin: 0 auto;
@@ -3716,6 +3760,7 @@ a {
           transform: translateX(-15px);
   margin-top: 35px;
   margin-bottom: 5px;
+  margin-left: 30px;
 }
 .cards-day:first-child {
   margin-top: 0;
@@ -4671,38 +4716,6 @@ a {
   -webkit-transform: rotate(-45deg) translateX(10px);
       -ms-transform: rotate(-45deg) translateX(10px);
           transform: rotate(-45deg) translateX(10px);
-}
-
-.list-menu li {
-  overflow: hidden;
-}
-.list-menu li a {
-  padding-left: 75px;
-  overflow: hidden;
-}
-.list-menu li a i {
-  position: absolute;
-  -webkit-transform: rotate(5deg);
-      -ms-transform: rotate(5deg);
-          transform: rotate(5deg);
-  font-size: 40px;
-  left: 20px;
-  top: 0;
-  opacity: 0.1;
-  text-align: center;
-  width: 40px;
-}
-
-.list-title {
-  font-size: 20px;
-  text-transform: uppercase;
-  margin-top: 15px;
-  opacity: 0.5;
-  font-weight: 200;
-}
-
-.list-title:after {
-  border: unset;
 }
 
 .mm-page {

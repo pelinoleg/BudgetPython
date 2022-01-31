@@ -413,7 +413,7 @@ def edit_category(id):
             else:
                 conn.execute("INSERT INTO subcategories (name, category_id) VALUES (?,?)", (subcategory, category_id))
                 conn.commit()
-                flash('Subategoria was succesful created', category='alert-success')
+                flash('Subategory was succesful created', category='alert-success')
                 return redirect(request.referrer)
 
     subcategories = \
@@ -426,7 +426,7 @@ def edit_category(id):
                      'FROM subcategories '
                      'LEFT JOIN categories ON cat_id = sub_cat_id '
                      'WHERE cat_id = sub_cat_id '
-                     # 'ORDER BY sub_state '
+                     'ORDER BY sub_state '
 
                      ).fetchall()
 
@@ -523,9 +523,9 @@ def categories():
         "SELECT categories.id as cid, categories.name as name, color as color, categories.state, count(expenses.sum) as count "
         "FROM categories "
         "LEFT JOIN expenses on categories.id = expenses.category "
-        "WHERE categories.state is not 'true' "
+        # "WHERE categories.state is not 'true' "
         "GROUP BY name "
-        "ORDER BY count DESC"
+        "ORDER BY categories.state , count DESC"
     ).fetchall()
     # categories_active = conn.execute(
     #     "SELECT id, name, color as color, state FROM categories WHERE state is not 'true'").fetchall()
