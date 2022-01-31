@@ -11,11 +11,11 @@
 		{% else %}
 			<form method="post" >
 				<div class="flex flex-col mx-auto gap-15 mt-20" >
-					<div class="flex" >
+					<div class="flex input" >
 						<input type="number" autofocus min="0" step="0.01" pattern="[0-9]+([\.,][0-9]+)?" name="amount"
-									 placeholder="100" class="summ py-5 mr-20" value="{{ request.form['amount'] }}" />
+									 placeholder="100" class="summ py-5 mr-20 transparent" value="{{ request.form['amount'] }}" />
 
-						<div class="radio-group flex-nowrap" >
+						<div class="radio-group  radio-currency flex-nowrap flex-shrink-0" >
 							<input type="radio" id="eur" checked name="currency" value="eur" >
 							<label for="eur" >EUR</label >
 							<input type="radio" id="usd" name="currency" value="usd" >
@@ -26,7 +26,7 @@
 							<label for="mdl" >MDL</label >
 						</div >
 
-						<button type="submit" class="py-8 send-button" >Add</button >
+
 					</div >
 
 
@@ -46,6 +46,7 @@
 						<textarea name="comment" placeholder="Comment"
 											class="form-control" >{{ request.form['comment'] }}</textarea >
 					</div >
+					<button type="submit" class="py-8 send-button" >Add</button >
 				</div >
 			</form >
 		{% endif %}

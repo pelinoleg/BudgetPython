@@ -41,8 +41,8 @@
 	<div class="mt-42 subtitle2" >All categories:</div >
 	<div class="  flex flex-wrap radio-group category-group" >
 		{% for category in categories %}
-			<label class="badge {% if category['state'] == 'true' %} hide-category {% endif %}" >
-				<span class="{{ category['color'] }} " >{{ category['name'] }} </span >
+			<label class="badge {{ category['color'] }} {% if category['state'] == 'true' %} hide-category {% endif %}" >
+				<span >{{ category['name'] }} </span >
 
 				<a href="/edit-category/{{ category['cid'] }}" class="ml-10" ><i class="fa-solid fa-pen-to-square" ></i ></a >
 				{#<a href="/category-delete/{{ category['id'] }}" >delete</a >#}

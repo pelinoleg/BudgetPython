@@ -19,7 +19,7 @@
 							{% for cid, name, color, state, count, budget_category in categories %}
 
 								<input type="radio" value="{{ cid }}" name="category" id="{{ name }}" />
-								<label for="{{ name }}" ><span class="{{ color }}" >{{ name }}</span ></label >
+								<label for="{{ name }}" class="{{ color }}" ><span >{{ name }}</span ></label >
 
 							{% endfor %}
 						</div >
