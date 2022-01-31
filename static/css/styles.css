@@ -3855,11 +3855,23 @@ a {
 .card-category {
   font-size: 20px;
   font-weight: 300;
+  padding: 1px;
+  border-radius: 15px;
+}
+.card-category span {
+  display: block;
+  padding: 3px 8px;
+  background: var(--gray-87) url("../images/bg_page.png");
+  border-radius: 14px;
 }
 
 .card-subcategory {
   font-size: 18px;
   font-weight: 300;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2px 6px;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .card-comment {
