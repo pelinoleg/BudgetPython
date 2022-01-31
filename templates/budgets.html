@@ -38,32 +38,21 @@
 			{#				{% endfor %}#}
 			{#			</div >#}
 
-			<div class="mt-20" >
-
-				{% for su, bid, categor, color, amount in budgets2 %}
-
-
-					{% set per = su * 100 / amount %}
-					{{ categor }} - {{ su|int }} from {{ amount|int }} ({{ per|int }}%) ----
-												-----<a href="/edit/{{ bid }}" >edit</a >-----
-					<form class="form-delete" action="{{ url_for('delete_budget', id=bid) }}" method="POST" >
-						<button type="submit" class="btn btn-delete" >X</button >
-					</form ><br >
-				{% endfor %}
+			<div class="budgets mt-20" >
+				<div class="budgets-wrap" >
+					{% for su, bid, categor, color, amount in budgets2 %}
 
 
-				<hr >
+						{% set per = su * 100 / amount %}
+						<div class="budget-title" >{{ categor }} - {{ su|int }} from {{ amount|int }} ({{ per|int }}%)</div >
+						<a href="/edit_budget/{{ bid }}" > edit</a >
+						<form class="form-delete" action="{{ url_for('delete_budget', id=bid) }}" method="POST" >
+							<button type="submit" class="btn btn-delete" > X</button >
+						</form ><br >
+					{% endfor %}
+				</div >
 
-				{% for amount, bid, categor in budgets %}
-					{{ amount }} - {{ categor }}
-				{% endfor %}
 
-				{% for su, amount, budget_category, category_name, category_color in budgets3 %}
-					{% if not su %}
-						{% set su = 0 %}
-					{% endif %}
-					{{ category_name }} - {{ su }} from {{ amount }}  <br >
-				{% endfor %}
 			</div >
 
 
