@@ -3691,8 +3691,8 @@ a {
   -webkit-transform: scale(1.2);
       -ms-transform: scale(1.2);
           transform: scale(1.2);
-  -webkit-box-shadow: 0 0 0 5px rgba(28, 31, 38, 0.5);
-          box-shadow: 0 0 0 5px rgba(28, 31, 38, 0.5);
+  -webkit-box-shadow: 0 0 0 8px rgba(28, 31, 38, 0.5);
+          box-shadow: 0 0 0 8px rgba(28, 31, 38, 0.5);
 }
 :root.dark-theme .radio-group label {
   background: var(--gray-85);
