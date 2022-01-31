@@ -246,10 +246,13 @@ a
 		input[type=radio]
 			&:checked + label
 				//@include gradientBg(#52A0FD, #00e2fa)
-				color: #fff
-				transform: scale(1.2)
-				box-shadow: 0 0 0 8px rgba(#1c1f26, 0.5)
-				//backdrop-filter: blur(10px)
+				
+				//transform: scale(1.2)
+				box-shadow: 0 0 0 1px rgba(#fff, 0.05), $shadow-d-in
+				background: rgba(#000, 0.2) !important
+				
+				span
+					color: rgba(#fff, 0.8) !important
 		
 		label
 			background: var(--gray-85)

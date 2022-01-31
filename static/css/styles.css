@@ -2758,7 +2758,7 @@ textarea {
 }
 
 .radio-group {
-  border-radius: 18px;
+  border-radius: 20px;
   background: var(--gray-25);
   padding: 3px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
@@ -3684,12 +3684,12 @@ a {
   gap: 3px;
 }
 :root.dark-theme .radio-group input[type=radio]:checked + label {
-  color: #fff;
-  -webkit-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-          transform: scale(1.2);
-  -webkit-box-shadow: 0 0 0 8px rgba(28, 31, 38, 0.5);
-          box-shadow: 0 0 0 8px rgba(28, 31, 38, 0.5);
+  -webkit-box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 3px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 3px rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+:root.dark-theme .radio-group input[type=radio]:checked + label span {
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 :root.dark-theme .radio-group label {
   background: var(--gray-85);
