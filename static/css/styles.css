@@ -4765,7 +4765,10 @@ a {
   --mm-sidebar-expanded-size: 300px;
 }
 
-#subcategories-add label,
+#subcategories-add {
+  display: none;
+}
+
 #subcategories-add label {
   display: none;
 }
