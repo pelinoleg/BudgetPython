@@ -13,7 +13,7 @@
 			<div class="cards relative" >
 				{% for key, list in this_month_transactions|groupby('day')|sort(attribute='0', reverse=True) %}
 					<div class="cards-day" >{{ key }} {{ this_month|int|month_name }}</div >
-					{% for id, year, month, day,  category, color, subcategory, sum, comment in list %}
+					{% for id, year, month, day,  category, color, subcategory, sum, comment in list|sort(attribute='7', reverse=True) %}
 
 						<div
 								class="card flex items-center relative overflow-hidden flex-wrap {% if not color %} card-income {% endif %}" >
