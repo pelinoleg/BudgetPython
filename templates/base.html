@@ -119,23 +119,25 @@
 
 	<nav id="menu" >
 		<ul class="list-menu" >
-			<li ><a href="{{ url_for('index') }}" ><i class="fa-solid fa-bank" ></i >Home</a ></li >
-			<li class="list-stats" ><a href="{{ url_for('stats') }}" ><i class="fa-regular fa-chart-bar" ></i >Stats</a >
+			<li {% if request.path == '/' %} class="active" {% endif %}><a href="{{ url_for('index') }}" ><i
+					class="fa-solid fa-bank" ></i >Home</a ></li >
+			<li class="list-stats {% if request.path == '/stats' %} active {% endif %}" ><a href="{{ url_for('stats') }}" ><i
+					class="fa-regular fa-chart-bar" ></i >Stats</a >
 			</li >
 
 			<li class="list-title mt-20" ><span >Expenses</span >
 
-			<li class="list-expense" ><a href="{{ url_for('add') }}" >
+			<li class="list-expense {% if request.path == '/add' %} active {% endif %}" ><a href="{{ url_for('add') }}" >
 				<i class="fa fa-regular fa-square-minus" ></i >
 				Add Expense</a >
 			</li >
 
-			<li class="list-expense" >
+			<li class="list-expense {% if request.path == '/categories' %} active {% endif %}" >
 				<a href="{{ url_for('categories') }}" >
 					<i class="fa fa-grip-vertical" ></i >
 					Expenses Categories</a >
 			</li >
-			<li class="list-expense" >
+			<li class="list-expense {% if request.path == '/all-expenses' %} active {% endif %}" >
 				<a href="{{ url_for('all_expenses') }}" >
 					<i class="fa fa-solid fa-table-list" ></i >
 					All Expenses</a >
@@ -145,24 +147,29 @@
 			</li >
 			<li class="list-title" ><span >Incomes</span >
 
-			<li class="list-income" ><a href="{{ url_for('add_income') }}" ><i class="fa fa-regular fa-square-plus" ></i >Add
-																																																										Income</a >
+			<li class="list-income {% if request.path == '/add_income' %} active {% endif %}" ><a
+					href="{{ url_for('add_income') }}" ><i class="fa fa-regular fa-square-plus" ></i >Add
+																																														Income</a >
 			</li >
-			<li class="list-income" ><a href="{{ url_for('categories_income') }}" ><i class="fa fa-solid fa-euro-sign" ></i >Incomes
-																																																											 Categories</a >
+			<li class="list-income {% if request.path == '/categories_income' %} active {% endif %}" ><a
+					href="{{ url_for('categories_income') }}" ><i class="fa fa-solid fa-euro-sign" ></i >Incomes
+																																															 Categories</a >
 			</li >
-			<li class="list-income" ><a href="{{ url_for('incomes') }}" ><i class="fa fa-solid fa-money-bill-1-wave" ></i >All
-																																																										 Incomes</a >
+			<li class="list-income {% if request.path == '/incomes' %} active {% endif %}" ><a
+					href="{{ url_for('incomes') }}" ><i class="fa fa-solid fa-money-bill-1-wave" ></i >All
+																																														 Incomes</a >
 			</li >
 
 
 			</li >
 			<li class="list-title" ><span >Budgets</span >
 
-			<li class="list-budget" ><a href="{{ url_for('add_budget') }}" ><i class="fa fa-regular fa-square-plus" ></i >Add
-																																																										Budget</a >
+			<li class="list-budget {% if request.path == '/add_budget' %} active {% endif %}" ><a
+					href="{{ url_for('add_budget') }}" ><i class="fa fa-regular fa-square-plus" ></i >Add
+																																														Budget</a >
 			</li >
-			<li class="list-budget" ><a href="{{ url_for('budgets') }}" ><i class="fa-solid fa-coins" ></i >Budgets</a ></li >
+			<li class="list-budget {% if request.path == '/budgets' %} active {% endif %}" ><a
+					href="{{ url_for('budgets') }}" ><i class="fa-solid fa-coins" ></i >Budgets</a ></li >
 
 
 			</li >

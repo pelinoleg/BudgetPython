@@ -3316,6 +3316,9 @@ a:hover, a:focus, a:active {
 
 .list-menu li {
   overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 2px;
+  border: 1px solid transparent;
 }
 .list-menu li a {
   overflow: hidden;
@@ -3359,6 +3362,13 @@ a:hover, a:focus, a:active {
 
 .mm-listitem:after {
   display: none;
+}
+
+.list-menu li.active {
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 @media only screen and (min-width: 1080px) {

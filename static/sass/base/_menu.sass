@@ -81,6 +81,9 @@
 .list-menu
 	li
 		overflow: hidden
+		border-radius: 10px
+		margin-bottom: 2px
+		border: 1px solid transparent
 	
 	li a
 		//padding-left: 75px
@@ -122,6 +125,11 @@
 
 .mm-listitem:after
 	display: none
+
+.list-menu li.active
+	background: rgba(#000, 0.1)
+	box-shadow: $shadow-d-in
+	border: 1px solid rgba(#fff, 0.05)
 
 @media only screen and (min-width: 1080px)
 	.side-panel-toggle
