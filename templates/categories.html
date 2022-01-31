@@ -18,7 +18,7 @@
 				{% for i in range(37) %}
 					<input type="radio" value="{{ 'gradient_'+ i|string  or  request.form.get('color') }}" name="color"
 								 id="gradient_{{ i }}" >
-					<label for="gradient_{{ i }}" ><span class="gradient_{{ i }}" >#</span ></label >
+					<label for="gradient_{{ i }}" class="gradient_{{ i }}" ><span style="color:#fff" >#</span ></label >
 				{% endfor %}
 			</div >
 

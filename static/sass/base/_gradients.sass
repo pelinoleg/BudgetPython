@@ -1,11 +1,12 @@
 @mixin gradientBg($startColor, $endColor)
 	//background: $startColor
-	//background: linear-gradient(-15deg, $startColor 0%, $endColor 80%, $endColor 100%) !important
+	background: linear-gradient(-15deg, $startColor 0%, $endColor 80%, $endColor 100%) !important
 	
 	//background: -webkit-linear-gradient(145deg, $startColor, $endColor)
 	//-webkit-background-clip: text
 	//-webkit-text-fill-color: transparent
-	color: $startColor
+	//color: $startColor
+	color: #fff
 
 .gradient_0
 	@include gradientBg(#ec008c, #fc6767)
