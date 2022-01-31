@@ -27,7 +27,7 @@
 				</div >
 
 				<div class="form-item" >
-					<div class="radio-group category-group" >
+					<div class="radio-group category-group" id="select-add-category" >
 						{% for cid, name, color, state, count in categories %}
 
 							<input type="radio" value="{{ cid }}" name="category" id="{{ name }}" />
@@ -38,12 +38,11 @@
 				</div >
 
 				<div class="form-item" >
-					<div class="radio-group category-group w-full" >
+					<div class="radio-group category-group w-full" id="subcategories-add" >
 						{% for id, name, category in subcategories %}
 
-							<input type="radio" value="{{ id }}" name="subcategory" id="{{ name }}"
-										 class="{{ name }} {{ category }}" />
-							<label class="{{ name }} {{ category }}" for="{{ name }}" >{{ name }} </label >
+							<input type="radio" value="{{ id }}" name="subcategory" id="{{ 'sub_' + name }}" class="{{ category }}" />
+							<label class="{{ 'sub_'+ category }}" for="{{ 'sub_' + name }}" >{{ name }} </label >
 
 						{% endfor %}
 					</div >

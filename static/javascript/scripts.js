@@ -261,7 +261,23 @@ document.addEventListener(
 );
 
 
-document.getElementById('go-back').addEventListener('click', () => {
-    history.back();
+// document.getElementById('go-back').addEventListener('click', () => {
+//     history.back();
+// });
+
+
+// sleect subcategroies
+$('#select-add-category input').on('change', function () {
+    $('#subcategories-add').hide();
+    const id_cat = $('#select-add-category input:checked').attr('id');
+    $('#subcategories-add label').hide();
+    const sub_length = $('#subcategories-add' + ' .sub_' + id_cat).length;
+    if (sub_length > 0) {
+        $('#subcategories-add').show();
+        $('#subcategories-add' + ' .sub_' + id_cat).show();
+    }
+
+    // $('#subcategories-add .Localuri').show();
 });
+
 

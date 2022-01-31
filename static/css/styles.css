@@ -4764,3 +4764,8 @@ a {
 :root {
   --mm-sidebar-expanded-size: 300px;
 }
+
+#subcategories-add label,
+#subcategories-add label {
+  display: none;
+}
