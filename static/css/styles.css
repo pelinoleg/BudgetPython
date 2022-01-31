@@ -3058,231 +3058,155 @@ a:hover, a:focus, a:active {
 }
 
 .gradient_0 {
-  background: -webkit-linear-gradient(145deg, #ec008c, #fc6767);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ec008c;
 }
 
 .gradient_1 {
-  background: -webkit-linear-gradient(145deg, #2193b0, #6dd5ed);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #2193b0;
 }
 
 .gradient_2 {
-  background: -webkit-linear-gradient(145deg, #373B44, #4286f4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #373B44;
 }
 
 .gradient_3 {
-  background: -webkit-linear-gradient(145deg, #f953c6, #b91d73);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #f953c6;
 }
 
 .gradient_4 {
-  background: -webkit-linear-gradient(145deg, #7F7FD5, #91EAE4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #7F7FD5;
 }
 
 .gradient_5 {
-  background: -webkit-linear-gradient(145deg, #f12711, #f5af19);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #f12711;
 }
 
 .gradient_6 {
-  background: -webkit-linear-gradient(145deg, #8A2387, #F27121);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #8A2387;
 }
 
 .gradient_7 {
-  background: -webkit-linear-gradient(145deg, #FF416C, #FF4B2B);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #FF416C;
 }
 
 .gradient_8 {
-  background: -webkit-linear-gradient(145deg, #00B4DB, #0083B0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #00B4DB;
 }
 
 .gradient_9 {
-  background: -webkit-linear-gradient(145deg, #DA4453, #89216B);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #DA4453;
 }
 
 .gradient_10 {
-  background: -webkit-linear-gradient(145deg, #ad5389, #3c1053);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ad5389;
 }
 
 .gradient_11 {
-  background: -webkit-linear-gradient(145deg, #4e54c8, #8f94fb);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #4e54c8;
 }
 
 .gradient_12 {
-  background: -webkit-linear-gradient(145deg, #bc4e9c, #f80759);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #bc4e9c;
 }
 
 .gradient_13 {
-  background: -webkit-linear-gradient(145deg, #11998e, #38ef7d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #11998e;
 }
 
 .gradient_14 {
-  background: -webkit-linear-gradient(145deg, #00b09b, #96c93d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #00b09b;
 }
 
 .gradient_15 {
-  background: -webkit-linear-gradient(145deg, #fc4a1a, #f7b733);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #fc4a1a;
 }
 
 .gradient_16 {
-  background: -webkit-linear-gradient(145deg, #ff9966, #ff5e62);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ff9966;
 }
 
 .gradient_17 {
-  background: -webkit-linear-gradient(145deg, #b033d3, #E100FF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #b033d3;
 }
 
 .gradient_18 {
-  background: -webkit-linear-gradient(145deg, #0cebeb, #29ffc6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #0cebeb;
 }
 
 .gradient_19 {
-  background: -webkit-linear-gradient(145deg, #642B73, #C6426E);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #642B73;
 }
 
 .gradient_20 {
-  background: -webkit-linear-gradient(145deg, #159957, #155799);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #159957;
 }
 
 .gradient_21 {
-  background: -webkit-linear-gradient(145deg, #F2994A, #F2C94C);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #F2994A;
 }
 
 .gradient_22 {
-  background: -webkit-linear-gradient(145deg, #e96443, #904e95);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #e96443;
 }
 
 .gradient_23 {
-  background: -webkit-linear-gradient(145deg, #FF5F6D, #FFC371);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #FF5F6D;
 }
 
 .gradient_24 {
-  background: -webkit-linear-gradient(145deg, #ff4b1f, #ff9068);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ff4b1f;
 }
 
 .gradient_25 {
-  background: -webkit-linear-gradient(145deg, #fd746c, #ff9068);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #fd746c;
 }
 
 .gradient_26 {
-  background: -webkit-linear-gradient(145deg, #00C9FF, #92FE9D);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #00C9FF;
 }
 
 .gradient_27 {
-  background: -webkit-linear-gradient(145deg, #7b4397, #dc2430);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #7b4397;
 }
 
 .gradient_28 {
-  background: -webkit-linear-gradient(145deg, #43cea2, #185a9d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #43cea2;
 }
 
 .gradient_29 {
-  background: -webkit-linear-gradient(145deg, #FF4E50, #F9D423);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #FF4E50;
 }
 
 .gradient_30 {
-  background: -webkit-linear-gradient(145deg, #f2709c, #ff9472);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #f2709c;
 }
 
 .gradient_31 {
-  background: -webkit-linear-gradient(145deg, #f857a6, #ff5858);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #f857a6;
 }
 
 .gradient_32 {
-  background: -webkit-linear-gradient(145deg, #EC6F66, #F3A183);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #EC6F66;
 }
 
 .gradient_33 {
-  background: -webkit-linear-gradient(145deg, #134E5E, #71B280);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #134E5E;
 }
 
 .gradient_34 {
-  background: -webkit-linear-gradient(145deg, #4776E6, #8E54E9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #4776E6;
 }
 
 .gradient_35 {
-  background: -webkit-linear-gradient(145deg, #EB3349, #F45C43);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #EB3349;
 }
 
 .gradient_36 {
-  background: -webkit-linear-gradient(145deg, #FF512F, #DD2476);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #FF512F;
 }
 
 .gradient_37 {
-  background: -webkit-linear-gradient(145deg, #02AAB0, #00CDAC);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #02AAB0;
 }
 
 .mm-menu_theme-dark {
@@ -3679,9 +3603,7 @@ a {
   gap: 3px;
 }
 :root.dark-theme .radio-group input[type=radio]:checked + label {
-  background: -webkit-linear-gradient(145deg, #52A0FD, #00e2fa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #52A0FD;
   color: #fff;
 }
 :root.dark-theme .radio-group label {
