@@ -273,7 +273,7 @@ $('#select-add-category input').on('change', function () {
     $('#subcategories-add label').hide();
     const sub_length = $('#subcategories-add' + ' .sub_' + id_cat).length;
     if (sub_length > 0) {
-        $('#subcategories-add').show();
+        $('#subcategories-add').css("display", "flex")
         $('#subcategories-add' + ' .sub_' + id_cat).show();
     }
 
