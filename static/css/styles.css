@@ -3532,6 +3532,7 @@ a {
 .category-group {
   width: 100%;
   gap: 6px !important;
+  padding: 5px;
 }
 .category-group label {
   text-transform: uppercase;
