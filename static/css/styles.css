@@ -4795,13 +4795,17 @@ a {
   display: none;
 }
 
+.budgets .budget-title {
+  font-size: 20px;
+}
 .budgets .budget-progress {
-  padding: 5px;
+  padding: 0px;
   background: rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
           box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
+  border-radius: 15px;
   position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .budgets .budget-progress .budget-progress-hide {
   position: absolute;
@@ -4812,7 +4816,7 @@ a {
 }
 .budgets .budget-progress .budget-progress-hide .today {
   position: absolute;
-  top: -4px;
+  top: -5px;
   height: calc(100% + 10px);
   width: 1px;
   background: #fff;
@@ -4822,31 +4826,21 @@ a {
   background: #52A0FD;
   background: -o-linear-gradient(305deg, #52A0FD 0%, #00e2fa 80%, #00e2fa 100%);
   background: linear-gradient(145deg, #52A0FD 0%, #00e2fa 80%, #00e2fa 100%);
-  border-radius: 8px;
+  border-radius: 15px;
   color: #0a0a0a;
   text-align: right;
   font-size: 12px;
   line-height: 18px;
   padding-right: 5px;
   font-weight: 500;
+  max-width: 100%;
+  min-width: 25px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
-.budgets .month-days {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 1px;
-  margin-top: 10px;
-  margin-left: 7px;
-  margin-right: 7px;
-}
-.budgets .month-days * {
-  height: 20px;
-  background: rgba(0, 0, 0, 0.3);
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  text-align: center;
-  line-height: 20px;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
+.budgets .budget-progress .progress.over {
+  background: #f23945;
+  background: -o-linear-gradient(305deg, #f23945 0%, #b92c46 80%, #b92c46 100%);
+  background: linear-gradient(145deg, #f23945 0%, #b92c46 80%, #b92c46 100%);
+  color: rgba(255, 255, 255, 0.6);
 }
