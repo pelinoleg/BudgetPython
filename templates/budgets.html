@@ -4,7 +4,7 @@
 		<span >{% block title %} {{ title }} {% endblock %}</span >
 	</div >
 
-	<div class="content p-0" >
+	<div class="content" >
 		<div class=" cards flex-1 mx-auto mt-50" >
 
 			{#			<div class="budgets" >#}
@@ -37,18 +37,32 @@
 			{#					</div >#}
 			{#				{% endfor %}#}
 			{#			</div >#}
+			{{ days_in_month }}
+			{{ current_day }}
+
 
 			<div class="budgets mt-20" >
-				<div class="budgets-wrap" >
+				<div class="budget-wrap" >
 					{% for su, bid, categor, color, amount in budgets2 %}
 
-
 						{% set per = su * 100 / amount %}
-						<div class="budget-title" >{{ categor }} - {{ su|int }} from {{ amount|int }} ({{ per|int }}%)</div >
-						<a href="/edit_budget/{{ bid }}" > edit</a >
-						<form class="form-delete" action="{{ url_for('delete_budget', id=bid) }}" method="POST" >
-							<button type="submit" class="btn btn-delete" > X</button >
-						</form ><br >
+						{% set today = 1 * 100 / days_in_month %}
+						<div class="budget-title subtitle2" >{{ categor }} - {{ su|int }} from {{ amount|int }} - {{ today|round }}
+						</div >
+
+						<div class="budget-progress" >
+							<div class="progress" style="width:{{ per|int }}%" >{{ per|int }}%</div >
+							<div class="budget-progress-hide" >
+								<div class="today" style="left: {{ today }}%" ></div >
+							</div >
+
+
+						</div >
+						<div class="month-days" >
+							{% for i in range(1, days_in_month + 1, 1) %}
+								<div >{{ i }}</div >
+							{% endfor %}
+						</div >
 					{% endfor %}
 				</div >
 

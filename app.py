@@ -696,8 +696,11 @@ def budgets():
     ).fetchall()
 
     conn.close()
+    now = datetime.now()
+    days_in_month = calendar.monthrange(now.year, now.month)[1]
+    current_day = datetime.now().day
     return render_template('budgets.html', title='Budgets', budgets2=budgets2,
-                           gradient='text-gradient-blue')
+                           gradient='text-gradient-blue', days_in_month=days_in_month, current_day=current_day)
 
 
 @app.route('/delete-budget/<int:id>', methods=('POST',))
