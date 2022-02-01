@@ -286,9 +286,11 @@ def stats():
 
     ).fetchall()
 
+    date = datetime.now('%Y')
     return render_template('stats.html', title='Statistics', gradient='text-gradient-blue',
                            this_month_transactions=this_month_transactions, sum_months=sum_months,
-                           sum_months_income=sum_months_income, category_sum_total=category_sum_total)
+                           sum_months_income=sum_months_income, category_sum_total=category_sum_total,
+                           date=date)
 
 
 @app.route('/all-expenses')
