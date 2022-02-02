@@ -4795,17 +4795,29 @@ a {
   display: none;
 }
 
+.budgets .budget-wrap {
+  border-radius: 20px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  padding: 1px;
+}
+.budgets .budget-wrap .budget-wrap-span {
+  background: var(--gray-80) url("../images/bg_page.png");
+  padding: 10px 15px;
+  border-radius: 19px;
+}
 .budgets .budget-title {
   font-size: 20px;
 }
 .budgets .budget-progress {
-  padding: 0px;
-  background: rgba(0, 0, 0, 0.2);
+  padding: 0;
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
           box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: 15px;
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--gray-90);
+  background-image: url(../images/bg_page.png);
 }
 .budgets .budget-progress .budget-progress-hide {
   position: absolute;
