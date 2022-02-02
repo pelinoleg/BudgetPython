@@ -11,12 +11,11 @@
 
 
 			<div class="radio-group category-group" >
-				{% for i in range(37) %}
+				{% for i in range(23) %}
 					<input type="radio" value="{{ request.form['color'] or 'gradient_'+i|string }}" name="color"
 								 id="gradient_{{ i }}" {% if  category['color'] == 'gradient_'+ i|string %} checked {% endif %}>
-					<label for="gradient_{{ i }}"
-								 style="{% if  category['color'] == 'gradient_'+ i|string %} transform: scale(1.4); box-shadow: 0 0 12px rgba(0,0,0,0.5) {% endif %}" ><span
-							class="gradient_{{ i }}" >#</span ></label >
+					<label for="gradient_{{ i }}" class="gradient_{{ i }}"
+								 style="{% if  category['color'] == 'gradient_'+ i|string %} transform: scale(1.4); box-shadow: 0 0 12px rgba(0,0,0,0.5) {% endif %}" ><span >#</span ></label >
 				{% endfor %}
 			</div >
 
