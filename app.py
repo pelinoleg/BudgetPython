@@ -224,12 +224,30 @@ def index():
 
     ).fetchall()
 
+    budgets2 = conn.execute(
+        "SELECT SUM(sum) as su, "
+        "budget.id as bid, "
+        "categories.name as categor, "
+        "categories.color as color, "
+        "budget.amount as amount "
+        "FROM  expenses "
+        "LEFT JOIN categories on categories.id = expenses.category "
+        "LEFT JOIN budget on categories.id = budget.category "
+        "WHERE strftime('%m.%Y', date) = strftime('%m.%Y','now') and amount != '' "
+        "GROUP BY bid "
+        "LIMIT 3"
+    ).fetchall()
+
     conn.close()
+    now = datetime.now()
+    days_in_month = calendar.monthrange(now.year, now.month)[1]
+    current_day = datetime.now().day
 
     return render_template('index.html', title='My Finance Tracker', gradient='text-gradient-blue',
                            this_month_transactions=this_month_transactions, sum_months=sum_months,
                            sum_months_income=sum_months_income, category_sum_total=category_sum_total,
-                           this_year=this_year, this_month=this_month, budgets=budgets)
+                           this_year=this_year, this_month=this_month, budgets2=budgets2, days_in_month=days_in_month,
+                           current_day=current_day)
 
 
 @app.route('/stats')

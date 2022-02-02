@@ -4944,3 +4944,7 @@ a {
   font-size: 18px;
   color: rgba(255, 255, 255, 0.8);
 }
+
+.budgets-home .budget-wrap .budget-wrap-span {
+  padding: 5px 10px;
+}

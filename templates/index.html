@@ -8,9 +8,61 @@
 
 
 		<div class="flex flex-col w-full" >
+			<div class="budgets budgets-home mt-20" >
+
+				{% for su, bid, categor, color, amount in budgets2 %}
+					<div class="flex mt-20" >
+						<div class="budget-wrap  {{ color }}" >
+							<div class="budget-wrap-span" >
+								{% set per = su * 100 / amount %}
+								{% set today = current_day * 100 / days_in_month %}
+								<div class="budget-header subtitle2" >
+									<div class="budget-title" >{{ categor }}:</div >
+									<div class="budget-su {% if per > 100 %} over{% endif %}
+									{% if 75 < per < 100 %} startover{% endif %}" >{{ su|int }} <span >&euro;</span ></div >
+									<div class="budget-from" >from</div >
+									<div class="budget-amount" >{{ amount|int }}<span >&euro;</span ></div >
 
 
-			<div class="cards relative" >
+								</div >
+
+								<div class="budget-progress" >
+									<div class="progress
+									{% if per > 100 %} over{% endif %}
+									{% if 75 < per < 100 %} startover{% endif %}
+									" style="width:{{ per|int }}%" >{{ per|int }}%
+									</div >
+
+									<div class="budget-progress-hide" >
+										<div class="today" style="left: {{ today }}%" ></div >
+									</div >
+
+
+								</div >
+								<div class="budget-can-spend" >
+									{% set remained = amount - su %}
+									{% if remained > 0 %}You can spend: <strong >{{ remained|int }}&euro;</strong > {% endif %}
+								</div >
+
+
+							</div >
+
+						</div >
+						<div class="btns-ac" >
+							<a class="btn-ac" href="/edit_budget/{{ bid }}" ><i class="fa-solid fa-pen-to-square" ></i ></a >
+							<form action="{{ url_for('delete_budget', id=bid) }}" method="POST" >
+								<button type="submit" class="btn-ac" ><i class="fa-solid fa-trash-can" ></i ></button >
+							</form >
+						</div >
+					</div >
+
+				{% endfor %}
+
+
+			</div >
+
+
+			<div class="cards relative mt-30" >
 				{% if  this_month_transactions|length == 0 %}
 					<div class="no-results mt-50" >
 						You have no expenses or incomes this month
