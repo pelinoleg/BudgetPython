@@ -8,10 +8,10 @@
 
 
 		<div class="flex flex-col w-full" >
-			<div class="budgets budgets-home mt-20" >
+			<div class="budgets budgets-home flex flex-col gap-20" >
 
 				{% for su, bid, categor, color, amount in budgets2 %}
-					<div class="flex mt-20" >
+					<div class="flex" >
 						<div class="budget-wrap  {{ color }}" >
 							<div class="budget-wrap-span" >
 								{% set per = su * 100 / amount %}
