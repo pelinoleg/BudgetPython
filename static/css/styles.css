@@ -3503,6 +3503,9 @@ a {
   width: 100%;
   gap: 6px !important;
   padding: 5px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .category-group label {
   font-size: 20px;
