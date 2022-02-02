@@ -10,7 +10,7 @@
 
 		<form class="mt-20" method="post" >
 			<div class="form-group" >
-				
+
 				<input type="text" name="category_income" placeholder="Income Category Name" class="form-control"
 
 				<div class="switch switch-big" >
@@ -28,15 +28,16 @@
 			</div >
 		</form >
 
-		<div class="flex gap-15 flex-wrap mt-30" >
+		<div class="radio-group category-group mt-20" >
 			{% for id, category_income, primordial, state in categories_income %}
-				<div
+				<label
 						class="badge {% if primordial == 'true' %} primary {% endif %} {% if state == 'true' %} hide-category {% endif %}" >{{ category_income }}
-					<a href="/edit-category-income/{{ id }}" >edit</a ><a href="/category-income-delete/{{ id }}" >delete2</a >
-				</div >
+					<a href="/edit-category-income/{{ id }}" >edit</a ><a
+							href="/category-income-delete/{{ id }}" >delete2</a >{{ name }}</label >
 
 			{% endfor %}
 		</div >
+
 
 		<div class="flex gap-15 flex-wrap mt-30" >
 			{% for id, category_income, primordial, state in categories_income_second %}

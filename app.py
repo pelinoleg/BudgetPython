@@ -620,7 +620,10 @@ def cat_income_delete(id):
 @app.route('/add_income', methods=('GET', 'POST'))
 def add_income():
     conn = get_db_connection()
-    categories_income = conn.execute("SELECT id, name  FROM categories_income WHERE state is not 'true'").fetchall()
+    categories_income = conn.execute(
+        "SELECT id, name  FROM categories_income WHERE state is not 'true' and primordial is 'true'").fetchall()
+    categories_income_second = conn.execute(
+        "SELECT id, name  FROM categories_income WHERE state is not 'true' and primordial is ''").fetchall()
     conn.close()
     if request.method == 'POST':
         amount = request.form['amount']
@@ -647,7 +650,7 @@ def add_income():
             return redirect(request.referrer)
 
     return render_template('add_income.html', title='Add Income', gradient='text-gradient-green',
-                           categories_income=categories_income)
+                           categories_income=categories_income, categories_income_second=categories_income_second)
 
 
 @app.route('/income-edit/<int:id>', methods=('GET', 'POST'))

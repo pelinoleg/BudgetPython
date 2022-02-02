@@ -30,17 +30,25 @@
 					</div >
 
 
-					<div class="form-item" >
-						<div class="radio-group category-group" >
-							{% for id, name in categories_income %}
+					<div class="radio-group category-group primary-group" >
+						{% for id, name in categories_income %}
+
+							<input type="radio" value="{{ id }}" name="category_income" id="{{ name }}" />
+							<label for="{{ name }}" >{{ name }}</label >
+
+						{% endfor %}
+					</div >
+					{% if categories_income_second|length > 0 %}
+
+						<div class="radio-group category-group second-group" >
+							{% for id, name in categories_income_second %}
 
 								<input type="radio" value="{{ id }}" name="category_income" id="{{ name }}" />
 								<label for="{{ name }}" >{{ name }}</label >
 
 							{% endfor %}
 						</div >
-					</div >
-
+					{% endif %}
 
 					<div class="form-group" >
 						<textarea name="comment" placeholder="Comment"

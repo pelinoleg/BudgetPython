@@ -3517,6 +3517,16 @@ a {
   color: #fff;
 }
 
+.primary-group label {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.second-group label {
+  font-size: 14px;
+}
+
 .subcategory-group:not(.alimente) {
   display: none;
 }
