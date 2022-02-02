@@ -1270,7 +1270,7 @@ a
 //Budgets
 .budgets
 	.budget-wrap
-		
+		flex: 1 1 0
 		//border: 1px solid rgba(#000, 0.15)
 		border-radius: 20px
 		box-shadow: $shadow-d
@@ -1281,9 +1281,39 @@ a
 			padding: 10px 15px
 			border-radius: 19px
 	//box-shadow: $shadow-d-in
+	.budget-header
+		font-size: 20px
+		padding: 0 0 5px 5px
+		opacity: 1
+		color: rgba(#fff, 0.6)
+		
+		*
+			display: inline-flex
 	
 	.budget-title
-		font-size: 20px
+		font-weight: 300
+	
+	.budget-from
+		font-size: 16px
+	
+	.budget-su,
+	.budget-amount
+		align-items: baseline
+		margin: 0 3px
+		font-weight: 400
+		color: rgba(#fff, 0.8)
+		
+		span
+			font-size: 15px
+			font-weight: 200
+			margin-left: 2px
+	
+	.budget-su
+		&.over
+			color: #ff4d6d
+		
+		&.startover
+			color: #e7933c
 	
 	.budget-progress
 		padding: 0

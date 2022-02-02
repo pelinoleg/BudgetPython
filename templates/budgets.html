@@ -44,35 +44,48 @@
 			<div class="budgets mt-20" >
 
 				{% for su, bid, categor, color, amount in budgets2 %}
-					<div class="budget-wrap mt-20 {{ color }}" >
-						<div class="budget-wrap-span" >
-							{% set per = su * 100 / amount %}
-							{% set today = current_day * 100 / days_in_month %}
-							<div class="budget-title subtitle2" >{{ categor }} - {{ su|int }}&euro; from {{ amount|int }}&euro; ///
-								{% set remained = amount - su %}
-								{% if remained > 0 %}you can spend: {{ remained|int }}&euro; {% endif %}
-							</div >
+					<div class="flex mt-20" >
+						<div class="budget-wrap  {{ color }}" >
+							<div class="budget-wrap-span" >
+								{% set per = su * 100 / amount %}
+								{% set today = current_day * 100 / days_in_month %}
+								<div class="budget-header subtitle2" >
+									<div class="budget-title" >{{ categor }}:</div >
+									<div class="budget-su {% if per > 100 %} over{% endif %}
+									{% if 75 < per < 100 %} startover{% endif %}" >{{ su|int }} <span >&euro;</span ></div >
+									<div class="budget-from" >from</div >
+									<div class="budget-amount" >{{ amount|int }}<span >&euro;</span ></div >
 
-							<div class="budget-progress" >
-								<div class="progress
+
+								</div >
+
+								<div class="budget-progress" >
+									<div class="progress
 									{% if per > 100 %} over{% endif %}
 									{% if 75 < per < 100 %} startover{% endif %}
 									" style="width:{{ per|int }}%" >{{ per|int }}%
-								</div >
+									</div >
 
-								<div class="budget-progress-hide" >
-									<div class="today" style="left: {{ today }}%" ></div >
-								</div >
+									<div class="budget-progress-hide" >
+										<div class="today" style="left: {{ today }}%" ></div >
+									</div >
 
+
+								</div >
+								{% set remained = amount - su %}
+								{% if remained > 0 %}you can spend: {{ remained|int }}&euro; {% endif %}
 
 							</div >
-							<a href="/edit_budget/{{ bid }}" > edit</a >
-							<form class="form-delete" action="{{ url_for('delete_budget', id=bid) }}" method="POST" >
-								<button type="submit" class="btn btn-delete" > X</button >
+
+						</div >
+						<div class="btns-ac" >
+							<a class="btn-ac" href="/edit_budget/{{ bid }}" ><i class="fa-solid fa-pen-to-square" ></i ></a >
+							<form action="{{ url_for('delete_budget', id=bid) }}" method="POST" >
+								<button type="submit" class="btn-ac" ><i class="fa-solid fa-trash-can" ></i ></button >
 							</form >
 						</div >
-
 					</div >
+
 				{% endfor %}
 
 
