@@ -4955,8 +4955,19 @@ a {
 .budgets-home .budget-header {
   font-size: 16px;
 }
+.budgets-home .budget-can-spend strong {
+  font-size: 16px;
+  margin-left: 5px;
+}
+.budgets-home .budget-wrap {
+  background: unset !important;
+  padding: 0;
+  -webkit-box-shadow: unset !important;
+          box-shadow: unset !important;
+}
 .budgets-home .budget-wrap .budget-wrap-span {
-  padding: 5px 10px;
+  padding: 0;
+  background: unset !important;
 }
 .budgets-home .budget-progress .progress {
   height: 17px;
