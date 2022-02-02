@@ -2095,7 +2095,7 @@ select,
   border: 1px solid #e0e0e0;
   font-size: 16px;
   line-height: 26px;
-  border-radius: 9999px;
+  border-radius: 10px;
   padding: 5px 15px;
   color: var(--gray-60);
   background-color: #fff;
@@ -2478,7 +2478,7 @@ textarea {
   background-color: var(--form-bg);
   border: 1px solid var(--gray-25);
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 9px;
   -webkit-transition: border 0.2s linear;
   -o-transition: border 0.2s linear;
   transition: border 0.2s linear;
@@ -2737,7 +2737,7 @@ textarea {
 }
 
 .checkbox span {
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .radio-big,
@@ -2758,7 +2758,7 @@ textarea {
 }
 
 .radio-group {
-  border-radius: 20px;
+  border-radius: 10px;
   background: var(--gray-25);
   padding: 3px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
@@ -2788,7 +2788,7 @@ textarea {
 }
 :root.dark-theme .radio-group input[type=radio]:checked + label {
   background-color: var(--gray-80);
-  border-color: var(--gray-75);
+  border-color: rgba(255, 255, 255, 0.05);
   color: var(--gray-30);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
@@ -2801,7 +2801,7 @@ textarea {
   -webkit-transition: background 0.1s ease-in-out, color 0.2s linear;
   -o-transition: background 0.1s ease-in-out, color 0.2s linear;
   transition: background 0.1s ease-in-out, color 0.2s linear;
-  border-radius: 15px;
+  border-radius: 6px;
   border: 1px solid transparent;
   white-space: nowrap;
   font-size: 14px;
@@ -2820,12 +2820,12 @@ textarea {
 
 .radio-group.radio-group-small {
   padding: 2px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .radio-group.radio-group-small label {
   padding: 4px 12px;
   font-size: 13px;
-  border-radius: 5px -2px;
+  border-radius: 10px -2px;
 }
 .radio-group.radio-group-rouned {
   border-radius: 50em !important;
@@ -3503,6 +3503,7 @@ a {
   width: 100%;
   gap: 6px !important;
   padding: 10px;
+  border-radius: 10px;
 }
 .category-group label {
   font-size: 20px;
@@ -3537,7 +3538,7 @@ a {
   font-size: 16px;
   line-height: 26px;
   letter-spacing: 2px;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 3px 10px;
   color: var(--gray-90);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -3566,7 +3567,7 @@ a {
   font-size: 16px;
   line-height: 26px;
   letter-spacing: 2px;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 3px 10px;
   color: var(--gray-90);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -3831,19 +3832,19 @@ a {
   font-size: 20px;
   font-weight: 300;
   padding: 1px;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 .card-category span {
   display: block;
   padding: 3px 8px;
   background: var(--gray-87) url("../images/bg_page.png");
-  border-radius: 14px;
+  border-radius: 4px;
 }
 
 .card-subcategory {
   font-size: 18px;
   font-weight: 300;
-  border-radius: 14px;
+  border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 2px 6px;
   background: rgba(255, 255, 255, 0.05);
@@ -4509,7 +4510,7 @@ a {
   -webkit-transition: background 0.1s ease-in-out, color 0.2s linear;
   -o-transition: background 0.1s ease-in-out, color 0.2s linear;
   transition: background 0.1s ease-in-out, color 0.2s linear;
-  border-radius: calc(5px + 10px);
+  border-radius: calc(10px + 10px);
   border: 1px solid transparent;
   white-space: nowrap;
   font-size: 15px;
@@ -4745,9 +4746,6 @@ a {
   position: relative;
   -ms-flex-negative: 0;
       flex-shrink: 0;
-}
-.radio-currency label {
-  border-radius: 50em;
 }
 
 :root {

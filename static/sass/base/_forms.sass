@@ -2,7 +2,7 @@
 \:root
 	--check-width: 25px
 
-$form-round: 5px
+$form-round: 10px
 $shadow-l: 0 1px 3px rgba(#000, 0.1)
 //$shadow-l: 0 1px 3px rgba(#000, 0)
 $shadow-d: 0 1px 3px rgba(#000, 0.25)
@@ -48,7 +48,7 @@ select,
 	border: 1px solid #e0e0e0
 	font-size: 16px
 	line-height: 26px
-	border-radius: 9999px
+	border-radius: $form-round
 	padding: 5px 15px
 	color: var(--gray-60)
 	background-color: #fff
@@ -496,7 +496,7 @@ textarea
 	flex-direction: row
 
 .radio-group
-	border-radius: calc($form-round + 15px)
+	border-radius: calc($form-round)
 	//overflow: hidden
 	background: var(--gray-25)
 	padding: 3px
@@ -519,7 +519,7 @@ textarea
 			box-shadow: $shadow-l
 			@include dark
 				background-color: var(--gray-80)
-				border-color: var(--gray-75)
+				border-color: rgba(#fff, 0.05)
 				color: var(--gray-30)
 				box-shadow: $shadow-d
 	//&:focus + label
@@ -530,7 +530,7 @@ textarea
 		cursor: pointer
 		padding: 4px 13px
 		transition: background 0.1s ease-in-out, color 0.2s linear
-		border-radius: calc($form-round + 10px)
+		border-radius: calc($form-round - 4px)
 		border: 1px solid transparent
 		white-space: nowrap
 		font-size: 14px
