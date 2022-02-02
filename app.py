@@ -623,7 +623,7 @@ def add_income():
     categories_income = conn.execute(
         "SELECT id, name  FROM categories_income WHERE state is not 'true' and primordial is 'true'").fetchall()
     categories_income_second = conn.execute(
-        "SELECT id, name  FROM categories_income WHERE state is not 'true' and primordial is ''").fetchall()
+        "SELECT id, name  FROM categories_income WHERE state is not 'true' and primordial is NULL").fetchall()
     conn.close()
     if request.method == 'POST':
         amount = request.form['amount']

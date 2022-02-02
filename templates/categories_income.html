@@ -41,8 +41,7 @@
 
 		<div class="flex gap-15 flex-wrap mt-30" >
 			{% for id, category_income, primordial, state in categories_income_second %}
-				<div
-						class="badge {% if primordial == 1 %} primary {% endif %} {% if state == 'true' %} hide-category {% endif %}" >{{ category_income }}<a
+				<div class="badge  {% if state == 'true' %} hide-category {% endif %}" >{{ category_income }}<a
 						href="/edit-category-income/{{ id }}" >edit</a ><a href="/category-income-delete/{{ id }}" >delete2</a >
 				</div >
 
