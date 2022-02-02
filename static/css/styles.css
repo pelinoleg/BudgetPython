@@ -4952,6 +4952,13 @@ a {
   color: rgba(255, 255, 255, 0.8);
 }
 
+.budgets-home .budget-header {
+  font-size: 16px;
+}
 .budgets-home .budget-wrap .budget-wrap-span {
   padding: 5px 10px;
+}
+.budgets-home .budget-progress .progress {
+  height: 17px;
+  line-height: 17px;
 }
