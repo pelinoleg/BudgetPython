@@ -3409,6 +3409,18 @@ a:hover, a:focus, a:active {
   .side-panel-toggle {
     opacity: 0;
   }
+
+  #menu {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+
+  .mm-page {
+    -webkit-transition: unset !important;
+    -o-transition: unset !important;
+    transition: unset !important;
+  }
 }
 table {
   width: 100%;
@@ -3987,7 +3999,10 @@ a {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background: var(--gray-87) url("../images/bg_page.png");
+  background: var(--gray-85) url("../images/bg_page.png");
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   z-index: 4;
   -webkit-box-align: center;
       -ms-flex-align: center;
