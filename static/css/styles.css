@@ -3332,6 +3332,10 @@ a:hover, a:focus, a:active {
     transition: unset !important;
   }
 }
+.mm-navbars_bottom .mm-navbar:first-child {
+  border-top: unset;
+}
+
 table {
   width: 100%;
   margin: 0 auto;
