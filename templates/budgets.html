@@ -54,7 +54,10 @@
 							</div >
 
 							<div class="budget-progress" >
-								<div class="progress {% if per > 100 %} over{% endif %}" style="width:{{ per|int }}%" >{{ per|int }}%
+								<div class="progress
+									{% if per > 100 %} over{% endif %}
+									{% if 75 < per < 100 %} startover{% endif %}
+									" style="width:{{ per|int }}%" >{{ per|int }}%
 								</div >
 
 								<div class="budget-progress-hide" >
@@ -63,6 +66,10 @@
 
 
 							</div >
+							<a href="/edit_budget/{{ bid }}" > edit</a >
+							<form class="form-delete" action="{{ url_for('delete_budget', id=bid) }}" method="POST" >
+								<button type="submit" class="btn btn-delete" > X</button >
+							</form >
 						</div >
 
 					</div >
