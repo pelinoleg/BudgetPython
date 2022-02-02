@@ -1305,7 +1305,7 @@ a
 		
 		span
 			font-size: 15px
-			font-weight: 200
+			font-weight: 400
 			margin-left: 2px
 	
 	.budget-su
@@ -1346,7 +1346,7 @@ a
 			border-radius: 15px
 			color: #0a0a0a
 			text-align: right
-			font-size: 12px
+			font-size: 13px
 			line-height: 23px
 			padding-right: 5px
 			font-weight: 500
@@ -1356,11 +1356,21 @@ a
 			box-shadow: $shadow-d
 			
 			&.over
-				@include gradientBg2(#f23945, #b92c46)
-				color: rgba(#fff, 0.6)
+				@include gradientBg2(#b92c46, #f23945)
+			//color: rgba(#fff, 0.6)
 			
 			&.startover
-				@include gradientBg2(#f29639, #e16f29)
-				color: rgba(#fff, 0.6)
+				@include gradientBg2(#e16f29, #f29639)
+	//color: rgba(#fff, 0.6)
 
+	.budget-can-spend
+		margin-top: 5px
+		margin-left: 5px
+		font-size: 16px
+		font-weight: 300
+		color: rgba(#fff, 0.6)
 		
+		strong
+			font-weight: 400
+			font-size: 18px
+			color: rgba(#fff, 0.8)

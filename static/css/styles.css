@@ -4872,7 +4872,7 @@ a {
 .budgets .budget-su span,
 .budgets .budget-amount span {
   font-size: 15px;
-  font-weight: 200;
+  font-weight: 400;
   margin-left: 2px;
 }
 .budgets .budget-su.over {
@@ -4913,7 +4913,7 @@ a {
   border-radius: 15px;
   color: #0a0a0a;
   text-align: right;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 23px;
   padding-right: 5px;
   font-weight: 500;
@@ -4923,14 +4923,24 @@ a {
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 .budgets .budget-progress .progress.over {
-  background: #f23945;
-  background: -o-linear-gradient(305deg, #f23945 0%, #b92c46 80%, #b92c46 100%);
-  background: linear-gradient(145deg, #f23945 0%, #b92c46 80%, #b92c46 100%);
-  color: rgba(255, 255, 255, 0.6);
+  background: #b92c46;
+  background: -o-linear-gradient(305deg, #b92c46 0%, #f23945 80%, #f23945 100%);
+  background: linear-gradient(145deg, #b92c46 0%, #f23945 80%, #f23945 100%);
 }
 .budgets .budget-progress .progress.startover {
-  background: #f29639;
-  background: -o-linear-gradient(305deg, #f29639 0%, #e16f29 80%, #e16f29 100%);
-  background: linear-gradient(145deg, #f29639 0%, #e16f29 80%, #e16f29 100%);
+  background: #e16f29;
+  background: -o-linear-gradient(305deg, #e16f29 0%, #f29639 80%, #f29639 100%);
+  background: linear-gradient(145deg, #e16f29 0%, #f29639 80%, #f29639 100%);
+}
+.budgets .budget-can-spend {
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 16px;
+  font-weight: 300;
   color: rgba(255, 255, 255, 0.6);
+}
+.budgets .budget-can-spend strong {
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
 }

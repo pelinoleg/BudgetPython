@@ -72,8 +72,11 @@
 
 
 								</div >
-								{% set remained = amount - su %}
-								{% if remained > 0 %}you can spend: {{ remained|int }}&euro; {% endif %}
+								<div class="budget-can-spend" >
+									{% set remained = amount - su %}
+									{% if remained > 0 %}You can spend: <strong >{{ remained|int }}&euro;</strong > {% endif %}
+								</div >
+
 
 							</div >
 
