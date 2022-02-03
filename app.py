@@ -718,12 +718,22 @@ def budgets():
         "WHERE strftime('%m.%Y', date) = strftime('%m.%Y','now') and amount != '' "
         "GROUP BY bid"
     ).fetchall()
+    all_budgets = conn.execute(
+        "SELECT  "
+        "budget.id as bid, "
+        "categories.name as categor, "
+        "categories.color as color, "
+        "budget.amount as amount "
+        "FROM budget "
+        "LEFT JOIN categories on categories.id = budget.category "
+        "GROUP BY bid"
+    ).fetchall()
 
     conn.close()
     now = datetime.now()
     days_in_month = calendar.monthrange(now.year, now.month)[1]
     current_day = datetime.now().day
-    return render_template('budgets.html', title='Budgets', budgets2=budgets2,
+    return render_template('budgets.html', title='Budgets', budgets2=budgets2, all_budgets=all_budgets,
                            gradient='text-gradient-blue', days_in_month=days_in_month, current_day=current_day)
 
 

@@ -6,39 +6,7 @@
 
 	<div class="content" >
 		<div class=" cards flex-1 mx-auto" >
-
-			{#			<div class="budgets" >#}
-			{#				{% for su, categor, colorb, amount in budgets %}#}
-			{#					#}
-			{#					<div class="budget-wrap mt-20" >#}
-			{#						{% set per = su * 100 / amount %}#}
-			{#						{% set color = '#0a0a0a' %}#}
-			{#						{% if per|int > 100 %}#}
-			{#							{% set color = 'red' %}#}
-			{#						{% endif %}#}
-			{##}
-			{#						{% if not amount %}#}
-			{#							{% set amount = '0' %}#}
-			{#							sadfasd#}
-			{#						{% endif %}#}
-			{##}
-			{#						<span class="budget-title {{ colorb }}" >{{ categor }}</span >#}
-			{#						<div class="budget" style="background: rgba(0,0,0,0.2); padding: 5px" >#}
-			{#							<div class="budget-inner "#}
-			{#									 style="height: 20px;background: {{ color }}; max-width: 100%; text-align: right; width: {{ per|int }}%" >{{ per|int }}%#}
-			{#							</div >#}
-			{#						</div >#}
-			{#						<div class="budget-amounts" >#}
-			{#							<span class="budget-current" > {{ su }}</span >#}
-			{#							<span class="budget-from" >from: </span >#}
-			{#							<span class="budget-total" >{{ amount }}</span >#}
-			{#						</div >#}
-			{##}
-			{#					</div >#}
-			{#				{% endfor %}#}
-			{#			</div >#}
-
-
+			<div class="subtitle2" >Active budgets</div >
 			<div class="budgets " >
 
 				{% for su, bid, categor, color, amount, cnt in budgets2 %}
@@ -95,7 +63,14 @@
 
 			</div >
 
-
+			<div class="subtitle2 mt-42" >All Budgets</div >
+			<div class="all-budgets" >
+				{% for bid, categor, color, amount in all_budgets %}
+					<div class="all-budgets-item" >
+						{{ categor }} - {{ amount }}
+					</div >
+				{% endfor %}
+			</div >
 		</div >
 	</div >
 
