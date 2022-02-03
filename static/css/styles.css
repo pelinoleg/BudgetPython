@@ -4825,6 +4825,17 @@ a {
   font-weight: 400;
   margin-left: 2px;
 }
+.budgets .budget-transactions {
+  font-size: 16px;
+  font-weight: 300;
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.8);
+}
+.budgets .budget-transactions strong {
+  font-weight: 400;
+  margin-left: 5px;
+  font-size: 16px;
+}
 .budgets .budget-su.over {
   color: #ff4d6d;
 }

@@ -43,7 +43,7 @@
 
 			<div class="budgets mt-20" >
 
-				{% for su, bid, categor, color, amount in budgets2 %}
+				{% for su, bid, categor, color, amount, cnt in budgets2 %}
 					<div class="flex mt-20" >
 						<div class="budget-wrap  {{ color }}" >
 							<div class="budget-wrap-span" >
@@ -72,9 +72,12 @@
 
 
 								</div >
-								<div class="budget-can-spend mt-5 ml-5" >
-									{% set remained = amount - su %}
-									{% if remained > 0 %}You can spend: <strong >{{ remained|int }}&euro;</strong > {% endif %}
+								<div class="flex items-center" >
+									<div class="budget-can-spend mt-5 ml-5" >
+										{% set remained = amount - su %}
+										{% if remained > 0 %}You can spend: <strong >{{ remained|int }}&euro;</strong > {% endif %}
+									</div >
+									<div class="budget-transactions ml-auto" >Transactions: <strong > {{ cnt }}</strong ></div >
 								</div >
 
 
