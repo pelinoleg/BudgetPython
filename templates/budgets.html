@@ -5,7 +5,7 @@
 	</div >
 
 	<div class="content" >
-		<div class=" cards flex-1 mx-auto mt-50" >
+		<div class=" cards flex-1 mx-auto" >
 
 			{#			<div class="budgets" >#}
 			{#				{% for su, categor, colorb, amount in budgets %}#}
@@ -37,11 +37,9 @@
 			{#					</div >#}
 			{#				{% endfor %}#}
 			{#			</div >#}
-			{{ days_in_month }}
-			{{ current_day }}
 
 
-			<div class="budgets mt-20" >
+			<div class="budgets " >
 
 				{% for su, bid, categor, color, amount, cnt in budgets2 %}
 					<div class="flex mt-20" >
@@ -72,7 +70,7 @@
 
 
 								</div >
-								<div class="flex items-center" >
+								<div class="flex items-center flex-wrap" >
 									<div class="budget-can-spend mt-5 ml-5" >
 										{% set remained = amount - su %}
 										{% if remained > 0 %}You can spend: <strong >{{ remained|int }}&euro;</strong > {% endif %}
