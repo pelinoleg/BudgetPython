@@ -3111,6 +3111,9 @@ a:hover, a:focus, a:active {
       -ms-flex-pack: center;
           justify-content: center;
 }
+.form-buttons .delete-button {
+  flexshrink: 0;
+}
 .form-buttons .send-button {
   background: var(--form-color);
   font-size: 16px;
