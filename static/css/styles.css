@@ -3110,6 +3110,7 @@ a:hover, a:focus, a:active {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  white-space: nowrap;
 }
 .form-buttons .delete-button {
   flexshrink: 0;
