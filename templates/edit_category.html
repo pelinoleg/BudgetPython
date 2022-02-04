@@ -33,7 +33,8 @@
 
 				<div class="form-buttons" >
 					<button type="submit" class="send-button mt-20" name="cat" >Save</button >
-					<a href="/category-delete/{{ category['id'] }}" class="delete-button" >Delete Category</a >
+					<a href="/category-delete/{{ category['id'] }}" class="delete-button"
+						 onclick="return confirm('Delete this category?')" >Delete Category</a >
 				</div >
 
 

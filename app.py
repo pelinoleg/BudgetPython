@@ -691,7 +691,7 @@ def incomes():
     return render_template('incomes.html', title='All incomes', gradient='text-gradient-green', incomes=incomes)
 
 
-@app.route('/<int:id>/delete_income', methods=('POST',))
+@app.route('/delete-income/<int:id>', methods=('GET', 'POST',))
 def delete_income(id):
     incomes = get_incomes(id)
     conn = get_db_connection()

@@ -78,7 +78,7 @@
 										<span class="card-amount flex items-center" >  {{ sum }} <span >&euro;</span > </span >
 										<div class="flex flex-col justify-center ml-15" >
 
-											<div class="flex items-center" >
+											<div class="flex flex-wrap items-center" >
 												<span class="{{ color }} card-category" ><span >{{ category }}</span >    </span >
 												{% if (subcategory != '') and (subcategory !=None) %}
 													<span class="card-subcategory ml-10" >  {{ subcategory }}  </span >
@@ -94,29 +94,28 @@
 
 									</div >
 									{% if not color %}
-										<div class="card-btns hidden flex items-center flex-shrink-0 ml-auto" >
+										<div class="card-btns flex items-center flex-shrink-0 ml-auto" >
 											<a href="/income-edit/{{ id }}" class="btn-ac" >
 												<i class="fa-solid fa-pen-to-square" ></i >
 											</a >
 
-											<a href="/income-edit/{{ id }}" class="btn-ac" >
-												<i class="fa-solid fa-pen-to-square" ></i >
+											<a href="/delete-income/{{ id }}" class="btn-ac" onclick="return confirm('Delete this income?')" >
+												<i class="fa-solid fa-trash-can" ></i >
 											</a >
 
 										</div >
 
 									{% else %}
-										<div class="card-btns hidden flex items-center flex-shrink-0 ml-auto" >
+										<div class="card-btns  flex items-center flex-shrink-0 ml-auto" >
 											<a href="/{{ id }}/edit" class="btn-ac" >
 												<i class="fa-solid fa-pen-to-square" ></i >
 											</a >
-											<form action="{{ url_for('delete', id=id) }}" method="POST" class=" inline-block" >
 
-												<button type="submit" name="to-index" class="btn-ac ac-delete"
-																onclick="return confirm('Are you sure you want to delete this post?')" />
-												<i class="fa-regular fa-trash-can" ></i >
-												</button>
-											</form >
+
+											<a href="/delete-expense/{{ id }}" class="btn-ac"
+												 onclick="return confirm('Delete this expense?')" ><i class="fa-solid fa-trash-can" ></i ></a >
+
+
 										</div >
 
 									{% endif %}
