@@ -172,16 +172,19 @@ def index():
         "ORDER BY day DESC "
     ).fetchall()
 
-    sum_months = conn.execute(
+    sum_month = conn.execute(
         "SELECT "
-        "sum, strftime('%m', date) as month, strftime('%Y', date) as year "
+        "SUM(sum) as sum, id "
         "FROM expenses "
+        "WHERE strftime('%Y', date) = strftime('%Y', date('now')) AND strftime('%m', date) = strftime('%m', date('now')) "
+
     ).fetchall()
 
-    sum_months_income = conn.execute(
+    sum_month_income = conn.execute(
         "SELECT "
-        "amount, strftime('%m', date) as month, strftime('%Y', date) as year "
+        "SUM(amount) as amount, id "
         "FROM incomes "
+        "WHERE strftime('%Y', date) = strftime('%Y', date('now')) AND strftime('%m', date) = strftime('%m', date('now')) "
     ).fetchall()
 
     budgets = conn.execute(
@@ -244,8 +247,8 @@ def index():
     current_day = datetime.now().day
 
     return render_template('index.html', title='My Finance Tracker', gradient='text-gradient-blue',
-                           this_month_transactions=this_month_transactions, sum_months=sum_months,
-                           sum_months_income=sum_months_income, category_sum_total=category_sum_total,
+                           this_month_transactions=this_month_transactions, sum_month=sum_month,
+                           sum_month_income=sum_month_income, category_sum_total=category_sum_total,
                            this_year=this_year, this_month=this_month, budgets2=budgets2, days_in_month=days_in_month,
                            current_day=current_day)
 
@@ -822,72 +825,3 @@ def edit_budget(id):
 
     return render_template('edit_budget.html', title='Edit Budget', gradient='text-gradient-blue',
                            categories=categories, budget=budget)
-
-
-@app.route('/test')
-def test():
-    return render_template_string('''
-<video id="video" width="640" height="480" autoplay style="background-color: grey"></video>
-<button id="send">Take & Send Photo</button>
-<canvas id="canvas" width="640" height="480" style="background-color: grey"></canvas>
-
-<script>
-
-// Elements for taking the snapshot
-var video = document.getElementById('video');
-var canvas = document.getElementById('canvas');
-var context = canvas.getContext('2d');
-
-// Get access to the camera!
-if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    // Not adding `{ audio: true }` since we only want video now
-    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-        //video.src = window.URL.createObjectURL(stream);
-        video.srcObject = stream;
-        video.play();
-    });
-}
-
-// Trigger photo take
-document.getElementById("send").addEventListener("click", function() {
-    context.drawImage(video, 0, 0, 640, 480); // copy frame from <video>
-    canvas.toBlob(upload, "image/jpeg");  // convert to file and execute function `upload`
-});
-
-function upload(file) {
-    // create form and append file
-    var formdata =  new FormData();
-    formdata.append("snap", file);
-
-    // create AJAX requests POST with file
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "{{ url_for('upload') }}", true);
-    xhr.onload = function() {
-        if(this.status = 200) {
-            console.log(this.response);
-        } else {
-            console.error(xhr);
-        }
-        alert(this.response);
-    };
-    xhr.send(formdata);
-}
-
-</script>
-''')
-
-
-@app.route('/upload', methods=['GET', 'POST'])
-def upload():
-    if request.method == 'POST':
-        # fs = request.files['snap'] # it raise error when there is no `snap` in form
-        fs = request.files.get('snap')
-        if fs:
-            print('FileStorage:', fs)
-            print('filename:', fs.filename)
-            fs.save('image.jpg')
-            return 'Got Snap!'
-        else:
-            return 'You forgot Snap!'
-
-    return 'Hello World!'
