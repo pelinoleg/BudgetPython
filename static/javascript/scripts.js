@@ -266,18 +266,25 @@ document.addEventListener(
 // });
 
 
-// sleect subcategroies
-$('#select-add-category input').on('change', function () {
+// select subcategroies
+function show_subcategory() {
     $('#subcategories-add').hide();
+    $('.subtitle-subcategory').hide();
     const id_cat = $('#select-add-category input:checked').attr('id');
     $('#subcategories-add label').hide();
     const sub_length = $('#subcategories-add' + ' .sub_' + id_cat).length;
     if (sub_length > 0) {
+        $('.subtitle-subcategory').show();
         $('#subcategories-add').css("display", "flex")
         $('#subcategories-add' + ' .sub_' + id_cat).show();
     }
+}
 
-    // $('#subcategories-add .Localuri').show();
+$('#select-add-category input').on('change', function () {
+    show_subcategory()
 });
+show_subcategory()
+
+
 
 

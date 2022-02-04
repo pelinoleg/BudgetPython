@@ -181,4 +181,34 @@ a
 	> *
 		
 		flex: 1 1 0
-		//outline: 1px solid indianred
+//outline: 1px solid indianred
+
+//forms button
+.form-buttons
+	display: flex
+	
+	.send-button,
+	.delete-button
+		flex: 1 1 0
+		display: inline-flex
+		align-items: center
+		justify-content: center
+	
+	.send-button
+		background: var(--form-color)
+		font-size: 16px
+		line-height: 26px
+		letter-spacing: 2px
+		border-radius: $form-round
+		padding: 3px 10px
+		color: var(--gray-90)
+		color-adjust: exact
+		box-sizing: border-box
+		transition: filter 0.3s linear, box-shadow 0.15s linear
+		text-transform: uppercase
+		border-color: var(--gray-75)
+		box-shadow: $shadow-d
+		flex: 2
+	
+	//.send-button
+	//	flex: 2

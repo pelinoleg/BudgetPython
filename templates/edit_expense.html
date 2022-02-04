@@ -8,18 +8,15 @@
 		<form method="post" >
 
 
-			<div class="flex" >
-				<input type="number" autofocus name="sum" placeholder="Amount" class="form-control" step="0.01"
-							 pattern="[0-9]+([\.,][0-9]+)?" value="{{ request.form['sum'] or expense['sum'] }}" />
-			</div >
+			<div class="subtitle3" >Edit Amount</div >
+			<input type="number" autofocus name="sum" placeholder="Amount" class="form-control" min="0" step="0.01"
+						 pattern="[0-9]+([\.][0-9])" value="{{ request.form['sum'] or expense['sum'] }}" />
 
-			<div class="form-group mt-5" >
-				<input data-toggle="datepicker" type="text" name="date" placeholder="Date" class="form-control"
-						{#						pattern="\d{1,2}/\d{1,2}/\d{4}"#} value="{{ request.form['date_s'] or expense['date'] }}" />
+			<div class="subtitle3 mt-24" >Edit Date</div >
+			<input data-toggle="datepicker" type="text" name="date" placeholder="Date" class="form-control"
+						 value="{{ request.form['date_s'] or expense['date'] }}" />
 
-			</div >
-
-
+			<div class="subtitle3 mt-24" >Select Category</div >
 			<div class="radio-group category-group" id="select-add-category" >
 				{% for id, name, color, state in categories %}
 					<input type="radio" value="{{ id }}" name="category" id="{{ name }}"
@@ -28,32 +25,32 @@
 				{% endfor %}
 			</div >
 
+			<div class="subtitle3 mt-24 subtitle-subcategory" >Select Subcategory</div >
 			<div class="radio-group category-group" id="subcategories-add" >
-				{% for id, name in subcategories %}
+
+				{% for id, name, category in subcategories %}
 					<input type="radio" value="{{ id }}" name="subcategory" id="{{ 'sub_' + name }}"
 							{% if id == expense['subcategory'] %} checked {% endif %}
 					>
-					<label for="{{ 'sub_'+ name }}" class="{{ 'sub_'+ category }}" >{{ name }}</label >
+					<label for="{{ 'sub_'+ name }}" class="{{ 'sub_'+category }}" >{{ name }}</label >
 
 				{% endfor %}
 
 			</div >
 
 
-			<div class="form-group mt-10" >
-    <textarea name="comment" placeholder="Comment" class="form-control" >
-{{ request.form['comment'] or expense['comment'] }}</textarea >
-			</div >
-			<div class="form-group mt-10" >
+			<div class="subtitle3 mt-24" >Edit Comment</div >
+			<textarea name="comment" placeholder="Comment"
+								class="form-control" >{{ request.form['comment'] or expense['comment'] }}</textarea >
+
+			<div class="form-buttons mt-24" >
 				<button type="submit" class="send-button" >Submit</button >
+				<a href="/delete-expense/{{ expense['id'] }}" class="delete-button" >Delete {{ expense['id'] }}</a >
 			</div >
 
-			<hr />
+
 		</form >
-		<form action="{{ url_for('delete', id=expense['id']) }}" method="POST" class="mt-10" >
-			<input type="submit" value="Delete Expense" class="add-button"
-						 onclick="return confirm('Are you sure you want to delete this post?')" />
-		</form >
+
 	</div >
 
 

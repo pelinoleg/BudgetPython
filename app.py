@@ -383,7 +383,8 @@ def edit(id):
     conn = get_db_connection()
     categories = conn.execute(
         "SELECT id, name, color as color, state FROM categories WHERE state is not 'true'").fetchall()
-    subcategories = conn.execute('SELECT id, name FROM subcategories').fetchall()
+    subcategories = conn.execute(
+        "SELECT subcategories.id as id, subcategories.name as name, categories.name as category FROM subcategories LEFT JOIN categories on categories.id = subcategories.category_id WHERE subcategories.state is not 'true'").fetchall()
     conn.close()
     if request.method == 'POST':
         sum = request.form['sum']
@@ -496,7 +497,7 @@ def subcat_delete(id):
     return redirect(url_for('categories'))
 
 
-@app.route('/delete-expense/<int:id>', methods=('POST',))
+@app.route('/delete-expense/<int:id>', methods=('GET', 'POST',))
 def delete(id):
     # print(request.url)
     expense = get_expenses(id)
