@@ -49,12 +49,9 @@
 														</a >
 
 
-														<form action="{{ url_for('delete_income', id=id) }}" method="POST" >
-															<button type="submit" class="btn-ac"
-																			onclick="return confirm('Are you sure you want to delete this post?')" >
-																<i class="fa-solid fa-trash-can" ></i >
-															</button >
-														</form >
+														<a href="/delete-expense/{{ id }}" class="btn-ac"
+															 onclick="return confirm('Delete this expense?')" ><i class="fa-solid fa-trash-can" ></i ></a >
+
 
 													</div >
 

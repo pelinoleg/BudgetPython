@@ -3,16 +3,17 @@
 		<a href="#menu" class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></a >
 		<span >{% block title %} {{ title }} {% endblock %}</span >
 	</div >
-	<div class="content" >
+	<div class="content flex flex-col gap-15" >
 
+	<div >
+		<div class="subtitle2 mt-15" >Add Category</div >
+		<form method="post" >
+			<div class="form-group" >
+				<input type="text" name="category" placeholder="Category Name" class="big-input"
+							 value="{{ request.form['category'] }}" />
+			</div >
+			<div class="subtitle3 mt-24" >Select category color</div >
 
-	<div class=" subtitle2" >Add category:</div >
-	<form method="post" >
-		<div class="form-group" >
-			<input type="text" name="category" placeholder="Category Name" class="form-control"
-						 value="{{ request.form['category'] }}" />
-		</div >
-		<div class="form-group mt-5" >
 
 			<div class="radio-group category-group" >
 				{% for i in range(23) %}
@@ -22,36 +23,35 @@
 				{% endfor %}
 			</div >
 
-			{#					{% for i in range(37) %}#}
-			{#						<div class="gradient_{{ i }}"#}
-			{#								 style="width: 120px; height: 40px; display: inline-flex; color: #fff; margin:3px " >#}
-			{#							<input type="checkbox" name="color" value="gradient_{{ i }}" >{{ categories['color'] }}#}
-			{##}
-			{#						</div >#}
-			{#					{% endfor %}#}
-		</div >
-		<div class="form-group mt-5" >
-			<button type="submit" class="add-button" name="cat" >
-				Add category
-			</button >
-		</div >
-	</form >
 
-
-	<div class="mt-42 subtitle2" >All categories:</div >
-	<div class="  flex flex-wrap radio-group category-group" >
-		{% for category in categories %}
-			<label class="badge {{ category['color'] }} {% if category['state'] == 'true' %} hide-category {% endif %}" >
-				<span >{{ category['name'] }} </span >
-
-				<a href="/edit-category/{{ category['cid'] }}" class="ml-10" ><i class="fa-solid fa-pen-to-square" ></i ></a >
-				{#<a href="/category-delete/{{ category['id'] }}" >delete</a >#}
-			</label >
-
-		{% endfor %}
-
+			<div class="form-buttons mt-24" >
+				<button type="submit" class="send-button" name="cat" >Add</button >
+			</div >
+		</form >
 	</div >
 
+	<div class="divider" ></div >
+
+
+	<div >
+		<div class="mt-24 subtitle2 inline-flex flex-wrap items-center" >Edit Categories
+			<div class="subtitle3 mt-10" > (click to edit)</div >
+		</div >
+		<div class=" flex flex-wrap radio-group category-group" >
+			{% for category in categories %}
+				<label class="badge {{ category['color'] }} {% if category['state'] == 'true' %} hide-category {% endif %}" >
+					<span >{{ category['name'] }} </span >
+
+					<a href="/edit-category/{{ category['cid'] }}" class="ml-10" ><i class="fa-solid fa-pen-to-square" ></i ></a >
+					{#<a href="/category-delete/{{ category['id'] }}" >delete</a >#}
+				</label >
+
+			{% endfor %}
+
+		</div >
+
+
+	</div >
 
 
 

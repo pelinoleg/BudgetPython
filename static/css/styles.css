@@ -3584,7 +3584,8 @@ a {
           flex-direction: column;
 }
 
-.summ {
+.summ,
+.big-input {
   font-size: 28px;
 }
 

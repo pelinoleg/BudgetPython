@@ -4,12 +4,11 @@
 		<span >{% block title %} {{ title }} {% endblock %}</span >
 	</div >
 
-	<div class="content" >
+	<div class="content " >
 		<form method="post" >
-			<input type="text" autofocus name="subcategory" placeholder="Subcategory Name" class="form-control"
+			<div class="subtitle3 mt-24" >Edit subcategory</div >
+			<input type="text" autofocus name="subcategory" placeholder="Subcategory Name" class="big-input"
 						 value="{{ request.form['name'] or subcategory['name'] }}" />
-
-
 			<div class="mt-20 flex gap-20 items-center" >
 				<div class="switch switch-big" >
 					<input type="checkbox" id="hide_subcategory" name="state" value="true" {% if subcategory.state == 'true' %}
@@ -19,10 +18,13 @@
 				Hide
 			</div >
 
+			<div class="form-buttons mt-24" >
+				<button type="submit" class="send-button" name="subcat" >Save</button >
 
-			<button type="submit" class="send-button" name="subcat" >Save</button >
+				<a href="/subcategory-delete/{{ subcategory['id'] }}" class="delete-button"
+					 onclick="return confirm('Delete this subcategory?')" >Delete Subcategory</a >
+			</div >
 
-			<a href="/subcategory-delete/{{ subcategory['id'] }}" >Delete</a >
 
 		</form >
 
