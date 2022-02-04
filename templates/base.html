@@ -17,7 +17,7 @@
 	<link rel="manifest" crossorigin="use-credentials"
 				href="{{ url_for('static', filename= 'manifest/manifest.webmanifest') }}" />
 
-	<title >{% block title %} {{ title }} {% endblock %}</title >
+	<title >{% block title %}{{ title }}{% endblock %}</title >
 </head >
 <body class="w-full flex flex-col" >
 
@@ -57,7 +57,7 @@
 						<a href="/categories" >Categories</a >
 					</li >
 
-					<li class="bg-gradient-red {% if request.path == '/all-expenses' %} active {% endif %}" >
+					<li class="bg-gradient-red {% if request.path == '/all-expenses' or title == 'Edit Expense' %} active {% endif %}" >
 						<i class="fa fa-solid fa-table-list" ></i >
 						<a href="/all-expenses" >All Expenses</a >
 					</li >

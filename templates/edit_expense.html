@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 	<div class="page_title {{ gradient }}" >
 		<a href="#menu" class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></a >
-		<span >{% block title %} {{ title }} {% endblock %}</span >
+		<span >{% block title %}{{ title }}{% endblock %}</span >
 	</div >
 
 	<div class="content" >
@@ -20,20 +20,20 @@
 			</div >
 
 
-			<div class="radio-group category-group" >
+			<div class="radio-group category-group" id="select-add-category" >
 				{% for id, name, color, state in categories %}
 					<input type="radio" value="{{ id }}" name="category" id="{{ name }}"
 							{% if id == expense['category'] %} checked {% endif %} >
-					<label for="{{ name }}" ><span class="{{ color }}" >{{ name }}</span ></label >
+					<label for="{{ name }}" class="{{ color }}" ><span >{{ name }}</span ></label >
 				{% endfor %}
 			</div >
 
-			<div class="radio-group category-group" >
+			<div class="radio-group category-group" id="subcategories-add" >
 				{% for id, name in subcategories %}
-					<input type="radio" value="{{ id }}" name="subcategory" id="{{ name }}"
+					<input type="radio" value="{{ id }}" name="subcategory" id="{{ 'sub_' + name }}"
 							{% if id == expense['subcategory'] %} checked {% endif %}
 					>
-					<label for="{{ name }}" >{{ name }}</label >
+					<label for="{{ 'sub_'+ name }}" class="{{ 'sub_'+ category }}" >{{ name }}</label >
 
 				{% endfor %}
 

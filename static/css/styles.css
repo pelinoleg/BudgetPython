@@ -3941,19 +3941,13 @@ a {
   margin-left: auto;
 }
 .page_title.text-gradient-red span {
-  background: -webkit-linear-gradient(145deg, #f17f5c, #ff4b4b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #f17f5c;
 }
 .page_title.text-gradient-green span {
-  background: -webkit-linear-gradient(145deg, #0fbcba, #21bf56);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #15bc0f;
 }
 .page_title.text-gradient-blue span {
-  background: -webkit-linear-gradient(145deg, #52A0FD, #00e2fa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #52A0FD;
 }
 
 .no-results {
@@ -4777,12 +4771,12 @@ a {
   border-radius: 20px;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-  padding: 1px;
+  padding: 3px;
 }
 .budgets .budget-wrap .budget-wrap-span {
   background: var(--gray-80) url("../images/bg_page.png");
   padding: 10px 15px;
-  border-radius: 19px;
+  border-radius: 18px;
 }
 .budgets .budget-header {
   font-size: 20px;
@@ -4872,7 +4866,7 @@ a {
   background: -o-linear-gradient(305deg, #52A0FD 0%, #00e2fa 80%, #00e2fa 100%);
   background: linear-gradient(145deg, #52A0FD 0%, #00e2fa 80%, #00e2fa 100%);
   border-radius: 15px;
-  color: #0a0a0a;
+  color: #303030;
   text-align: right;
   font-size: 13px;
   line-height: 23px;
