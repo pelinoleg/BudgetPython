@@ -141,4 +141,22 @@
 
 .mm-navbars_bottom .mm-navbar:first-child
 	border-top: unset
+
+.home-link-divider
+	position: relative
+	height: 7px
+	overflow: visible
+	margin: 10px 0 10px !important
 	
+	&:before
+		position: absolute
+		bottom: 0
+		left: 0
+		content: '_________________________________________________________'
+		color: rgba(#000, 0.5)
+		text-shadow: 1px 1px 1px rgba(#fff, 0.05)
+		letter-spacing: 5px
+		font-size: 22px
+		width: 100%
+		white-space: nowrap
+		overflow: hidden
