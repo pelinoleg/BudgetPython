@@ -56,7 +56,7 @@
 					<i class="fa fa-grip-vertical" ></i >
 					Expenses Categories</a >
 			</li >
-			<li class="list-expense {% if request.path == '/all-expenses' %} active {% endif %}" >
+			<li class="list-expense {% if request.path == '/all-expenses' or title == 'Edit Expense' %} active {% endif %}" >
 				<a href="{{ url_for('all_expenses') }}" >
 					<i class="fa fa-solid fa-table-list" ></i >
 					All Expenses</a >
@@ -74,7 +74,7 @@
 				<a href="{{ url_for('categories_income') }}" ><i class="fa fa-solid fa-euro-sign" ></i >Incomes
 																																																Categories</a >
 			</li >
-			<li class="list-income {% if request.path == '/incomes' %} active {% endif %}" ><a
+			<li class="list-income {% if request.path == '/incomes' or title == 'Edit Income' %} active {% endif %}" ><a
 					href="{{ url_for('incomes') }}" ><i class="fa fa-solid fa-money-bill-1-wave" ></i >All
 																																														 Incomes</a >
 			</li >
