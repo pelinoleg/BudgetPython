@@ -3320,7 +3320,7 @@ a:hover, a:focus, a:active {
 }
 .list-menu li a i {
   font-size: 20px;
-  opacity: 0.4;
+  opacity: 0.7;
   text-align: center;
   width: 40px;
 }
@@ -3356,6 +3356,13 @@ a:hover, a:focus, a:active {
 
 .mm-listitem:after {
   display: none;
+}
+
+.home-link {
+  color: #9d42ff !important;
+}
+.home-link i {
+  opacity: 1 !important;
 }
 
 .list-menu li.active {
@@ -3847,7 +3854,6 @@ a {
 
 .card-income .card-amount {
   color: #21bf56;
-  min-width: 135px;
 }
 .card-income .card-amount:before {
   content: "+";
@@ -3859,6 +3865,7 @@ a {
   font-weight: 300;
   position: relative;
   color: #f17575;
+  padding-right: 10px;
 }
 .card-amount span {
   font-size: 16px;
