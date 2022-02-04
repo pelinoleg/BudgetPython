@@ -20,7 +20,7 @@
 			</div >
 
 			<div class="flex mt-10" >
-				<div >
+				<div class="radio-group category-group" >
 					{% for id, name in categories %}
 						<input type="radio" value="{{ id }}" name="category" id="{{ name }}"
 								{% if id == income['category'] %} checked {% endif %} >
