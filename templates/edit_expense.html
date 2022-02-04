@@ -45,7 +45,8 @@
 
 			<div class="form-buttons mt-24" >
 				<button type="submit" class="send-button" >Submit</button >
-				<a href="/delete-expense/{{ expense['id'] }}" class="delete-button" >Delete {{ expense['id'] }}</a >
+				<a href="/delete-expense/{{ expense['id'] }}" class="delete-button"
+					 onclick="return confirm('Delete this expense?')" >Delete {{ expense['id'] }}</a >
 			</div >
 
 
