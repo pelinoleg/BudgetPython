@@ -6,7 +6,7 @@
 
 	<div class="content" >
 		<div class=" cards flex-1 mx-auto" >
-			<div class="subtitle2" >Active budgets</div >
+			<div class="divider-title mt-0" ><span >Active Budgets</span ></div >
 			<div class="budgets " >
 
 				{% for su, bid, categor, color, amount, cnt in budgets2 %}
@@ -63,7 +63,8 @@
 
 			</div >
 
-			<div class="subtitle2 mt-42" >All Budgets</div >
+			{#			<div class="subtitle2 mt-42" >All Budgets</div >#}
+			<div class="divider-title mt-42 " ><span >All Budgets</span ></div >
 			<div class="all-budgets" >
 				{% for bid, categor, color, amount in all_budgets %}
 					<div class="all-budgets-item flex items-center {{ color }}" >
