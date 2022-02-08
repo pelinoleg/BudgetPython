@@ -19,7 +19,7 @@
 				{% for i in range(23) %}
 					<input type="radio" value="{{ 'gradient_'+ i|string  or  request.form.get('color') }}" name="color"
 								 id="gradient_{{ i }}" >
-					<label for="gradient_{{ i }}" class="gradient_{{ i }}" ><span style="color:#fff" >#</span ></label >
+					<label for="gradient_{{ i }}" class="gradient_{{ i }}" ><span >#</span ></label >
 				{% endfor %}
 			</div >
 
@@ -44,8 +44,6 @@
 						<i class="fa-regular fa-pen-to-square" ></i >
 					</a >
 
-					{#					<a href="/edit-category/{{ category['cid'] }}" class="ml-10" ><i class="fa-solid fa-pen-to-square" ></i ></a >#}
-					{#<a href="/category-delete/{{ category['id'] }}" >delete</a >#}
 				</label >
 
 			{% endfor %}

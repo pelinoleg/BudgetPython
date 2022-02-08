@@ -186,7 +186,7 @@ a
 //forms button
 .form-buttons
 	display: flex
-	
+	gap: 25px
 	.send-button,
 	.delete-button
 		flex: 1 1 0
@@ -194,25 +194,35 @@ a
 		align-items: center
 		justify-content: center
 		white-space: nowrap
-	
+		box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), inset 0 0 1px 1px rgba(#fff, 0.1)
+		border-radius: calc($form-round - 4px)
+		background: rgba(#fff, 0.03)
 	.delete-button
-		flexshrink: 0
-	
+		flex-shrink: 0
+		letter-spacing: 2px
+		color: var(--gray-30)
+		line-height: 26px
+		padding: 10px
+		text-transform: uppercase
 	.send-button
 		background: var(--form-color)
-		font-size: 16px
 		line-height: 26px
 		letter-spacing: 2px
-		border-radius: $form-round
-		padding: 3px 10px
-		color: var(--gray-90)
+		border-radius: calc($form-round - 4px)
+		padding: 10px
 		color-adjust: exact
 		box-sizing: border-box
 		transition: filter 0.3s linear, box-shadow 0.15s linear
 		text-transform: uppercase
 		border-color: var(--gray-75)
-		box-shadow: $shadow-d
+		color: var(--gray-90)
+		font-weight: 500
+		font-size: 22px
 		flex: 2
-	
-	//.send-button
-	//	flex: 2
+		border: unset
+		box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), inset 0 0 1px 1px rgba(#fff, 0.25)
+		&:active
+			box-shadow: 0 0 0 #000
+//.send-button
+//	flex: 2
+
