@@ -1,9 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 	<div class="page_title {{ gradient }}" >
 		<a href="#menu" class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></a >
-
 		<span >{% block title %} {{ title }} {% endblock %}</span >
-
+		<button class="back-button" ><i class="fa-solid fa-chevron-left" ></i ></button >
 	</div >
 
 	<div class="content w-full" >
@@ -92,9 +91,15 @@
 										<div class="flex flex-col justify-center ml-15" >
 
 											<div class="flex flex-wrap items-center" >
-												<span class="{{ color }} card-category" ><span >{{ category }}</span >    </span >
+
+
+												<span class="{{ color }} card-category {% if category == None %}category-deleted{% endif %}" >
+												{% if category == None %}{% set category = 'category deleted' %}{% endif %}
+													<span >{{ category }}</span >    </span >
+												{% if subcategory == None %}{% set subcategory = 'subcategory deleted' %}{% endif %}
 												{% if (subcategory != '') and (subcategory !=None) %}
-													<span class="card-subcategory ml-10" >  {{ subcategory }}  </span >
+													<span
+															class="card-subcategory {% if subcategory == 'subcategory deleted' %}subcategory-deleted{% endif %}  ml-10" >  {{ subcategory }}  </span >
 												{% endif %}
 											</div >
 

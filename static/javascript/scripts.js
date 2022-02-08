@@ -260,10 +260,15 @@ document.addEventListener(
     }
 );
 
+// back button
+if (history.length) {
+    document.querySelector(".back-button").style.display = "flex";
+    document.querySelector(".back-button").addEventListener("click", function () {
+        history.back();
+        return false;
 
-// document.getElementById('go-back').addEventListener('click', () => {
-//     history.back();
-// });
+    });
+}
 
 
 // select subcategroies

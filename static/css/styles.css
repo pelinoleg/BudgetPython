@@ -3165,6 +3165,23 @@ a:hover, a:focus, a:active {
           box-shadow: 0 0 0 #000;
 }
 
+.back-button {
+  background: unset;
+  border: unset;
+  padding: 5px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
+}
+.back-button i {
+  color: #fcc02b;
+  font-size: 35px;
+}
+
 .gradient_0 {
   background: -o-linear-gradient(105deg, #ec008c 0%, #fc6767 80%, #fc6767 100%) !important;
   background: linear-gradient(-15deg, #ec008c 0%, #fc6767 80%, #fc6767 100%) !important;
@@ -3714,6 +3731,9 @@ a {
 .content.content-stats {
   padding: 0;
 }
+.content.content-stats .divider-title {
+  margin-right: 20px;
+}
 
 .right-container {
   width: 100%;
@@ -3935,6 +3955,10 @@ a {
   font-weight: 300;
   padding: 1px;
   border-radius: 5px;
+  background: rgba(255, 255, 255, 0.2);
+}
+.card-category.category-deleted {
+  opacity: 0.5;
 }
 .card-category span {
   display: block;
@@ -3950,6 +3974,9 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 2px 6px;
   background: rgba(255, 255, 255, 0.05);
+}
+.card-subcategory.subcategory-deleted {
+  opacity: 0.5;
 }
 
 .card-comment {
@@ -4046,6 +4073,12 @@ a {
 }
 .page_title.text-gradient-blue span {
   color: #52A0FD;
+}
+.page_title.text-gradient-orange span {
+  color: #f68d2a;
+}
+.page_title.text-gradient-violet span {
+  color: #9e66ff;
 }
 
 .no-results {
@@ -4836,6 +4869,9 @@ a {
   top: -12px;
 }
 
+.page_title span {
+  margin: auto;
+}
 .page_title .side-panel-toggle {
   background: unset;
   border: unset;

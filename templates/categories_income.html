@@ -2,6 +2,7 @@
 	<div class="page_title {{ gradient }}" >
 		<a href="#menu" class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></a >
 		<span >{% block title %} {{ title }} {% endblock %}</span >
+		<button class="back-button" ><i class="fa-solid fa-chevron-left" ></i ></button >
 	</div >
 	<div class="content flex flex-col gap-15" >
 		{% if categories_income|length == 0 and categories_income_second|length == 0 %}

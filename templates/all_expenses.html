@@ -2,6 +2,7 @@
 	<div class="page_title {{ gradient }}" >
 		<a href="#menu" class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></a >
 		<span >{% block title %} {{ title }} {% endblock %}</span >
+		<button class="back-button" ><i class="fa-solid fa-chevron-left" ></i ></button >
 	</div >
 	<div class="content" >
 		{% if all_expenses|length == 0 %}

@@ -246,7 +246,7 @@ def index():
     days_in_month = calendar.monthrange(now.year, now.month)[1]
     current_day = datetime.now().day
 
-    return render_template('index.html', title='This Month Stats', gradient='text-gradient-blue',
+    return render_template('index.html', title='This Month Stats', gradient='text-gradient-violet',
                            this_month_transactions=this_month_transactions, sum_month=sum_month,
                            sum_month_income=sum_month_income, category_sum_total=category_sum_total,
                            this_year=this_year, this_month=this_month, budgets2=budgets2, days_in_month=days_in_month,
@@ -308,7 +308,7 @@ def stats():
     ).fetchall()
 
     date = datetime.now()
-    return render_template('stats.html', title='Statistics', gradient='text-gradient-blue',
+    return render_template('stats.html', title='Statistics', gradient='text-gradient-orange',
                            this_month_transactions=this_month_transactions, sum_months=sum_months,
                            sum_months_income=sum_months_income, category_sum_total=category_sum_total,
                            date=date)
