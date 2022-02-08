@@ -96,10 +96,9 @@
 												<span class="{{ color }} card-category {% if category == None %}category-deleted{% endif %}" >
 												{% if category == None %}{% set category = 'category deleted' %}{% endif %}
 													<span >{{ category }}</span >    </span >
-												{% if subcategory == None %}{% set subcategory = 'subcategory deleted' %}{% endif %}
+
 												{% if (subcategory != '') and (subcategory !=None) %}
-													<span
-															class="card-subcategory {% if subcategory == 'subcategory deleted' %}subcategory-deleted{% endif %}  ml-10" >  {{ subcategory }}  </span >
+													<span class="card-subcategory ml-10" >  {{ subcategory }}  </span >
 												{% endif %}
 											</div >
 

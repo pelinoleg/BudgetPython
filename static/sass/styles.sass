@@ -128,6 +128,14 @@ a
 	padding: 6px
 	border-radius: 10px
 	
+	input:checked + label
+		box-shadow: inset 0 2px 6px rgba(#000, 0.5), 0 0 1px 1px rgba(#fff, 0.07) !important
+		cursor: default
+		
+		span
+			display: block
+			transform: scale(0.95)
+	
 	label
 		//text-transform: uppercase
 		font-size: 20px
@@ -143,6 +151,7 @@ a
 		
 		span
 			color: #fff
+			transition: transform 0.3s ease-in-out
 
 .category-group-edit
 	label
@@ -1342,14 +1351,14 @@ a
 		flex: 1 1 0
 		//border: 1px solid rgba(#000, 0.15)
 		border-radius: 20px
-		box-shadow: $shadow-d
+		//box-shadow: $shadow-d
 		padding: 3px
+		box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), inset 0 0 1px 1px rgba(#fff, 0.15)
 		
 		.budget-wrap-span
 			background: var(--gray-80) url("../images/bg_page.png")
 			padding: 10px 15px
 			border-radius: 18px
-			box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), inset 0 0 1px 1px rgba(#fff, 0.15)
 	
 	//box-shadow: $shadow-d-in
 	.budget-header
