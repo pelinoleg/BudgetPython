@@ -3,47 +3,55 @@
 		<a href="#menu" class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></a >
 		<span >{% block title %} {{ title }} {% endblock %}</span >
 	</div >
-	<div class="content" >
+	<div class="content flex flex-col gap-15" >
 		{% if categories_income|length == 0 %}
 			<div class="no-results" >You don't have any income categories added yet.</div >
 		{% endif %}
 
-		<form class="mt-20" method="post" >
-			<div class="form-group" >
+		<form method="post" >
+			<div class="" >
+				<div class="subtitle3" >Add New Category</div >
 
-				<input type="text" name="category_income" placeholder="Income Category Name" class="form-control"
+				<input type="text" name="category_income" placeholder="Income Category Name" class="big-input" />
 
-				<div class="switch switch-big" >
+				<div class="switch switch-big flex items-center mt-15" >
 					<input type="checkbox" id="primordial" name="primordial" value="true" checked >
-					<label for="primordial" ></label >Primary
+					<label for="primordial" ></label >
+					<span class="ml-10" >Primary</span >
 				</div >
 
 
 			</div >
 
-			<div class="form-group mt-5" >
-				<button type="submit" class="fancy-button  bg-gradient-yellow m-0" name="cat" >
+			<div class="form-buttons mt-24" >
+				<button type="submit" class="send-button" name="cat" >
 					<span >Add income category</span >
 				</button >
 			</div >
 		</form >
 
-		<div class="radio-group category-group mt-20" >
+		<div class="divider" ></div >
+		<div class="subtitle3" >Primary Categories</div >
+		<div class="radio-group category-group category-group-edit " >
 			{% for id, category_income, primordial, state in categories_income %}
 				<label
-						class="badge {% if primordial == 'true' %} primary {% endif %} {% if state == 'true' %} hide-category {% endif %}" >{{ category_income }}
-					<a href="/edit-category-income/{{ id }}" >edit</a ><a
-							href="/category-income-delete/{{ id }}" >delete2</a >{{ name }}</label >
+						class="badge {% if primordial == 'true' %} primary {% endif %} {% if state == 'true' %} hide-category {% endif %}" >
+					<a href="/edit-category-income/{{ id }}" >{{ category_income }}<i
+							class="fa-regular fa-pen-to-square" ></i ></a >
+					{#					<a#}
+					{#							href="/category-income-delete/{{ id }}" >delete2</a >#}
+				</label >
 
 			{% endfor %}
 		</div >
 
-
-		<div class="flex gap-15 flex-wrap mt-30" >
+		<div class="subtitle3 mt-42" >Secondary Categories</div >
+		<div class="radio-group category-group category-group-edit" >
 			{% for id, category_income, primordial, state in categories_income_second %}
-				<div class="badge  {% if state == 'true' %} hide-category {% endif %}" >{{ category_income }}<a
-						href="/edit-category-income/{{ id }}" >edit</a ><a href="/category-income-delete/{{ id }}" >delete2</a >
-				</div >
+				<label class="badge  {% if state == 'true' %} hide-category {% endif %}" >
+					<a href="/edit-category-income/{{ id }}" >{{ category_income }}<i
+							class="fa-regular fa-pen-to-square" ></i ></a >
+				</label >
 
 			{% endfor %}
 		</div >

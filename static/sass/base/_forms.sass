@@ -357,6 +357,8 @@ textarea
 			transition: background 0.2s ease-in-out
 			box-shadow: $shadow-l-in
 			border: 1px solid var(--gray-15)
+			+ span
+				opacity: 0.6
 			@include dark
 				background-color: var(--gray-92)
 				background-image: url("../images/bg_page.png")
@@ -384,6 +386,8 @@ textarea
 		
 		&:checked + label
 			background-color: var(--form-color)
+			+ span
+				opacity: 1
 			@include dark
 				background-color: var(--form-color)
 				box-shadow: $shadow-d-in

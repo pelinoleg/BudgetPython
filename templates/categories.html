@@ -37,12 +37,14 @@
 		<div class="mt-24 subtitle2 inline-flex flex-wrap items-center" >Edit Categories
 			<div class="subtitle3 mt-10" > (click to edit)</div >
 		</div >
-		<div class=" flex flex-wrap radio-group category-group" >
+		<div class=" flex flex-wrap radio-group category-group category-group-edit" >
 			{% for category in categories %}
 				<label class="badge {{ category['color'] }} {% if category['state'] == 'true' %} hide-category {% endif %}" >
-					<span >{{ category['name'] }} </span >
+					<a href="/edit-category/{{ category['cid'] }}" >{{ category['name'] }}
+						<i class="fa-regular fa-pen-to-square" ></i >
+					</a >
 
-					<a href="/edit-category/{{ category['cid'] }}" class="ml-10" ><i class="fa-solid fa-pen-to-square" ></i ></a >
+					{#					<a href="/edit-category/{{ category['cid'] }}" class="ml-10" ><i class="fa-solid fa-pen-to-square" ></i ></a >#}
 					{#<a href="/category-delete/{{ category['id'] }}" >delete</a >#}
 				</label >
 

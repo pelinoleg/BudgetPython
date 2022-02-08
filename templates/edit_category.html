@@ -46,14 +46,16 @@
 
 		<div >
 			<div class="subtitle3 mt-24" >Subcategories in "<strong >{{ category['name'] }}</strong >"</div >
-			<div class="flex flex-wrap radio-group category-group" >
+			<div class="flex flex-wrap radio-group category-group category-group-edit" >
 
 				{% for subcategory in subcategories if (category['id'] ==  subcategory['sub_cat_id']) %}
 
 					<label class="badge badge-subcategory {% if subcategory['sub_state'] == 'true' %} hide-category {% endif %}" >
-						{{ subcategory['sub_name'] }}
-						<a href="/edit-subcategory/{{ subcategory['sub_id'] }}" class="ml-10" ><i
-								class="fa-solid fa-pen-to-square" ></i ></a >
+
+						<a href="/edit-subcategory/{{ subcategory['sub_id'] }}" >
+							{{ subcategory['sub_name'] }}
+							<i class="fa-regular fa-pen-to-square" ></i >
+						</a >
 						{#<a href="/subcategory-delete/{{ subcategory['id'] }}" >delete</a >#}
 
 					</label >
