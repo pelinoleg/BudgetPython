@@ -498,11 +498,16 @@ a
 	font-weight: 400
 	position: sticky
 	top: 0
-	background: var(--gray-85) url("../images/bg_page.png")
-	box-shadow: $shadow-d
+	
 	border-bottom: 1px solid rgba(#fff, 0.05)
 	z-index: 4
 	align-items: center
+	background: var(--gray-10) url("../images/bg_page.png")
+	//overflow: hidden
+	box-shadow: $shadow-l
+	@include dark
+		background: var(--gray-85) url("../images/bg_page.png")
+		box-shadow: $shadow-d
 	
 	span
 		margin-left: auto
@@ -1206,8 +1211,12 @@ a
 .subtitle3
 	font-size: 19px
 	font-weight: 300
-	opacity: 0.75
+	
 	padding: 0 0 10px 10px
+	color: var(--gray-70)
+	@include dark
+		opacity: 0.75
+		color: #fff
 
 .divider
 	margin: 20px 0 20px
@@ -1235,9 +1244,12 @@ a
 		font-size: 25px
 		font-weight: 500
 		letter-spacing: 1px
-		color: rgba(#000, 0.45)
-		text-shadow: 1px 1px 1px rgba(#fff, 0.05)
+		color: var(--gray-70)
+		text-shadow: 1px 1px 1px rgba(#fff, 0.75)
 		text-transform: uppercase
+		@include dark
+			text-shadow: 1px 1px 1px rgba(#fff, 0.05)
+			color: rgba(#000, 0.45)
 	
 	&:after
 		content: '_________________________________________________________'
@@ -1470,12 +1482,15 @@ a
 		border-radius: 10px
 		color: #fff
 		font-size: 18px
+		display: flex
+		flex-direction: column
 		
 		span
-			font-size: 20px
-			font-weight: 500
-			margin-top: 10px
+			font-size: 28px
+			font-weight: 300
+			padding-top: 10px
 			display: block
+			margin-top: auto
 		
 		&.expenses
 			@include gradientBg2(#9d3b6d, #f23945)

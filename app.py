@@ -5,6 +5,9 @@ from datetime import datetime, timedelta
 import calendar
 import requests
 import xmltodict
+from redis import Redis
+from rq import Queue
+import queue
 
 
 def get_db_connection():

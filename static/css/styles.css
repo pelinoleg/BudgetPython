@@ -4001,15 +4001,21 @@ a {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background: var(--gray-85) url("../images/bg_page.png");
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   z-index: 4;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: var(--gray-10) url("../images/bg_page.png");
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
+:root.dark-theme .page_title {
+  background: var(--gray-85) url("../images/bg_page.png");
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
 .page_title span {
   margin-left: auto;
 }
@@ -4752,8 +4758,12 @@ a {
 .subtitle3 {
   font-size: 19px;
   font-weight: 300;
-  opacity: 0.75;
   padding: 0 0 10px 10px;
+  color: var(--gray-70);
+}
+:root.dark-theme .subtitle3 {
+  opacity: 0.75;
+  color: #fff;
 }
 
 .divider {
@@ -4786,10 +4796,15 @@ a {
   font-size: 25px;
   font-weight: 500;
   letter-spacing: 1px;
-  color: rgba(0, 0, 0, 0.45);
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.05);
+  color: var(--gray-70);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.75);
   text-transform: uppercase;
 }
+:root.dark-theme .divider-title span {
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.05);
+  color: rgba(0, 0, 0, 0.45);
+}
+
 .divider-title:after {
   content: "_________________________________________________________";
   color: rgba(0, 0, 0, 0.4);
@@ -5072,12 +5087,20 @@ a {
   border-radius: 10px;
   color: #fff;
   font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .this-month-stats .this-month-stat span {
-  font-size: 20px;
-  font-weight: 500;
-  margin-top: 10px;
+  font-size: 28px;
+  font-weight: 300;
+  padding-top: 10px;
   display: block;
+  margin-top: auto;
 }
 .this-month-stats .this-month-stat.expenses {
   background: #9d3b6d;
