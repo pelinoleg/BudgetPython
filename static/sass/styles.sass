@@ -1419,3 +1419,39 @@ a
 		.progress
 			height: 17px
 			line-height: 17px
+
+.all-budgets
+	display: flex
+	flex-direction: column
+	gap: 15px
+	
+	.all-budgets-item
+		border-radius: 3px
+		padding: 5px 10px
+		font-size: 18px
+
+//this-month-stats index
+.this-month-stats
+	display: flex
+	gap: 25px
+	
+	.this-month-stat
+		background: green
+		flex: 1
+		padding: 10px 15px
+		border-radius: 10px
+		color: #fff
+		font-size: 18px
+		
+		span
+			font-size: 20px
+			font-weight: 500
+			margin-top: 10px
+			display: block
+		
+		&.expenses
+			@include gradientBg2(#9d3b6d, #f23945)
+		
+		&.incomes
+			@include gradientBg2(#21bf56, #0fbcba)
+		

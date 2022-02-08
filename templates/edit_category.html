@@ -1,8 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 	<div class="page_title {{ gradient }}" >
 		<a href="#menu" class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></a >
-		<span >{% block title %}{{ title }}:
-			<strong >{{ category['name'] }}</strong > {% endblock %}</span ></div >
+		<span >{% block title %}{{ title }}{% endblock %}</span ></div >
 
 	<div class="content flex flex-col gap-15" >
 
@@ -31,8 +30,8 @@
 					Hide
 				</div >
 
-				<div class="form-buttons" >
-					<button type="submit" class="send-button mt-20" name="cat" >Save</button >
+				<div class="form-buttons mt-24" >
+					<button type="submit" class="send-button" name="cat" >Save</button >
 					<a href="/category-delete/{{ category['id'] }}" class="delete-button"
 						 onclick="return confirm('Delete this category?')" >Delete Category</a >
 				</div >

@@ -52,9 +52,9 @@
 						</div >
 						<div class="btns-ac" >
 							<a class="btn-ac" href="/edit_budget/{{ bid }}" ><i class="fa-solid fa-pen-to-square" ></i ></a >
-							<form action="{{ url_for('delete_budget', id=bid) }}" method="POST" >
-								<button type="submit" class="btn-ac" ><i class="fa-solid fa-trash-can" ></i ></button >
-							</form >
+							<a class="btn-ac" href="/delete-budget/{{ bid }}" onclick="return confirm('Delete this budget?')" ><i
+									class="fa-solid fa-trash-can" ></i ></a >
+
 						</div >
 					</div >
 
@@ -66,8 +66,13 @@
 			<div class="subtitle2 mt-42" >All Budgets</div >
 			<div class="all-budgets" >
 				{% for bid, categor, color, amount in all_budgets %}
-					<div class="all-budgets-item" >
-						{{ categor }} - {{ amount }}
+					<div class="all-budgets-item flex items-center {{ color }}" >
+						{{ categor }} - {{ amount|int }}&euro;
+						<div class="all-budgets-button ml-auto" >
+							<a class="btn-ac" href="/edit_budget/{{ bid }}" ><i class="fa-solid fa-pen-to-square" ></i ></a >
+							<a class="btn-ac" href="/delete-budget/{{ bid }}" onclick="return confirm('Delete this budget?')" ><i
+									class="fa-solid fa-trash-can" ></i ></a >
+						</div >
 					</div >
 				{% endfor %}
 			</div >

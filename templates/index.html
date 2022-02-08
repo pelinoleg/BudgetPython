@@ -7,14 +7,19 @@
 	</div >
 
 	<div class="content w-full" >
-		Expenses this month:
-		{% for sum, id in sum_month %}
-			{{ sum }}
-		{% endfor %}
-		Incomes this month:
-		{% for amount, id in sum_month_income %}
-			{{ amount }}
-		{% endfor %}
+		<div class="this-month-stats" >
+			<div class="this-month-stat expenses" >
+				<div class="this-month-stats-title" >Expenses this month:</div >
+				<span >{% for sum, id in sum_month %}{{ sum|int }}&euro;{% endfor %}</span >
+			</div >
+
+			<div class=" this-month-stat incomes" >
+				<div class="this-month-stats-title" >Incomes this month:</div >
+				<span >{% for amount, id in sum_month_income %}{{ amount|int }}&euro;{% endfor %}</span >
+			</div >
+
+		</div >
+
 
 		<div class="divider" ></div >
 

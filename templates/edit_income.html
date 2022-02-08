@@ -4,48 +4,47 @@
 		<span >{% block title %} {{ title }} {% endblock %}</span >
 	</div >
 
-	<div class="content" >
+	<div class="content flex flex-col gap-15" >
 		<form method="post" >
 
 
-			<div class="flex" >
-				<input type="number" autofocus name="amount" placeholder="Amount" class="form-control" step="0.01"
+			<div class="" >
+				<input type="number" autofocus name="amount" placeholder="Amount" class="big-input" step="0.01"
 							 pattern="[0-9]+([\.,][0-9]+)?" min="0" value="{{ request.form['amount'] or income['amount'] }}" />
 			</div >
 
-			<div class="form-group mt-5" >
+			<div class="mt-15" >
 				<input data-toggle="datepicker" type="text" name="date" placeholder="Date" class="form-control"
 							 value="{{ request.form['date_s'] or income['date'] }}" />
 
 			</div >
 
-			<div class="flex mt-10" >
-				<div class="radio-group category-group" >
-					{% for id, name in categories %}
-						<input type="radio" value="{{ id }}" name="category" id="{{ name }}"
-								{% if id == income['category'] %} checked {% endif %} >
-						<label for="{{ name }}" >{{ name }}</label >
-						
-					{% endfor %}
-				</div >
 
+			<div class="radio-group category-group mt-15" >
+				{% for id, name in categories %}
+					<input type="radio" value="{{ id }}" name="category" id="{{ name }}"
+							{% if id == income['category'] %} checked {% endif %} >
+					<label for="{{ name }}" >{{ name }}</label >
 
+				{% endfor %}
 			</div >
 
-			<div class="form-group mt-10" >
-    <textarea name="comment" placeholder="Comment" class="form-control" >
-{{ request.form['comment'] or income['comment'] }}</textarea >
+
+			<div class="form-group mt-15" >
+				<textarea name="comment" placeholder="Comment"
+									class="" >{{ request.form['comment'] or income['comment'] }}</textarea >
 			</div >
-			<div class="form-group mt-10" >
-				<button type="submit" class="send-button" >Submit</button >
+			<div class="form-buttons mt-24" >
+				<button type="submit" class="send-button" >Save</button >
+				
+				<a href="/delete-income/{{ income['id'] }}" class="delete-button"
+					 onclick="return confirm('Delete this income?')" >Delete
+																														income</a >
 			</div >
 
-			<hr />
+
 		</form >
-		<form action="{{ url_for('delete_income', id=income['id']) }}" method="POST" class="mt-10" >
-			<input type="submit" value="Delete Income" class="add-button"
-						 onclick="return confirm('Are you sure you want to delete this post?')" />
-		</form >
+
 	</div >
 
 

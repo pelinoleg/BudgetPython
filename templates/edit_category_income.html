@@ -4,35 +4,36 @@
 		<span >{% block title %} {{ title }} {% endblock %}</span >
 	</div >
 
-	<div class="content" >
+	<div class="content flex flex-col gap-15" >
 		<form method="post" >
-			<input type="text" autofocus name="category" placeholder="Category Name" class="form-control"
+			<input type="text" autofocus name="category" placeholder="Category Name" class="big-input"
 						 value="{{ request.form['name'] or category['name'] }}" />
-			<div class="switch switch-big" >
-				<input type="checkbox" id="primordial" name="primordial" value="true"
-						{% if category.primordial == 'true' %} checked{% endif %}
-				>
-				<label for="primordial" ></label >
-			</div >
-			Primary or not?
 
-
-			<div class="mt-20 flex gap-20 items-center" >
-				<div class="switch switch-big" >
+			<div class="flex items-center" >
+				<div class="switch switch-big flex items-center mt-15" >
+					<input type="checkbox" id="primordial" name="primordial" value="true"
+							{% if category.primordial == 'true' %} checked{% endif %}
+					>
+					<label for="primordial" ></label >
+					<label for="primordial" class="second-label ml-10" >Primary</label >
+				</div >
+				<div class="switch switch-big flex items-center mt-15  ml-42" >
 					<input type="checkbox" id="hide_category" name="state" value="true" {% if category.state == 'true' %}
 								 checked{% endif %}>
 					<label for="hide_category" ></label >
+					<label for="hide_category" class="second-label ml-10" >Hide</label >
 				</div >
-				Hide
+			</div >
+
+			<div class="form-buttons mt-24" >
+				<button type="submit" class="send-button" name="cat" >Save</button >
+				<a href="/category-income-delete/{{ category['id'] }}" class="delete-button"
+					 onclick="return confirm('Delete this category?')" >Delete Category</a >
 			</div >
 
 
-			<button type="submit" class="send-button" name="cat" >Submit</button >
-
-
-			<hr />
 		</form >
-		<a href="/category-income-delete/{{ category['id'] }}" >delete2</a >
+
 		{#		<form class="form-delete" action="{{ url_for('cat_delete', id=category['id']) }}" method="POST" >#}
 		{#			<button type="submit" class="btn btn-delete" name="cat_del" >X</button >#}
 		{#		</form >#}

@@ -741,7 +741,7 @@ def budgets():
                            gradient='text-gradient-blue', days_in_month=days_in_month, current_day=current_day)
 
 
-@app.route('/delete-budget/<int:id>', methods=('POST',))
+@app.route('/delete-budget/<int:id>', methods=('GET', 'POST',))
 def delete_budget(id):
     budgets = get_budgets(id)
     conn = get_db_connection()

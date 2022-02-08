@@ -4,32 +4,33 @@
 		<span >{% block title %} {{ title }} {% endblock %}</span >
 	</div >
 
-	<div class="content" >
+	<div class="content flex flex-col gap-15" >
 		{% if categories|length == 0 %}
 			<div class="no-results" >You must add categories first (in expenses categories)</div >
 		{% else %}
 			<form method="post" >
-				<div class="flex flex-col mx-auto gap-15" >
-					<div class="flex flex-col" >
-						<input type="text" autofocus name="amount" placeholder="100" min="0" class="summ py-5 mr-20"
-									 value="{{ request.form['amount'] }}" />
 
 
-						<div class="radio-group category-group" >
-							{% for cid, name, color, state, count, budget_category in categories %}
+				<input type="text" autofocus name="amount" placeholder="100" min="0" class="summ py-5 mr-20"
+							 value="{{ request.form['amount'] }}" />
 
-								<input type="radio" value="{{ cid }}" name="category" id="{{ name }}" />
-								<label for="{{ name }}" class="{{ color }}" ><span >{{ name }}</span ></label >
+				<div class="mt-24" >
+					<div class="subtitle3 mt-15" >Select Budget Category</div >
+					<div class="radio-group category-group" >
+						{% for cid, name, color, state, count, budget_category in categories %}
 
-							{% endfor %}
-						</div >
+							<input type="radio" value="{{ cid }}" name="category" id="{{ name }}" />
+							<label for="{{ name }}" class="{{ color }}" ><span >{{ name }}</span ></label >
 
-
-						<button type="submit" class="py-8 send-button" >Add</button >
+						{% endfor %}
 					</div >
-
-
 				</div >
+
+				<div class="form-buttons mt-24" >
+					<button type="submit" class="send-button" >Save budget</button >
+				</div >
+
+
 			</form >
 		{% endif %}
 	</div >

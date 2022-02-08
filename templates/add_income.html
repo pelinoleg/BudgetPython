@@ -5,8 +5,8 @@
 		<button id="go-back" >Go back!</button >
 	</div >
 
-	<div class="content" >
-		{% if categories_income|length == 0 %}
+	<div class="content flex flex-col gap-15" >
+		{% if categories_income|length == 0 and categories_income_second|length == 0 %}
 			<div class="no-results" >You must add income categories first</div >
 		{% else %}
 			<form method="post" >
@@ -28,33 +28,43 @@
 
 
 					</div >
+					<div >
+						<div class="subtitle3 mt-15" >Select Income Category</div >
+						{% if categories_income|length > 0 %}
 
+							<div class="radio-group category-group primary-group" >
+								{% for id, name in categories_income %}
 
-					<div class="radio-group category-group primary-group" >
-						{% for id, name in categories_income %}
+									<input type="radio" value="{{ id }}" name="category_income" id="{{ name }}" />
+									<label for="{{ name }}" >{{ name }}</label >
 
-							<input type="radio" value="{{ id }}" name="category_income" id="{{ name }}" />
-							<label for="{{ name }}" >{{ name }}</label >
+								{% endfor %}
+							</div >
+						{% endif %}
 
-						{% endfor %}
+						{% if categories_income_second|length > 0 %}
+
+							<div class="radio-group category-group second-group mt-10" >
+								{% for id, name in categories_income_second %}
+
+									<input type="radio" value="{{ id }}" name="category_income" id="{{ name }}" />
+									<label for="{{ name }}" >{{ name }}</label >
+
+								{% endfor %}
+							</div >
+						{% endif %}
 					</div >
-					{% if categories_income_second|length > 0 %}
 
-						<div class="radio-group category-group second-group" >
-							{% for id, name in categories_income_second %}
 
-								<input type="radio" value="{{ id }}" name="category_income" id="{{ name }}" />
-								<label for="{{ name }}" >{{ name }}</label >
-
-							{% endfor %}
-						</div >
-					{% endif %}
-
-					<div class="form-group" >
+					<div class="mt-15" >
+						<div class="subtitle3 mt-15" >Add Comment</div >
 						<textarea name="comment" placeholder="Comment"
 											class="form-control" >{{ request.form['comment'] }}</textarea >
 					</div >
-					<button type="submit" class="py-8 send-button" >Add</button >
+					<div class="form-buttons" >
+						<button type="submit" class="send-button" >Add Income</button >
+					</div >
+
 				</div >
 			</form >
 		{% endif %}
