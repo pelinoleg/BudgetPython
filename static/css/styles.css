@@ -3613,6 +3613,8 @@ a {
   font-weight: 300;
   padding: 3px 18px;
   border-radius: 5px !important;
+  -webkit-box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), inset 0 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+          box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), inset 0 0 1px 1px rgba(255, 255, 255, 0.15) !important;
 }
 .category-group label a {
   color: #fff;

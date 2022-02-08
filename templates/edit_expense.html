@@ -44,7 +44,7 @@
 								class="form-control" >{{ request.form['comment'] or expense['comment'] }}</textarea >
 
 			<div class="form-buttons mt-24" >
-				<button type="submit" class="send-button" >Submit</button >
+				<button type="submit" class="send-button" >Save</button >
 				<a href="/delete-expense/{{ expense['id'] }}" class="delete-button"
 					 onclick="return confirm('Delete this expense?')" >Delete {{ expense['id'] }}</a >
 			</div >
