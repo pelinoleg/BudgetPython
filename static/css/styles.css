@@ -4676,8 +4676,8 @@ a {
   background: linear-gradient(145deg, #0fbcba 0%, #21bf56 80%, #21bf56 100%);
 }
 .index-months-slide ul li {
-  margin-top: 20px;
-  margin-bottom: 25px;
+  margin-top: 0px;
+  margin-bottom: 30px;
   background: #9d3b6d;
   background: -o-linear-gradient(305deg, #9d3b6d 0%, #f23945 80%, #f23945 100%);
   background: linear-gradient(145deg, #9d3b6d 0%, #f23945 80%, #f23945 100%);
@@ -4701,8 +4701,8 @@ a {
 }
 
 .index-by-months-slide ul li {
-  margin-top: 20px;
-  margin-bottom: 25px;
+  margin-top: 0;
+  margin-bottom: 30px;
   background: #F09819;
   background: -o-linear-gradient(305deg, #F09819 0%, #FF512F 80%, #FF512F 100%);
   background: linear-gradient(145deg, #F09819 0%, #FF512F 80%, #FF512F 100%);

@@ -252,7 +252,7 @@ document.addEventListener(
                 {
                     "position": "bottom",
                     "content": [
-                        "<div class='checkbox hidden' ><div ><label ><input class='custom-form' type='checkbox' id='theme_toggle' ><span >Dark Theme</span > </label > </div ></div> <div>With &hearts; from Oleg</div> "
+                        "<div class='checkbox hidde' ><div ><label ><input class='custom-form' type='checkbox' id='theme_toggle' ><span >Dark Theme</span > </label > </div ></div> <div>With &hearts; from Oleg</div> "
                     ]
                 }
             ]
