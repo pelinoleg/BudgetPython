@@ -1219,11 +1219,36 @@ a
 	&:before
 		content: '_________________________________________________________'
 		color: rgba(#000, 0.4)
-		
 		text-shadow: 1px 1px 1px rgba(#fff, 0.05)
 
-.page_title
+.divider-title
+	margin: 20px 0
+	white-space: nowrap
+	font-size: 30px
 	
+	overflow: hidden
+	display: flex
+	align-items: center
+	
+	span
+		padding-right: 20px
+		font-size: 25px
+		font-weight: 500
+		letter-spacing: 1px
+		color: rgba(#000, 0.4)
+		text-shadow: 1px 1px 1px rgba(#fff, 0.05)
+		text-transform: uppercase
+	
+	&:after
+		content: '_________________________________________________________'
+		color: rgba(#000, 0.4)
+		text-shadow: 1px 1px 1px rgba(#fff, 0.05)
+		flex: 1
+		letter-spacing: 10px
+		position: relative
+		top: -12px
+
+.page_title
 	.side-panel-toggle
 		background: unset
 		border: unset
