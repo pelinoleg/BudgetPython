@@ -825,3 +825,7 @@ def edit_budget(id):
 
     return render_template('edit_budget.html', title='Edit Budget', gradient='text-gradient-blue',
                            categories=categories, budget=budget)
+
+
+if __name__ == "__main__":
+    app.run(debug=True, use_reloader=True)
