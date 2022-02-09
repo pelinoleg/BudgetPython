@@ -16,7 +16,7 @@
 			<div class="subtitle3 mt-24" >Select category color</div >
 
 
-			<div class="radio-group category-group" >
+			<div class="radio-group category-group category-group-color" >
 				{% for i in range(23) %}
 					<input type="radio" value="{{ 'gradient_'+ i|string  or  request.form.get('color') }}" name="color"
 								 id="gradient_{{ i }}" >
@@ -38,7 +38,7 @@
 		<div class="mt-24 subtitle2 inline-flex flex-wrap items-center" >Edit Categories
 			<div class="subtitle3 mt-10" > (click to edit)</div >
 		</div >
-		<div class=" flex flex-wrap radio-group category-group category-group-edit" >
+		<div class=" flex flex-wrap radio-group category-group  category-group-color category-group-edit" >
 			{% for category in categories %}
 				<label class="badge {{ category['color'] }} {% if category['state'] == 'true' %} hide-category {% endif %}" >
 					<a href="/edit-category/{{ category['cid'] }}" >{{ category['name'] }}

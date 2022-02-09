@@ -16,7 +16,7 @@
 									 value="{{ request.form['amount'] or budget['amount']|int }}" />
 
 
-						<div class="radio-group category-group" >
+						<div class="radio-group category-group category-group-color" >
 							{% for cid, name, color, state, count, budget_category in categories %}
 
 								<input type="radio" value="{{ cid }}" name="category" id="{{ name }}" {% if cid == budget['category'] %}

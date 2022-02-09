@@ -36,7 +36,7 @@
 			{% if categories_income|length > 0 %}
 				<div >
 					<div class="subtitle3" >Primary Categories</div >
-					<div class="radio-group category-group category-group-edit " >
+					<div class="radio-group category-group category-group-second category-group-edit " >
 						{% for id, category_income, primordial, state in categories_income %}
 							<label
 									class="badge {% if primordial == 'true' %} primary {% endif %} {% if state == 'true' %} hide-category {% endif %}" >
@@ -54,7 +54,7 @@
 			{% if categories_income_second|length > 0 %}
 				<div >
 					<div class="subtitle3 mt-30" >Secondary Categories</div >
-					<div class="radio-group category-group category-group-edit" >
+					<div class="radio-group category-group  category-group-second category-group-edit" >
 						{% for id, category_income, primordial, state in categories_income_second %}
 							<label class="badge  {% if state == 'true' %} hide-category {% endif %}" >
 								<a href="/edit-category-income/{{ id }}" >{{ category_income }}<i

@@ -1156,25 +1156,29 @@ td, th {
   line-height: 50px !important;
 }
 
+.w-auto {
+  width: auto !important;
+}
+
 .ml-auto {
-  margin-left: auto;
+  margin-left: auto !important;
 }
 
 .mr-auto {
-  margin-right: auto;
+  margin-right: auto !important;
 }
 
 .mt-auto {
-  margin-top: auto;
+  margin-top: auto !important;
 }
 
 .mb-auto {
-  margin-bottom: auto;
+  margin-bottom: auto !important;
 }
 
 .mx-auto {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .order-1 {
@@ -3641,8 +3645,8 @@ a {
   font-weight: 300;
   padding: 3px 18px;
   border-radius: 5px !important;
-  -webkit-box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), inset 0 0 1px 1px rgba(255, 255, 255, 0.15) !important;
-          box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), inset 0 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+  -webkit-box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034) !important;
+          box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034) !important;
 }
 .category-group label a {
   color: #fff;
@@ -3654,6 +3658,17 @@ a {
   -o-transition: transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+
+.category-group-color label {
+  -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15) !important;
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15) !important;
+}
+
+.category-group-second label {
+  -webkit-box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.15) !important;
+          box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.15) !important;
+  background: var(--gray-80) url("../images/bg_page.png") !important;
 }
 
 .category-group-edit label {
@@ -3668,12 +3683,6 @@ a {
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
-}
-
-.primary-group label {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
 }
 
 .second-group label {
@@ -4957,6 +4966,10 @@ a {
   position: relative;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+}
+.radio-currency label {
+  font-size: 14px !important;
+  font-weight: 400;
 }
 
 :root {

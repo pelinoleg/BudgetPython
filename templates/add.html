@@ -14,7 +14,7 @@
 									 class="summ transparent  py-5 mr-20" value="{{ request.form['sum'] }}"
 									 style="border-bottom-right-radius: 0; border-top-right-radius: 0" />
 
-						<div class="radio-group  radio-currency flex-nowrap flex-shrink-0" >
+						<div class="radio-group category-group w-auto category-group-second radio-currency flex-nowrap flex-shrink-0" >
 							<input type="radio" id="eur" checked name="currency" value="eur" >
 							<label for="eur" >EUR</label >
 							<input type="radio" id="usd" name="currency" value="usd" >
@@ -32,7 +32,7 @@
 
 				<div >
 					<div class="subtitle3 mt-24" >Select Category</div >
-					<div class="radio-group category-group" id="select-add-category" >
+					<div class="radio-group category-group category-group-color" id="select-add-category" >
 						{% for cid, name, color, state, count in categories %}
 
 							<input type="radio" value="{{ cid }}" name="category" id="{{ name }}" />
@@ -44,7 +44,7 @@
 
 				<div >
 					<div class="subtitle3 mt-24 subtitle-subcategory" >Select Subcategory</div >
-					<div class="radio-group category-group w-full" id="subcategories-add" >
+					<div class="radio-group category-group category-group-second w-full" id="subcategories-add" >
 						{% for id, name, category in subcategories %}
 
 							<input type="radio" value="{{ id }}" name="subcategory" id="{{ 'sub_' + name }}" class="{{ category }}" />

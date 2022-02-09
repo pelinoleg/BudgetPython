@@ -18,7 +18,7 @@
 						 value="{{ request.form['date_s'] or expense['date'] }}" />
 
 			<div class="subtitle3 mt-24" >Select Category</div >
-			<div class="radio-group category-group" id="select-add-category" >
+			<div class="radio-group category-group category-group-color" id="select-add-category" >
 				{% for id, name, color, state in categories %}
 					<input type="radio" value="{{ id }}" name="category" id="{{ name }}"
 							{% if id == expense['category'] %} checked {% endif %} >
@@ -27,7 +27,7 @@
 			</div >
 
 			<div class="subtitle3 mt-24 subtitle-subcategory" >Select Subcategory</div >
-			<div class="radio-group category-group" id="subcategories-add" >
+			<div class="radio-group category-group category-group-second" id="subcategories-add" >
 
 				{% for id, name, category in subcategories %}
 					<input type="radio" value="{{ id }}" name="subcategory" id="{{ 'sub_' + name }}"

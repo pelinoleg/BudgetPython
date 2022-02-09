@@ -10,13 +10,12 @@
 			<div class="no-results" >You must add categories first (in expenses categories)</div >
 		{% else %}
 			<form method="post" >
-{{ url_for('', filename='') }}
 				<input type="text" autofocus name="amount" placeholder="100" min="0" class="summ py-5 mr-20"
 							 value="{{ request.form['amount'] }}" />
 
 				<div class="mt-24" >
 					<div class="subtitle3 mt-15" >Select Budget Category</div >
-					<div class="radio-group category-group" >
+					<div class="radio-group category-group category-group-color" >
 						{% for cid, name, color, state, count, budget_category in categories %}
 
 							<input type="radio" value="{{ cid }}" name="category" id="{{ name }}" />

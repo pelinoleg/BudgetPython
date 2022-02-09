@@ -1,102 +1,101 @@
 {% extends 'base.html' %} {% block content %}
-	<div class="page_title {{ gradient }}" >
-		<a href="#menu" class="side-panel-toggle" ><span class="line1" ></span ><span class="line2" ></span ></a >
-		<span >{% block title %}{{ title }}{% endblock %}</span >
-		<button class="back-button" ><i class="fa-solid fa-chevron-left" ></i ></button >
-	</div >
+<div class="page_title {{ gradient }}">
+	<a href="#menu" class="side-panel-toggle"><span class="line1"></span><span class="line2"></span></a>
+	<span>{% block title %}{{ title }}{% endblock %}</span>
+	<button class="back-button"><i class="fa-solid fa-chevron-left"></i></button>
+</div>
 
-	<div class="content flex flex-col gap-15" >
+<div class="content flex flex-col gap-15">
 
-		<div >
-			<div class="subtitle3 mt-24" >Change category title</div >
-			<form method="post" >
-				<input type="text" autofocus name="category" placeholder="Category Name" class="big-input"
-							 value="{{ request.form['name'] or category['name'] }}" />
+	<div>
+		<div class="subtitle3 mt-24">Change category title</div>
+		<form method="post">
+			<input type="text" autofocus name="category" placeholder="Category Name" class="big-input"
+				value="{{ request.form['name'] or category['name'] }}" />
 
-				<div class="subtitle3 mt-24" >Change category color</div >
-				<div class="radio-group category-group" >
-					{% for i in range(23) %}
-						<input type="radio" value="{{ request.form['color'] or 'gradient_'+i|string }}" name="color"
-									 id="gradient_{{ i }}" {% if  category['color'] == 'gradient_'+ i|string %} checked {% endif %}>
-						<label for="gradient_{{ i }}" class="gradient_{{ i }}"
-									 style="{% if  category['color'] == 'gradient_'+ i|string %} transform: scale(1.4); box-shadow: 0 0 12px rgba(0,0,0,0.5) {% endif %}" ><span >#</span ></label >
-					
-										{% endfor %}
-				</div >
-
-				<div class="mt-20 flex gap-20 items-center" >
-					<div class="switch switch-big flex items-center" >
-						<input type="checkbox" id="hide_category" name="state" value="true" {% if category.state == 'true' %}
-									 checked{% endif %}>
-						<label for="hide_category" ></label >
-							<label for="hide_category" class="ml-10 second-label">Hide</label>
-					</div >
-					
-				</div >
-
-				<div class="form-buttons mt-24" >
-					<button type="submit" class="send-button" name="cat" >Save</button >
-					<a href="/category-delete/{{ category['id'] }}" class="delete-button"
-						 onclick="return confirm('Delete this category?')" >Delete Category</a >
-				</div >
-
-
-			</form >
-		</div >
-
-
-		<div class="divider" ></div >
-
-		<div >
-			<div class="subtitle3 mt-24" >Subcategories in "<strong >{{ category['name'] }}</strong >"</div >
-			<div class="flex flex-wrap radio-group category-group category-group-edit" >
-
-				{% for subcategory in subcategories if (category['id'] ==  subcategory['sub_cat_id']) %}
-
-					<label class="badge badge-subcategory {% if subcategory['sub_state'] == 'true' %} hide-category {% endif %}" >
-
-						<a href="/edit-subcategory/{{ subcategory['sub_id'] }}" >
-							{{ subcategory['sub_name'] }}
-							<i class="fa-regular fa-pen-to-square" ></i >
-						</a >
-						{#<a href="/subcategory-delete/{{ subcategory['id'] }}" >delete</a >#}
-
-					</label >
-
-				{% else %}
-					<div class="no-results m-0 my-10 opacity-50" >You have no subcategories in this category</div >
-
-
-
-
+			<div class="subtitle3 mt-24">Change category color</div>
+			<div class="radio-group category-group">
+				{% for i in range(23) %}
+				<input type="radio" value="{{ request.form['color'] or 'gradient_'+i|string }}" name="color"
+					id="gradient_{{ i }}" {% if  category['color'] == 'gradient_'+ i|string %} checked {% endif %}>
+				<label for="gradient_{{ i }}" class="gradient_{{ i }}"><span>#</span></label>
 
 				{% endfor %}
+			</div>
+
+			<div class="mt-20 flex gap-20 items-center">
+				<div class="switch switch-big flex items-center">
+					<input type="checkbox" id="hide_category" name="state" value="true"
+						{% if category.state == 'true' %} checked{% endif %}>
+					<label for="hide_category"></label>
+					<label for="hide_category" class="ml-10 second-label">Hide</label>
+				</div>
+
+			</div>
+
+			<div class="form-buttons mt-24">
+				<button type="submit" class="send-button" name="cat">Save</button>
+				<a href="/category-delete/{{ category['id'] }}" class="delete-button"
+					onclick="return confirm('Delete this category?')">Delete Category</a>
+			</div>
 
 
-			</div >
-		</div >
+		</form>
+	</div>
 
 
-		<div >
-			<div class="subtitle3 mt-24" >Add subcategory into "<strong >{{ category['name'] }}</strong >"</div >
-			<form method="post" >
-				<input type="hidden" name="category_id" value="{{ category['id'] }}" >
+	<div class="divider"></div>
 
-				<div class="form-group " >
-					<input type="text" name="subcategory" placeholder="Subcategory Name" class="big-input"
-								 value="{{ request.form['subcategory'] }}" />
-				</div >
+	<div>
+		<div class="subtitle3 mt-24">Subcategories in "<strong>{{ category['name'] }}</strong>"</div>
+		<div class="flex flex-wrap radio-group category-group category-group-second category-group-edit">
 
-				<div class="form-buttons mt-24" >
-					<button type="submit" class="send-button" name="subcat" >
-						Add subcategory
-					</button >
-				</div >
-			</form >
-		</div >
+			{% for subcategory in subcategories if (category['id'] ==  subcategory['sub_cat_id']) %}
+
+			<label class=" {% if subcategory['sub_state'] == 'true' %} hide-category {% endif %}">
+
+				<a href="/edit-subcategory/{{ subcategory['sub_id'] }}">
+					{{ subcategory['sub_name'] }}
+					<i class="fa-regular fa-pen-to-square"></i>
+				</a>
+				{#<a href="/subcategory-delete/{{ subcategory['id'] }}" >delete</a >#}
+
+			</label>
+
+			{% else %}
+			<div class="no-results m-0 my-10 opacity-50">You have no subcategories in this category</div>
 
 
-	</div >
+
+
+
+			{% endfor %}
+
+
+		</div>
+	</div>
+
+
+	<div>
+		<div class="subtitle3 mt-24">Add subcategory into "<strong>{{ category['name'] }}</strong>"</div>
+		<form method="post">
+			<input type="hidden" name="category_id" value="{{ category['id'] }}">
+
+			<div class="form-group ">
+				<input type="text" name="subcategory" placeholder="Subcategory Name" class="big-input"
+					value="{{ request.form['subcategory'] }}" />
+			</div>
+
+			<div class="form-buttons mt-24">
+				<button type="submit" class="send-button" name="subcat">
+					Add subcategory
+				</button>
+			</div>
+		</form>
+	</div>
+
+
+</div>
 
 
 
