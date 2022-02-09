@@ -20,16 +20,18 @@
 									 id="gradient_{{ i }}" {% if  category['color'] == 'gradient_'+ i|string %} checked {% endif %}>
 						<label for="gradient_{{ i }}" class="gradient_{{ i }}"
 									 style="{% if  category['color'] == 'gradient_'+ i|string %} transform: scale(1.4); box-shadow: 0 0 12px rgba(0,0,0,0.5) {% endif %}" ><span >#</span ></label >
-					{% endfor %}
+					
+										{% endfor %}
 				</div >
 
 				<div class="mt-20 flex gap-20 items-center" >
-					<div class="switch switch-big" >
+					<div class="switch switch-big flex items-center" >
 						<input type="checkbox" id="hide_category" name="state" value="true" {% if category.state == 'true' %}
 									 checked{% endif %}>
 						<label for="hide_category" ></label >
+							<label for="hide_category" class="ml-10 second-label">Hide</label>
 					</div >
-					Hide
+					
 				</div >
 
 				<div class="form-buttons mt-24" >

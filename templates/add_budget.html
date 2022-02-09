@@ -10,8 +10,7 @@
 			<div class="no-results" >You must add categories first (in expenses categories)</div >
 		{% else %}
 			<form method="post" >
-
-
+{{ url_for('', filename='') }}
 				<input type="text" autofocus name="amount" placeholder="100" min="0" class="summ py-5 mr-20"
 							 value="{{ request.form['amount'] }}" />
 

@@ -11,12 +11,13 @@
 			<input type="text" autofocus name="subcategory" placeholder="Subcategory Name" class="big-input"
 						 value="{{ request.form['name'] or subcategory['name'] }}" />
 			<div class="mt-20 flex gap-20 items-center" >
-				<div class="switch switch-big" >
+				<div class="switch switch-big flex items-center" >
 					<input type="checkbox" id="hide_subcategory" name="state" value="true" {% if subcategory.state == 'true' %}
 								 checked{% endif %}>
 					<label for="hide_subcategory" ></label >
+						<label for="hide_subcategory" class="second-label ml-10">Hide</label >
 				</div >
-				Hide
+				
 			</div >
 
 			<div class="form-buttons mt-24" >
