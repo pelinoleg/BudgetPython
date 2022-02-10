@@ -33,6 +33,7 @@
 				tension: 0.2,
 				borderJoinStyle: 'round',
 				borderWidth: 2,
+				
 				data : [
 					{% for sum, month, year in sum_months_chart %}
 						"{{ sum|int }}",
@@ -44,6 +45,7 @@
 				borderColor: 'rgb(89, 250, 40)',
 				borderWidth: 2,
 				tension: 0.2,
+				
 				data : [
 				
 					{% for amount, month, year in sum_months_income_chart %}
