@@ -226,7 +226,7 @@ def index():
         
         "LEFT JOIN categories on categories.id = expenses.category "
         # "WHERE strftime('%Y', date) = strftime('%Y', date('now' )) AND strftime('%m', date) = strftime('%m', date('now')) "
-        "WHERE sum > 100 "
+        # "WHERE SUM(sum) > 100 "
    
         "GROUP by category"
 
