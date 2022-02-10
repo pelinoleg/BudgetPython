@@ -298,7 +298,20 @@ def stats():
         "sum, strftime('%m', date) as month, strftime('%Y', date) as year "
         "FROM expenses "
     ).fetchall()
-
+    sum_months_chart = conn.execute(
+        "SELECT "
+        "SUM(sum), strftime('%m', date) as month, strftime('%Y', date) as year "
+        "FROM expenses "
+        "GROUP BY month "
+        "ORDER BY year"
+    ).fetchall()
+    sum_months_income_chart = conn.execute(
+        "SELECT "
+        "SUM(amount), strftime('%m', date) as month, strftime('%Y', date) as year "
+        "FROM incomes "
+        "GROUP BY month "
+        "ORDER BY year"
+    ).fetchall()
     sum_months_income = conn.execute(
         "SELECT "
         "amount, strftime('%m', date) as month, strftime('%Y', date) as year "
@@ -316,7 +329,7 @@ def stats():
     return render_template('stats.html', title='Statistics', gradient='text-gradient-orange',
                            this_month_transactions=this_month_transactions, sum_months=sum_months,
                            sum_months_income=sum_months_income, category_sum_total=category_sum_total,
-                           date=date)
+                           date=date, sum_months_chart=sum_months_chart, sum_months_income_chart=sum_months_income_chart)
 
 
 @app.route('/all-expenses')

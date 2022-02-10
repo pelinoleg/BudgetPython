@@ -5230,8 +5230,6 @@ a {
   font-weight: 500;
   max-width: 100%;
   min-width: 25px;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 4px 2px 6px rgba(0, 0, 0, 0.3), inset 0 0 0px 1px rgba(255, 255, 255, 0.15);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 4px 2px 6px rgba(0, 0, 0, 0.3), inset 0 0 0px 1px rgba(255, 255, 255, 0.15);
 }
 .budgets .budget-progress .progress.over {
   background: #b92c46;
@@ -5273,9 +5271,20 @@ a {
   -webkit-box-shadow: unset;
           box-shadow: unset;
 }
+.budgets-home .budget-progress {
+  padding: 6px 0;
+  border-radius: 0;
+  background: unset;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
+  border-color: var(--gray-95);
+  border-left: unset;
+  border-right: unset;
+}
 .budgets-home .budget-progress .progress {
   height: 17px;
   line-height: 17px;
+  border-radius: 3px;
 }
 
 .all-budgets {

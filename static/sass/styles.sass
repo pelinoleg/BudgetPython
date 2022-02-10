@@ -1461,7 +1461,7 @@ a
 			font-weight: 500
 			max-width: 100%
 			min-width: 25px
-			box-shadow: $shadow-d, 4px 2px 6px rgba(#000, 0.3), inset 0 0 0px 1px rgba(#fff, 0.15)
+			// box-shadow: $shadow-d, 4px 2px 6px rgba(#000, 0.3), inset 0 0 0px 1px rgba(#fff, 0.15)
 			
 			&.over
 				@include gradientBg2(#b92c46, #f23945)
@@ -1502,9 +1502,17 @@ a
 			box-shadow: unset
 	
 	.budget-progress
+		padding: 6px 0
+		border-radius: 0
+		background: unset
+		box-shadow: unset
+		border-color: var(--gray-95)
+		border-left: unset
+		border-right: unset
 		.progress
 			height: 17px
 			line-height: 17px
+			border-radius: 3px
 
 .all-budgets
 	display: flex
