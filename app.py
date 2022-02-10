@@ -221,11 +221,12 @@ def index():
     #     "ORDER BY SUM(sum) DESC  ").fetchall()
 
     category_sum_total = conn.execute(
-        "SELECT  SUM(sum), categories.name as category, strftime('%m', date) as month, strftime('%Y', date) as year "
+        "SELECT  SUM(sum) as su, categories.name as category, strftime('%m', date) as month, strftime('%Y', date) as year "
         "FROM expenses  "
         
         "LEFT JOIN categories on categories.id = expenses.category "
         # "WHERE strftime('%Y', date) = strftime('%Y', date('now' )) AND strftime('%m', date) = strftime('%m', date('now')) "
+        "WHERE sum > 100 "
    
         "GROUP by category"
 
