@@ -31,7 +31,8 @@
 				</div >
 
 				<div >
-					<div class="subtitle3 mt-24" >Select Category</div >
+					<!-- <div class="subtitle3 mt-24" >Select Category</div > -->
+						<div class="divider-title mt-24 mb-10" ><span >Select Category</span ></div >
 					<div class="radio-group category-group category-group-color" id="select-add-category" >
 						{% for cid, name, color, state, count in categories %}
 
@@ -43,7 +44,8 @@
 				</div >
 
 				<div >
-					<div class="subtitle3 mt-24 subtitle-subcategory" >Select Subcategory</div >
+					<!-- <div class="subtitle3 mt-24 subtitle-subcategory" >Select Subcategory</div > -->
+						<div class="divider-title mt-24 mb-10 subtitle-subcategory" ><span >Select Subcategory</span ></div >
 					<div class="radio-group category-group category-group-second w-full" id="subcategories-add" >
 						{% for id, name, category in subcategories %}
 
@@ -55,7 +57,8 @@
 				</div >
 
 				<div >
-					<div class="subtitle3 mt-15" >Add comment</div >
+					<!-- <div class="subtitle3 mt-15" >Add comment</div > -->
+						<div class="divider-title mt-24 mb-10" ><span >Add Comment</span ></div >
 
 					<textarea name="comment" placeholder="Comment" >{{ request.form['comment'] }}</textarea >
 				</div >

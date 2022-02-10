@@ -7,13 +7,13 @@
 	<div class="content flex flex-col gap-15" >
 
 	<div >
-		<div class="subtitle2 mt-15" >Add Category</div >
+		<div class="divider-title mt-0 mb-10 " ><span >Add Category</span ></div >
 		<form method="post" >
 			<div class="form-group" >
 				<input type="text" name="category" placeholder="Category Name" class="big-input"
 							 value="{{ request.form['category'] }}" />
 			</div >
-			<div class="subtitle3 mt-24" >Select category color</div >
+			<div class="divider-title mt-24 mb-10 " ><span >Select Category Color</span ></div >
 
 
 			<div class="radio-group category-group category-group-color" >
@@ -31,13 +31,15 @@
 		</form >
 	</div >
 
-	<div class="divider" ></div >
+	<!-- <div class="divider" ></div > -->
 
 
 	<div >
-		<div class="mt-24 subtitle2 inline-flex flex-wrap items-center" >Edit Categories
+		<!-- <div class="mt-24 subtitle2 inline-flex flex-wrap items-center" >Edit Categories
 			<div class="subtitle3 mt-10" > (click to edit)</div >
-		</div >
+		</div > -->
+
+		<div class="divider-title mt-60 mb-10" ><span >Edit Categories</span ></div >
 		<div class=" flex flex-wrap radio-group category-group  category-group-color category-group-edit" >
 			{% for category in categories %}
 				<label class="badge {{ category['color'] }} {% if category['state'] == 'true' %} hide-category {% endif %}" >
