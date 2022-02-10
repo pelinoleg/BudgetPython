@@ -223,7 +223,11 @@ def index():
     category_sum_total = conn.execute(
         "SELECT  sum, categories.name as category, strftime('%m', date) as month, strftime('%Y', date) as year "
         "FROM expenses  "
+        
         "LEFT JOIN categories on categories.id = expenses.category "
+        "WHERE strftime('%Y', date) = strftime('%Y', date('now' , '-2 month')) AND strftime('%m', date) = strftime('%m', date('now', '-2 month')) AND categories.name is not 'Chiria' "
+   
+        "GROUP by category"
 
     ).fetchall()
 

@@ -16,6 +16,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet" >
 	<link rel="manifest" crossorigin="use-credentials"
 				href="{{ url_for('static', filename= 'manifest/manifest.webmanifest') }}" />
+				<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>				
 
 	<title >{% block title %}{{ title }}{% endblock %}</title >
 </head >
@@ -123,6 +124,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/8.5.24/mmenu.js"
 				integrity="sha512-/eAYGmMVRmV/y/BIaoner9FeGwgoyLP2HiNGUpGfJrVBbDSLH/LH0uRQUHzsQFuPz4LGX8HErB1j+bXIqsjEgw=="
 				crossorigin="anonymous" referrerpolicy="no-referrer" ></script >
+				
 
 
 <script src="{{ url_for('static', filename= 'javascript/scripts.js') }}" ></script >
