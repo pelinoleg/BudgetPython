@@ -225,7 +225,7 @@ def index():
         "FROM expenses  "
         
         "LEFT JOIN categories on categories.id = expenses.category "
-        # "WHERE strftime('%Y', date) = strftime('%Y', date('now' )) AND strftime('%m', date) = strftime('%m', date('now')) "
+        "WHERE strftime('%Y', date) = strftime('%Y', date('now' )) AND strftime('%m', date) = strftime('%m', date('now')) "
         # "WHERE SUM(sum) > 100 "
    
         "GROUP by category"
@@ -318,17 +318,24 @@ def stats():
         "FROM incomes "
     ).fetchall()
 
+
+
     category_sum_total = conn.execute(
-        "SELECT  sum, categories.name as category, strftime('%m', date) as month, strftime('%Y', date) as year "
+        "SELECT  SUM(sum) as su, categories.name as category, strftime('%m', date) as month, strftime('%Y', date) as year "
         "FROM expenses  "
+        
         "LEFT JOIN categories on categories.id = expenses.category "
+        # "WHERE strftime('%Y', date) = strftime('%Y', date('now' )) AND strftime('%m', date) = strftime('%m', date('now')) "
+        # "WHERE SUM(sum) > 100 "
+   
+        "GROUP by category"
 
     ).fetchall()
 
     date = datetime.now()
     return render_template('stats.html', title='Statistics', gradient='text-gradient-orange',
                            this_month_transactions=this_month_transactions, sum_months=sum_months,
-                           sum_months_income=sum_months_income, category_sum_total=category_sum_total,
+                           sum_months_income=sum_months_income, category_sum_total=category_sum_total, 
                            date=date, sum_months_chart=sum_months_chart, sum_months_income_chart=sum_months_income_chart)
 
 

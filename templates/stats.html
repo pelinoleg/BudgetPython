@@ -8,9 +8,9 @@
 	<div class="content content-stats w-full" >
 
 
+		<div class="divider-title ml-30 mb-5" ><span >Expenses vs Incomes:</span ></div >
 
-
-<div class="mb-50 ml-30 mr-30" style=""><canvas id="myChart" width="400" height="200" style=" max-height: 250px"></canvas></div>
+<div class="mb-50 ml-30 mr-30 mt-20" style=""><canvas id="myChart" width="400" height="200" style=" max-height: 250px"></canvas></div>
 		
 		
 
@@ -20,6 +20,7 @@
 		type: 'line',
 		
 		data: {
+			
 			labels : [
 					{% for sum, month, year in sum_months_income_chart %}
 						"{{ month }}/{{ year }}",
@@ -56,23 +57,51 @@
 			
 		},
 		options: {
+			
 			scales: {
+				x: {
+					ticks: {
+						
+						color: '#979595',
+				},
+			},
 				y: {
-					beginAtZero: false
-				}
+					beginAtZero: false,
+					
+					ticks: {
+						color: '#979595',
+						callback: function(value, index, ticks) {
+							return value + ' €';
+						}
+					}, 
+					
+				},
+				
 			},
 			plugins: {
+				
 				legend: {
 					display: true,
-					
+					align: 'start',
+					position: 'bottom',
+					labels: {
+						padding: 20,
+						boxHeight: 0,
+						color: '#979595'
+					},
+					title: {
+						fontColor: '#979595'
+					},
 					
 				},
 				
 				
+				
 			},
 			elements: {
+				fontColor: 'red',
 				bar: {
-					borderSkipped: false
+					borderSkipped: true
 				}
 			},
 			borderRadius: 3,
@@ -83,6 +112,86 @@
 	});
 	</script>
 			
+	<div class="divider-title ml-30 mb-5" ><span >Expenses All Time:</span ></div >
+
+	<div class="mb-50 ml-30 mr-30 mt-20" style=""><canvas id="myChart2" width="400" height="600" style=" max-height: 400px"></canvas></div>
+		
+		
+
+		<script>
+			const ctx2 = document.getElementById('myChart2').getContext('2d');
+			const myChart2 = new Chart(ctx2, {
+				type: 'bar',
+				data: {
+					labels : [
+							{% for sum, category, month, year in category_sum_total %}
+								"{{ category }}",
+								{% endfor %}
+							],
+					datasets: [{
+						label: 'Total €',
+						data : [
+							{% for sum, category, month, year in category_sum_total %}
+								"{{ sum }}",
+								{% endfor %}
+							],
+						backgroundColor: [
+							'rgba(255, 99, 132, 0.4)',
+							'rgba(54, 162, 235, 0.4)',
+							'rgba(255, 206, 86, 0.4)',
+							'rgba(75, 192, 192, 0.4)',
+							'rgba(153, 102, 255, 0.4)',
+							'rgba(255, 159, 64, 0.4)'
+						],
+						borderColor: [
+							'rgba(255, 99, 132, 0.9)',
+							'rgba(54, 162, 235, 0.9)',
+							'rgba(255, 206, 86, 0.9)',
+							'rgba(75, 192, 192, 0.9)',
+							'rgba(153, 102, 255, 0.9)',
+							'rgba(255, 159, 64, 0.9)'
+						],
+						borderWidth: 1
+					}]
+				},
+				options: {
+					scales: {
+						x: {
+							ticks: {
+								color: '#979595',
+								callback: function(value, index, ticks) {
+									return value + ' €' ;
+								}
+						},
+					},
+						y: {
+							beginAtZero: true,
+							ticks: {
+								color: '#979595',
+								
+						},
+						}
+					},
+					plugins: {
+						legend: {
+							display: false,
+							
+							
+						},
+						
+					},
+					elements: {
+						bar: {
+							borderSkipped: false
+						}
+					},
+					borderRadius: 3,
+					minBarLength: 10,
+					indexAxis: 'y',
+					responsive: true,
+				}
+			});
+			</script>
 			 
 
 
