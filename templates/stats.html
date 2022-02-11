@@ -124,14 +124,14 @@
 				type: 'bar',
 				data: {
 					labels : [
-							{% for sum, category, month, year in category_sum_total %}
+							{% for sum, category, month, year in category_sum_total2 %}
 								"{{ category }}",
 								{% endfor %}
 							],
 					datasets: [{
 						label: 'Total €',
 						data : [
-							{% for sum, category, month, year in category_sum_total %}
+							{% for sum, category, month, year in category_sum_total2 %}
 								"{{ sum }}",
 								{% endfor %}
 							],

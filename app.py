@@ -203,22 +203,7 @@ def index():
     # WHERE strftime('%Y', entry_date) = strftime('%Y', date('now')) AND strftime('%m', entry_date) = strftime('%m', date('now'))
     this_year = datetime.now().year
     this_month = datetime.now().month
-    # this_month = now.strftime("%m, %Y")
-    # category_sum_month = conn.execute(
-    #     "SELECT  SUM(sum), expenses.category "
-    #     "FROM expenses  "
-    #     "INNER JOIN categories ON categories.name = expenses.category "
-    #     "WHERE strftime('%m.%Y', date) = strftime('%m.%Y','now') "
-    #     "GROUP BY category "
-    #     "ORDER BY SUM(sum) DESC  ").fetchall()
 
-    # category_sum_prev = conn.execute(
-    #     "SELECT  SUM(sum), expenses.category, strftime('%m/%Y', date) "
-    #     "FROM expenses  "
-    #     "INNER JOIN categories ON categories.name = expenses.category "
-    #     "WHERE strftime('%m.%Y', date) = strftime('%m.%Y','now', '-1 month') "
-    #     "GROUP BY category "
-    #     "ORDER BY SUM(sum) DESC  ").fetchall()
 
     category_sum_total = conn.execute(
         "SELECT  SUM(sum) as su, categories.name as category, strftime('%m', date) as month, strftime('%Y', date) as year "
@@ -318,9 +303,14 @@ def stats():
         "FROM incomes "
     ).fetchall()
 
-
-
     category_sum_total = conn.execute(
+        "SELECT  sum, categories.name as category, strftime('%m', date) as month, strftime('%Y', date) as year "
+        "FROM expenses  "
+        "LEFT JOIN categories on categories.id = expenses.category "
+
+    ).fetchall()
+
+    category_sum_total2 = conn.execute(
         "SELECT  SUM(sum) as su, categories.name as category, strftime('%m', date) as month, strftime('%Y', date) as year "
         "FROM expenses  "
         
@@ -329,14 +319,11 @@ def stats():
         # "WHERE SUM(sum) > 100 "
    
         "GROUP by category"
-
     ).fetchall()
 
-    date = datetime.now()
     return render_template('stats.html', title='Statistics', gradient='text-gradient-orange',
                            this_month_transactions=this_month_transactions, sum_months=sum_months,
-                           sum_months_income=sum_months_income, category_sum_total=category_sum_total, 
-                           date=date, sum_months_chart=sum_months_chart, sum_months_income_chart=sum_months_income_chart)
+                           sum_months_income=sum_months_income, category_sum_total=category_sum_total, category_sum_total2=category_sum_total2, sum_months_chart=sum_months_chart, sum_months_income_chart=sum_months_income_chart)
 
 
 @app.route('/all-expenses')
