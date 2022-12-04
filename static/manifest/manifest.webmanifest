@@ -1,6 +1,6 @@
 {
-    "theme_color": "#363946",
-    "background_color": "#363946",
+    "theme_color": "#191b20",
+    "background_color": "#191b20",
     "display": "fullscreen",
     "scope": "/",
     "start_url": "/add",
